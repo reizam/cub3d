@@ -9,9 +9,6 @@ CC 			= clang
 
 CFLAGS 		= -Wall -Wextra -Werror
 
-.c.o:		
-			${CC} ${CFLAGS} -I/usr/include -Imlx_linux -O3 -c -I./includes/ $< -o ${<:.c=.o}
-
 ${NAME}: 	${OBJS}
 		 	${CC} ${OBJS} -o ${NAME}
 
@@ -26,6 +23,6 @@ fclean:		clean
 re:			fclean all
 
 bonus:		${OBJS}
-		 	${CC} ${OBJS} -Lmlx_linux -lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o ${NAME}
+		 	${CC} -o ${NAME} ${OBJS} -lmlx -L/usr/lib -lXext -lX11 -lm -lbsd 
 
 .PHONY:		all clean fclean re bonus
