@@ -9,6 +9,9 @@ CC 			= clang
 
 CFLAGS 		= -Wall -Wextra -Werror
 
+.c.o:		
+			${CC} ${CFLAGS} -I./includes/ $< -o ${<:.c=.o}
+
 ${NAME}: 	${OBJS}
 		 	${CC} ${OBJS} -o ${NAME}
 
