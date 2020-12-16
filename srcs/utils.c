@@ -61,7 +61,7 @@ int		ft_is_full(t_cub *cub)
     && cub->north_texture != NULL && cub->east_texture != NULL
     && cub->west_texture != NULL && cub->south_texture != NULL
     && cub->rgb_ground != -1
-    && cub->rgb_roof != -1;
+    && cub->rgb_roof != -1);
 }
 
 int     ft_isnum(char *str)
