@@ -38,6 +38,7 @@ int     ft_parse_rgb(char *line, int id, t_cub *cub)
     int     b;
 
     s = ft_split(line, ',');
+    i = 0;
     while (s && s[i])
         i++;
     if (!s || i != 3)
