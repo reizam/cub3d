@@ -40,18 +40,25 @@ int ft_parse_map(int fd, t_cub *cub)
     char    *line;
     int     i;
     int     j;
+    int     k;
 
+    k = 0;
     while ((j = get_next_line(fd, &line)) >= 0)
     {
+        if (ft_strlen(line) == 0 && !k)
+            free(line);
+        else
+            k = 1;
         i = ft_check_map_line(line);
         if (i)
             map = ft_strjoin(map, line, j);
-        if (!i)
+        free(line);
+        if (!i && k)
         {
             free(map);
             return (0);
         }
-        if (j == 0)
+        if (j <= 0)
             break ;
     }
     cub->map = ft_split(map, '\n');
