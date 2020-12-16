@@ -13,7 +13,7 @@ CFLAGS 		= -Wall -Wextra -Werror
 			${CC} ${CFLAGS} -c -I./includes/ $< -o ${<:.c=.o}
 
 ${NAME}: 	${OBJS}
-		 	${CC} ${NAME} ${OBJS} -o ${NAME}
+		 	${CC} ${OBJS} -o ${NAME}
 
 all: 		${NAME}
 
@@ -26,6 +26,6 @@ fclean:		clean
 re:			fclean all
 
 bonus:		${OBJS}
-		 	${CC} ${NAME} ${OBJS} -o ${NAME}
+		 	${CC} ${OBJS} -o ${NAME}
 
 .PHONY:		all clean fclean re bonus
