@@ -46,7 +46,6 @@ int ft_parse_map(int fd, t_cub *cub)
         i = ft_check_map_line(line);
         if (i)
             map = ft_strjoin(map, line, j);
-        free(line);
         if (!i)
         {
             free(map);

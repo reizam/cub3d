@@ -32,5 +32,7 @@ char	*ft_strjoin(char *s1, char *s2, int n)
     if (n == 1)
         result[i++] = '\n';
 	result[i] = 0;
+    if (s2 != NULL)
+        free(s2);
 	return (result);
 }
