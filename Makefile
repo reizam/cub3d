@@ -1,6 +1,6 @@
 SRC_DIR		= ./srcs/
 
-SRC 		= ${SRC_DIR}start.c ${SRC_DIR}parse.c ${SRC_DIR}utils.c ${SRC_DIR}ft_split.c ${SRC_DIR}ft_atoi.c ${SRC_DIR}parse_rgb.c ${SRC_DIR}parse_map.c ${SRC_DIR}ft_strcmp.c ${SRC_DIR}close.c ${SRC_DIR}ft_putstr_fd.c ${SRC_DIR}get_next_line.c ${SRC_DIR}ft_strjoin.c
+SRC 		= ${SRC_DIR}ft_strdup.c ${SRC_DIR}start.c ${SRC_DIR}parse.c ${SRC_DIR}utils.c ${SRC_DIR}ft_split.c ${SRC_DIR}ft_atoi.c ${SRC_DIR}parse_rgb.c ${SRC_DIR}parse_map.c ${SRC_DIR}ft_strcmp.c ${SRC_DIR}close.c ${SRC_DIR}ft_putstr_fd.c ${SRC_DIR}get_next_line.c ${SRC_DIR}ft_strjoin.c
 OBJS 		= ${SRC:.c=.o}
 
 NAME 		= Cub3D
@@ -10,7 +10,7 @@ CC 			= clang
 CFLAGS 		= -Wall -Wextra -Werror
 
 .c.o:		
-			${CC} ${CFLAGS} -c -I./includes/ $< -o ${<:.c=.o}
+			${CC} ${CFLAGS} -I/usr/include -Imlx_linux -O3 -c -I./includes/ $< -o ${<:.c=.o}
 
 ${NAME}: 	${OBJS}
 		 	${CC} ${OBJS} -o ${NAME}
@@ -26,6 +26,6 @@ fclean:		clean
 re:			fclean all
 
 bonus:		${OBJS}
-		 	${CC} ${OBJS} -o ${NAME}
+		 	${CC} ${OBJS} -Lmlx_linux -lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o ${NAME}
 
 .PHONY:		all clean fclean re bonus

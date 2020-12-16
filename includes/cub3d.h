@@ -18,6 +18,8 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include "mlx.h"
+# include "mlx_int.h"
 
 typedef struct	s_cub
 {
