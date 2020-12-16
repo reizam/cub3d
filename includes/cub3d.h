@@ -15,8 +15,9 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include "mlx.h"
-# include "mlx_int.h"
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 
 typedef struct	s_cub
 {
