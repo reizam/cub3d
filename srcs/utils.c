@@ -35,7 +35,7 @@ int    ft_is_cub_file(char *file)
         return (0);
     while (i > 0)
     {
-        if (end[i - 1] != file[len - i - 1])
+        if (end[i - 1] != file[len - (4 - i) - 1])
             return (0);
         i--;
     }

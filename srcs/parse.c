@@ -43,21 +43,21 @@ int     ft_parse_path(char *line, int id, t_cub *cub)
 
 int     ft_parse_line(char *line, t_cub *cub)
 {
-    if (ft_strncmp(line, "R ", 2))
+    if (ft_strncmp(line, "R ", 2) == 0)
         return (ft_parse_res(line + 2, cub));
-    else if (ft_strncmp(line, "NO ", 3))
+    else if (ft_strncmp(line, "NO ", 3) == 0)
         return (ft_parse_path(line + 3, 0, cub));
-    else if (ft_strncmp(line, "SO ", 3))
+    else if (ft_strncmp(line, "SO ", 3) == 0)
         return (ft_parse_path(line + 3, 1, cub));
-    else if (ft_strncmp(line, "WE ", 3))
+    else if (ft_strncmp(line, "WE ", 3) == 0)
         return (ft_parse_path(line + 3, 2, cub));
-    else if (ft_strncmp(line, "EA ", 3))
+    else if (ft_strncmp(line, "EA ", 3) == 0)
         return (ft_parse_path(line + 3, 3, cub));
-    else if (ft_strncmp(line, "S ", 2))
+    else if (ft_strncmp(line, "S ", 2) == 0)
         return (ft_parse_path(line + 3, 4, cub));
-    else if (ft_strncmp(line, "F ", 2)) 
+    else if (ft_strncmp(line, "F ", 2) == 0) 
         return (ft_parse_rgb(line, 0, cub));
-    else if (ft_strncmp(line, "C ", 2))
+    else if (ft_strncmp(line, "C ", 2) == 0)
         return (ft_parse_rgb(line, 1, cub));
     return (0);
 }
