@@ -20,14 +20,14 @@ t_cub *parse_exit(t_cub *cub)
     if (!cub)
         return (NULL);
     if (cub->east_texture)
-        free(cub->south_texture);
-    if (cub->east_texture)
-        free(cub->west_texture);
-    if (cub->east_texture)
         free(cub->east_texture);
-    if (cub->east_texture)
+    if (cub->west_texture)
+        free(cub->west_texture);
+    if (cub->south_texture)
+        free(cub->south_texture);
+    if (cub->north_texture)
         free(cub->north_texture);
-    if (cub->east_texture)
+    if (cub->sprite_texture)
         free(cub->sprite_texture);
     if (cub->map)
     {

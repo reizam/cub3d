@@ -22,11 +22,10 @@ int     ft_free_splitted_str(char **s)
     int i;
 
     i = 0;
-    (void)s;
-    // while (s && s[i])
-    //     free(s[i++]);
-    // if (s)
-    //     free(s);
+    while (s && s[i])
+        free(s[i++]);
+    if (s)
+        free(s);
     return (0);
 }
 
