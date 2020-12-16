@@ -29,11 +29,11 @@ t_cub *parse_exit(t_cub *cub)
         free(cub->north_texture);
     if (cub->east_texture)
         free(cub->sprite_texture);
-    if (map)
+    if (cub->map)
     {
-        while (map[i])
-            free(map[i++]);
-        free(map);
+        while (cub->map[i])
+            free(cub->map[i++]);
+        free(cub->map);
     }
     free(cub);
     return (NULL);
