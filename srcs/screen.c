@@ -19,4 +19,5 @@ void    ft_open_screen(t_cub *cub)
 
     mlx_ptr = mlx_init();
     win_ptr = mlx_new_window(mlx_ptr, cub->width, cub->height, "Cub3d");
+    mlx_loop(mlx_ptr);
 }
