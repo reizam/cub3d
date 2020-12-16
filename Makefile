@@ -7,7 +7,7 @@ NAME 		= Cub3D
 
 CC 			= clang
 
-CFLAGS 		= -Wall -Wextra -Werror
+CFLAGS 		= -Wall -Wextra -Werror -I/usr/include -03 -I..
 
 .c.o:		
 			${CC} ${CFLAGS} -I./includes/ $< -o ${<:.c=.o}
@@ -26,6 +26,6 @@ fclean:		clean
 re:			fclean all
 
 bonus:		${OBJS}
-		 	${CC} -o ${NAME} ${OBJS} -lmlx -L/usr/lib -lXext -lX11 -lm -lbsd 
+		 	${CC} -o ${NAME} ${OBJS} -L.. -lmlx -L/usr/lib -lXext -lX11 -lm -lbsd 
 
 .PHONY:		all clean fclean re bonus
