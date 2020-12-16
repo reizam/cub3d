@@ -60,7 +60,7 @@ int		ft_is_full(t_cub *cub)
 	return (cub->height != 0 && cub->width != 0 && cub->sprite_texture != NULL
     && cub->north_texture != NULL && cub->east_texture != NULL
     && cub->west_texture != NULL && cub->south_texture != NULL
-    && cub->rgb_ground != -1;
+    && cub->rgb_ground != -1
     && cub->rgb_roof != -1;
 }
 
