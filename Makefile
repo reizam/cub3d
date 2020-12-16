@@ -13,7 +13,7 @@ CFLAGS 		= -Wall -Wextra -Werror
 			${CC} ${CFLAGS} -I/usr/include/ -03 -I.. -I./includes/ -c $< -o ${<:.c=.o}
 
 ${NAME}: 	${OBJS}
-		 	${CC} ${OBJS} -o ${NAME}
+		 	${CC} -o ${NAME} ${OBJS} -L.. -lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd 
 
 all: 		${NAME}
 
@@ -24,8 +24,5 @@ fclean:		clean
 			rm -f ${NAME}
 
 re:			fclean all
-
-bonus:		${OBJS}
-		 	${CC} -o ${NAME} ${OBJS} -L.. -lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd 
 
 .PHONY:		all clean fclean re bonus
