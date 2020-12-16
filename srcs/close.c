@@ -35,6 +35,6 @@ t_cub *parse_exit(t_cub *cub)
             free(cub->map[i++]);
         free(cub->map);
     }
-    // free(cub);
+    free(cub);
     return (NULL);
 }

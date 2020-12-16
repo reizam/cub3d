@@ -43,6 +43,7 @@ int     start_cub3d(int ac, char **av)
         }
         cub->save_first_image = 1;
     }
+    parse_exit(cub);
     return (1);
 }
 
