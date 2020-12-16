@@ -28,19 +28,20 @@ int     start_cub3d(int ac, char **av)
         ft_print_error("Wrong file type.");
         return (0);
     }
-    if (ac == 3)
-        if (ft_strcmp(av[2], "--save") != 0)
-        {
-            ft_print_error("Wrong arguments.");
-            return (0);
-        }
-        else
-            cub->save_first_image = 1;
     if (!(cub = ft_parse_cub_file(av[1])))
     {
         ft_print_error("Wrong config.");
         return (0);
     }
+    if (ac == 3)
+        if (ft_strcmp(av[2], "--save") != 0)
+        {
+            ft_print_error("Wrong arguments.");
+            parse_exit(cub);
+            return (0);
+        }
+        else
+            cub->save_first_image = 1;
     return (1);
 }
 
