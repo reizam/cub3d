@@ -56,9 +56,9 @@ int     ft_parse_line(char *line, t_cub *cub)
     else if (ft_strncmp(line, "S ", 2) == 0)
         return (ft_parse_path(line + 3, 4, cub));
     else if (ft_strncmp(line, "F ", 2) == 0) 
-        return (ft_parse_rgb(line, 0, cub));
+        return (ft_parse_rgb(line + 2, 0, cub));
     else if (ft_strncmp(line, "C ", 2) == 0)
-        return (ft_parse_rgb(line, 1, cub));
+        return (ft_parse_rgb(line + 2, 1, cub));
     return (0);
 }
 

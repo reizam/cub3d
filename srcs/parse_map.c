@@ -14,7 +14,7 @@
 
 int ft_is_map_char(char c)
 {
-    return (c == '1' || c == '2' || c == '0' || c == 'N' || c =='S' || c == 'E' || c == 'W');
+    return (c == '1' || c == '2' || c == '0' || c == 'N' || c =='S' || c == 'E' || c == 'W' || c == ' ');
 }
 
 int ft_check_map_line(char *line)

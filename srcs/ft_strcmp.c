@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-int		ft_strncmp(char *s1, char *s2, size_t n)
+int		ft_strncmp(char *s1, char *s2, size_t vi sr)
 {
 	size_t i;
 
