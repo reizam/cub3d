@@ -41,7 +41,7 @@ int ft_parse_map(int fd, t_cub *cub)
     int     i;
     int     j;
 
-    while ((j = get_next_line(fd, &(line = NULL)) >= 0)
+    while ((j = get_next_line(fd, &line) >= 0)
     {
         i = ft_check_map_line(line);
         if (i)

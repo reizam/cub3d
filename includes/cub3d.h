@@ -41,7 +41,7 @@ int     ft_strcmp(char *s1, char *s2);
 int     ft_strncmp(char *s1, char *s2, size_t n);
 int     ft_is_cub_file(char *file_name);
 int		get_next_line(int fd, char **line);
-int     ft_parse_map(int fd, t_cub *cub)
+int     ft_parse_map(int fd, t_cub *cub);
 int		ft_nb_len(int nb);
 t_cub   *parse_exit(t_cub *cub);
 int		ft_is_full(t_cub *cub);
