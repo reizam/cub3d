@@ -15,7 +15,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <mlx.h>
 
 typedef struct	s_cub
 {
