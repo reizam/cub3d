@@ -12,22 +12,6 @@
 
 #include "cub3d.h"
 
-void    ft_define_rgb(int r, int g, int b, int id, t_cub *cub)
-{
-    if (id == 0)
-    {
-        cub->r_ground = r;
-        cub->g_ground = g;
-        cub->b_ground = b;
-    }
-    else if (id == 1)
-    {
-        cub->r_roof = r;
-        cub->b_roof = g;
-        cub->b_roof = b;
-    }
-}
-
 int     ft_check_rgb(int r, int g, int b)
 {
     return (r >= 0 && r <= 255 && g >= 0 && g <= 255 && b >= 0 && b <= 255);
@@ -67,6 +51,9 @@ int     ft_parse_rgb(char *line, int id, t_cub *cub)
     ft_free_splitted_str(s);
     if (!ft_check_rgb(r, g, b))
         return (0);
-    ft_define_rgb(r, g, b, id, cub);
+    if (id == 0)
+        cub->rgb_ground = (0 << 24 | r << 16 | g << 8 | b);
+    else if (id == 1)
+        cub->rgb_roof = (0 << 24 | r << 16 | g << 8 | b);
     return (1);
 }

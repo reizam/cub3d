@@ -25,7 +25,7 @@ int     start_cub3d(int ac, char **av)
 
     if (!ft_is_cub_file(av[1]))
     {
-        ft_print_error("Wrong file type.")
+        ft_print_error("Wrong file type.");
         return (0);
     }
     if (ac == 3)
@@ -44,7 +44,7 @@ int     start_cub3d(int ac, char **av)
     return (1);
 }
 
-int main (int ac, char **av)
+int main(int ac, char **av)
 {
     if (ac == 3 || ac == 2)
     {

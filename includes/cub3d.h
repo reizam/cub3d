@@ -15,6 +15,8 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include "mlx.h"
+# include "mlx_int.h"
 
 typedef struct	s_cub
 {
@@ -26,12 +28,8 @@ typedef struct	s_cub
     char        *east_texture;
     char        *north_texture;
     char        *sprite_texture;
-    int         r_ground;
-    int         g_ground;
-    int         b_ground;
-    int         r_roof;
-    int         g_roof;
-    int         b_roof;
+    int         rgb_ground;
+    int         rgb_roof;
     char        **map;
 }	            t_cub;
 
@@ -42,12 +40,13 @@ int     ft_strcmp(char *s1, char *s2);
 int     ft_strncmp(char *s1, char *s2, size_t n);
 int     ft_is_cub_file(char *file_name);
 int		get_next_line(int fd, char **line);
-int     parse_map(int fd, t_cub *cub)
+int     parse_map(int fd, t_cub *cub);
 int		ft_nb_len(int nb);
 t_cub   *parse_exit(t_cub *cub);
 int		ft_is_full(t_cub *cub);
 int		ft_atoi(char *str);
 int     ft_parse_rgb(char *line, int id, t_cub *cub);
+t_cub   *ft_parse_cub_file(char *file);
 int     ft_isnum(char *str);
 char	*ft_strjoin(char const *s1, char const *s2, int n);
 int     ft_check_rgb(int r, int g, int b);
