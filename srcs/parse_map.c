@@ -12,25 +12,49 @@
 
 #include "cub3d.h"
 
-int     ft_is_map_char(char c)
+int ft_is_map_char(char c)
 {
     return (c == '1' || c == '2' || c == '0' || c == 'N' || c =='S' || c == 'E' || c == 'W');
 }
 
-int     ft_check_line(char *line)
+int ft_check_map_line(char *line)
 {
-    size_t i;
+    int i;
 
-    i = 0;
-    while (line[i])
-    {
+    i = -1;
+    while (line && line[++i])
         if (!ft_is_map_char(line[i]))
             return (0);
-        i++;
-    }
+    return (i > 0);
+}
+
+int ft_check_map(t_cub *cub)
+{
     return (1);
 }
 
-int     **parse_map(char *line, int fd, t_cub *cub)
+int parse_map(int fd, t_cub *cub)
 {
+    char    *map;
+    char    *line;
+    int     i;
+    int     j;
+
+    while ((j = get_next_line(fd, &(line = NULL)) >= 0)
+    {
+        i = ft_check_map_line(line);
+        if (i)
+            map = ft_strjoin(map, line, j);
+        free(line);
+        if (!i)
+        {
+            free(map);
+            return (0);
+        }
+        if (j == 0)
+            break ;
+    }
+    cub->map = ft_split(map, '\n');
+    free(map); 
+    return (ft_check_map(cub));
 }

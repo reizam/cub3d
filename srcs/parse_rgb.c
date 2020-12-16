@@ -28,7 +28,6 @@ void    ft_define_rgb(int r, int g, int b, int id, t_cub *cub)
     }
 }
 
-
 int     ft_check_rgb(int r, int g, int b)
 {
     return (r >= 0 && r <= 255 && g >= 0 && g <= 255 && b >= 0 && b <= 255);

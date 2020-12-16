@@ -71,10 +71,12 @@ t_cub   *ft_parse_cub_file(char *file)
 
     if (!(cub = (t_cub*)malloc(sizeof(t_cub))))
         return (NULL);
+    cub->r_ground = -1;
+    cub->r_roof = -1;
     fd = open(file, O_RDONLY);
     if (fd < 0)
         return (parse_exit(cub));
-    while (get_next_line(&(line = NULL), fd) > 0 && !ft_is_full(cub))
+    while (!ft_is_full(cub) && get_next_line(fd, &(line = NULL)) > 0)
     {
         if (line != NULL && ft_strlen(line) > 0)
             i = ft_parse_line(line, fd, cub)
@@ -82,7 +84,7 @@ t_cub   *ft_parse_cub_file(char *file)
         if (!i)
             return (parse_exit(cub));
     }
-    if (!ft_is_full(cub) || !ft_parse_map(line, cub))
+    if (!ft_is_full(cub) || !ft_parse_map(fd, cub))
         return (parse_exit(cub));
     close(fd);
     return (cub);

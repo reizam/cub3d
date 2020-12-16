@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-char	*ft_strjoin(char *s1, char *s2, ssize_t s2_size)
+char	*ft_strjoin_gnl(char *s1, char *s2, ssize_t s2_size)
 {
 	char			*result;
 	ssize_t			i;
@@ -108,7 +108,7 @@ int		get_next_line(int fd, char **line)
 	while ((i = read(fd, buffer, 1024)) >= 0)
 	{
 		if (i > 0)
-			gnl[fd] = ft_strjoin(gnl[fd], buffer, i);
+			gnl[fd] = ft_strjoin_gnl(gnl[fd], buffer, i);
 		if (((j = get_next_line_offset(gnl[fd])) > 0) || i == 0)
 			break ;
 	}

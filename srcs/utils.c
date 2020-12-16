@@ -30,8 +30,8 @@ int    ft_is_cub_file(char *file)
 
     end = ".cub";
     len = ft_strlen(file);
-    i = 4;
-    if (len <= 4)
+    i = ft_strlen(end);
+    if (len <= i)
         return (0);
     while (i > 0)
     {
@@ -57,21 +57,20 @@ int		ft_nb_len(int nb)
 
 int		ft_is_full(t_cub *cub)
 {
-	return (cub->height != 0 && cub->width != 0
-	&& cub->sprite_texture != NULL && cub->north_texture != NULL
-	&& cub->east_texture != NULL && cub->west_texture != NULL && cub->south_texture != NULL);
+	return (cub->height != 0 && cub->width != 0 && cub->sprite_texture != NULL
+    && cub->north_texture != NULL && cub->east_texture != NULL
+    && cub->west_texture != NULL && cub->south_texture != NULL
+    && ft_check_rgb(cub->r_ground, cub->g_ground, cub->b_ground)
+    && ft_check_rgb(cub->r_roof, cub->g_roof, cub->b_roof));
 }
 
 int     ft_isnum(char *str)
 {
     int i;
     
-    i = 0;
-    while (str[i])
-    {
+    i = -1;
+    while (str[++i])
         if (str[i] < '0' || str[i] > '9')
             return (0);
-        i++;
-    }
     return (1);
 }
