@@ -51,5 +51,6 @@ t_cub   *ft_parse_cub_file(char *file);
 int     ft_isnum(char *str);
 char	*ft_strjoin(char const *s1, char const *s2, int n);
 int     ft_check_rgb(int r, int g, int b);
+char    **ft_split(char const *s, char c);
 
 #endif

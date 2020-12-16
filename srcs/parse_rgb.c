@@ -37,10 +37,10 @@ int     ft_parse_rgb(char *line, int id, t_cub *cub)
     int     g;
     int     b;
 
-    s = ft_split(line ',');
+    s = ft_split(line, ',');
     while (s && s[i])
         i++;
-    if (!s && i != 3)
+    if (!s || i != 3)
         return (ft_free_splitted_str(s));
     if (!ft_isnum(s[0]) || !ft_isnum(s[1]) || !ft_isnum(s[2]))
         return (ft_free_splitted_str(s));
