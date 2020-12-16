@@ -38,13 +38,13 @@ int     start_cub3d(int ac, char **av)
         if (ft_strcmp(av[2], "--save") != 0)
         {
             ft_print_error("Wrong arguments.");
-            parse_exit(cub);
+            ft_parse_exit(cub);
             return (0);
         }
         cub->save_first_image = 1;
     }
     ft_open_screen(cub);
-    // parse_exit(cub);
+    ft_parse_exit(cub);
     return (1);
 }
 

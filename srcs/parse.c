@@ -75,17 +75,17 @@ t_cub   *ft_parse_cub_file(char *file)
     cub->rgb_ground = -1;
     fd = open(file, O_RDONLY);
     if (fd < 0)
-        return (parse_exit(cub));
+        return (ft_parse_exit(cub));
     while (!ft_is_full(cub) && get_next_line(fd, &line) > 0)
     {
         if (line != NULL && ft_strlen(line) > 0)
             i = ft_parse_line(line, cub);
         free(line);
         if (!i)
-            return (parse_exit(cub));
+            return (ft_parse_exit(cub));
     }
     if (!ft_is_full(cub) || !ft_parse_map(fd, cub))
-        return (parse_exit(cub));
+        return (ft_parse_exit(cub));
     close(fd);
     return (cub);
 }

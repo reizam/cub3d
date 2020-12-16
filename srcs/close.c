@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-t_cub *parse_exit(t_cub *cub)
+t_cub *ft_parse_exit(t_cub *cub)
 {
     int         i;
 
