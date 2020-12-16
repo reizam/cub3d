@@ -10,7 +10,7 @@ CC 			= clang
 CFLAGS 		= -Wall -Wextra -Werror
 
 .c.o:		
-			${CC} ${CFLAGS} -I/usr/include/ -03 -I.. -I./includes/ -c $< -o ${<:.c=.o}
+			${CC} ${CFLAGS} -I/usr/include/ -I.. -I./includes/ -c $< -o ${<:.c=.o}
 
 ${NAME}: 	${OBJS}
 		 	${CC} -o ${NAME} ${OBJS} -L.. -lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd 
