@@ -28,34 +28,37 @@ int     ft_parse_res(char *line, t_cub *cub)
 
 int     ft_parse_path(char *line, int id, t_cub *cub)
 {
+    if (id == 0)
+        cub->north_texture = line;
+    else if (id == 1)
+        cub->south_texture = line;
+    else if (id == 2)
+        cub->west_texture = line;
+    else if (id == 3)
+        cub->east_texture = line;
+    else if (id == 4)
+        cub->sprite_texture = line;
     return (1);
 }
 
-int     ft_parse_rgb(char *line, int id, t_cub *cub)
-{
-    return (1);
-}
-
-int     ft_parse_line(char *line, int fd, t_cub *cub)
+int     ft_parse_line(char *line, t_cub *cub)
 {
     if (ft_strncmp(line, "R ", 2))
         return (ft_parse_res(line + 2, cub));
     else if (ft_strncmp(line, "NO ", 3))
-        return (ft_parse_path(line, 0, cub));
+        return (ft_parse_path(line + 3, 0, cub));
     else if (ft_strncmp(line, "SO ", 3))
-        return (ft_parse_path(line, 1, cub));
+        return (ft_parse_path(line + 3, 1, cub));
     else if (ft_strncmp(line, "WE ", 3))
-        return (ft_parse_path(line, 2, cub));
+        return (ft_parse_path(line + 3, 2, cub));
     else if (ft_strncmp(line, "EA ", 3))
-        return (ft_parse_path(line, 3, cub));
+        return (ft_parse_path(line + 3, 3, cub));
     else if (ft_strncmp(line, "S ", 2))
-        return (ft_parse_path(line, 4, cub));
+        return (ft_parse_path(line + 3, 4, cub));
     else if (ft_strncmp(line, "F ", 2)) 
         return (ft_parse_rgb(line, 0, cub));
     else if (ft_strncmp(line, "C ", 2))
         return (ft_parse_rgb(line, 1, cub));
-    else if (ft_check_line(line))
-        return (ft_parse_map(line, fd, cub));
     return (0);
 }
 
@@ -69,25 +72,18 @@ t_cub   *ft_parse_cub_file(char *file)
     if (!(cub = (t_cub*)malloc(sizeof(t_cub))))
         return (NULL);
     fd = open(file, O_RDONLY);
-    while ((i = get_next_line(&line, fd)) > 0)
+    if (fd < 0)
+        return (parse_exit(cub));
+    while (get_next_line(&(line = NULL), fd) > 0 && !ft_is_full(cub))
     {
-        if (line[0] && line != NULL)
-            i = ft_parse_line(line, fd, cub);
+        if (line != NULL && ft_strlen(line) > 0)
+            i = ft_parse_line(line, fd, cub)
         free(line);
-        line = NULL;
         if (!i)
-        {
-            free_cub(cub);
-            return (NULL);
-        }
+            return (parse_exit(cub));
     }
-    if (i == 0 && line != NULL)
-    {
-        if (line[0] && line != NULL)
-            i = ft_parse_line(line, fd, cub);
-        free(line);
-        line = NULL;
-    }
+    if (!ft_is_full(cub) || !ft_parse_map(line, cub))
+        return (parse_exit(cub));
     close(fd);
     return (cub);
 }

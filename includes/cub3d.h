@@ -26,7 +26,13 @@ typedef struct	s_cub
     char        *east_texture;
     char        *north_texture;
     char        *sprite_texture;
-    int         **map;
+    int         r_ground;
+    int         g_ground;
+    int         b_ground;
+    int         r_roof;
+    int         g_roof;
+    int         b_roof;
+    char        **map;
 }	            t_cub;
 
 int     ft_is_map_char(char c);
@@ -36,9 +42,13 @@ int     ft_strcmp(char *s1, char *s2);
 int     ft_strncmp(char *s1, char *s2, size_t n);
 int     ft_is_cub_file(char *file_name);
 int		get_next_line(int fd, char **line);
-void    free_cub(t_cub *cub);
 int     ft_check_line(char *line);
 int     **parse_map(char *line, int fd, t_cub *cub);
 int		ft_nb_len(int nb);
+t_cub   *parse_exit(t_cub *cub);
+int		ft_is_full(t_cub *cub);
+int		ft_atoi(char *str);
+int     ft_parse_rgb(char *line, int id, t_cub *cub);
+int     ft_isnum(char *str);
 
 #endif

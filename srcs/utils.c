@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "cub3d.h"
+
 size_t	ft_strlen(const char *s)
 {
 	size_t i;
@@ -53,29 +55,23 @@ int		ft_nb_len(int nb)
 	return (i);
 }
 
-void    free_cub(t_cub *cub)
+int		ft_is_full(t_cub *cub)
 {
-    // TODO:
+	return (cub->height != 0 && cub->width != 0
+	&& cub->sprite_texture != NULL && cub->north_texture != NULL
+	&& cub->east_texture != NULL && cub->west_texture != NULL && cub->south_texture != NULL);
 }
 
-int		ft_strncmp(char *s1, char *s2, size_t n)
+int     ft_isnum(char *str)
 {
-	size_t i;
-
-	i = 0;
-	if (n == 0)
-		return (0);
-	while (i < n - 1 && s1[i] && s1[i] == s2[i])
-		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-}
-
-int		ft_strcmp(char *s1, char *s2)
-{
-	while (*s1 && *s1 == *s2)
-	{
-		s1++;
-		s2++;
-	}
-	return (*s1 - *s2);
+    int i;
+    
+    i = 0;
+    while (str[i])
+    {
+        if (str[i] < '0' || str[i] > '9')
+            return (0);
+        i++;
+    }
+    return (1);
 }
