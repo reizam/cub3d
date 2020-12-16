@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-char	*ft_strjoin(char const *s1, char const *s2, int n)
+char	*ft_strjoin(char *s1, char *s2, int n)
 {
 	char			*result;
 	size_t			i;
@@ -29,10 +29,10 @@ char	*ft_strjoin(char const *s1, char const *s2, int n)
 	j = 0;
 	while (s2 && s2[j])
 		result[i++] = s2[j++];
-    if (n)
+    if (n == 1)
         result[i++] = '\n';
 	result[i] = 0;
-    if (s2)
+    if (s2 != NULL)
         free(s2);
 	return (result);
 }
