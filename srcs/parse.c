@@ -29,15 +29,15 @@ int     ft_parse_res(char *line, t_cub *cub)
 int     ft_parse_path(char *line, int id, t_cub *cub)
 {
     if (id == 0)
-        cub->north_texture = line;
+        cub->north_texture = ft_strdup(line);
     else if (id == 1)
-        cub->south_texture = line;
+        cub->south_texture = ft_strdup(line);
     else if (id == 2)
-        cub->west_texture = line;
+        cub->west_texture = ft_strdup(line);
     else if (id == 3)
-        cub->east_texture = line;
+        cub->east_texture = ft_strdup(line);
     else if (id == 4)
-        cub->sprite_texture = line;
+        cub->sprite_texture = ft_strdup(line);
     return (1);
 }
 
