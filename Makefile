@@ -7,7 +7,7 @@ NAME 		= Cub3D
 
 CC 			= clang
 
-CFLAGS 		= -Wall -Wextra -Werror -I/usr/include -03 -I..
+CFLAGS 		= -Wall -Wextra -Werror
 
 .c.o:		
 			${CC} ${CFLAGS} -I./includes/ $< -o ${<:.c=.o}
