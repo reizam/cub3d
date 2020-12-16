@@ -45,12 +45,10 @@ int ft_parse_map(int fd, t_cub *cub)
     k = 0;
     while ((j = get_next_line(fd, &line)) >= 0)
     {
-        if (ft_strlen(line) == 0 && !k)
-            free(line);
-        else
+        if (ft_strlen(line) > 0 && !k)
             k = 1;
         i = ft_check_map_line(line);
-        if (i)
+        if (i && k)
             map = ft_strjoin(map, line, j);
         free(line);
         if (!i && k)
