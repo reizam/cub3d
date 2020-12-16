@@ -55,5 +55,6 @@ char	*ft_strjoin(char *s1, char *s2, int n);
 int     ft_check_rgb(int r, int g, int b);
 char    **ft_split(char const *s, char c);
 char	*ft_strdup(char *src);
+void    ft_open_screen(t_cub *cub);
 
 #endif
