@@ -30,10 +30,11 @@ int ft_check_map_line(char *line)
 
 int ft_check_map(t_cub *cub)
 {
+    (void)cub;
     return (1);
 }
 
-int parse_map(int fd, t_cub *cub)
+int ft_parse_map(int fd, t_cub *cub)
 {
     char    *map;
     char    *line;
