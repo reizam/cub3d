@@ -20,6 +20,12 @@
 # include <fcntl.h>
 # include "mlx.h"
 
+typedef struct  s_screen
+{
+    void        *mlx_ptr;
+    void        *win_ptr;
+}               t_screen;
+
 typedef struct	s_cub
 {
     int         save_first_image;

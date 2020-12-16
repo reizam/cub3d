@@ -14,10 +14,14 @@
 
 void    ft_open_screen(t_cub *cub)
 {
-    void    *mlx_ptr;
-    void    *win_ptr;
+    t_screen    *screen;
 
-    mlx_ptr = mlx_init();
-    win_ptr = mlx_new_window(mlx_ptr, cub->width, cub->height, "Cub3d");
+    if (!(screen = (t_screen*)malloc(sizeof(t_screen))))
+        return (NULL);
+    screen->mlx_ptr = mlx_init();
+    screen->win_ptr = mlx_new_window(mlx_ptr, cub->width, cub->height, "Cub3d");
     mlx_loop(mlx_ptr);
+    free(mlx_ptr);
+    free(win_ptr);
+    free(screen);
 }
