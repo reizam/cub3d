@@ -21,9 +21,9 @@ int     ft_key_hook(int keycode, t_vars *vars)
     if (keycode == W_KEY)
     {
         if (cub->map[(int)vars->posY][(int)(vars->posX + vars->dirX * vars->move_speed)] != '1')
-            vars->posX += vars->dirX * vars->moveSpeed;
+            vars->posX += vars->dirX * vars->move_speed;
         if (cub->map[(int)(vars->posY + vars->dirY * vars->move_speed)][(int)vars->posX] != '1')
-            vars->posY += vars->dirY * vars->moveSpeed;
+            vars->posY += vars->dirY * vars->move_speed;
     }       
     else if (keycode == A_KEY)
     {
@@ -46,9 +46,9 @@ int     ft_key_hook(int keycode, t_vars *vars)
     else if (keycode == S_KEY)
     {
         if (cub->map[(int)vars->posY][(int)(vars->posX - vars->dirX * vars->move_speed)] != '1')
-            vars->posX -= vars->dirX * vars->moveSpeed;
+            vars->posX -= vars->dirX * vars->move_speed;
         if (cub->map[(int)(vars->posY - vars->dirY * vars->move_speed)][(int)vars->posX] != '1')
-            vars->posY -= vars->dirY * vars->moveSpeed;
+            vars->posY -= vars->dirY * vars->move_speed;
     }
     return (1);
 }

@@ -12,6 +12,14 @@
 
 #include "cub3d.h"
 
+void    ft_put_pixel(t_vars *vars, int x, int y, int color)
+{
+    char    *dst;
+
+    dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+    *(unsigned int*)dst = color;
+}
+
 void    ft_draw_ver_line(t_vars *vars, int x, int start_y, int end_y, int color)
 {
     int dx;
@@ -52,10 +60,14 @@ int     ft_render_screen(t_vars *vars)
     int stepY;
     int hit;
     int side;
+    void    *img_ptr;
     int x;
 
     x = 0;
     hit = 0;
+    img_ptr = mlx_new_image(vars->mlx_ptr, vars->width, vars->height);
+    vars->addr = mlx_get_data_addr(vars->img_ptr, &vars.bits_per_pixel, &vars.line_length,
+                                 &vars.endian);
     while (x < vars->cub->width)
     {
         cameraX = 2 * x / (double)vars->cub->width - 1;
@@ -120,6 +132,9 @@ int     ft_render_screen(t_vars *vars)
         hit = 0;
         x++;
     }
+    if (vars->img_ptr)
+        mlx_destroy_image(vars->mlx_ptr, vars->img_ptr);
+    mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, (vars->img_ptr = img_ptr), 0, 0);
     return (1);
 }
 

@@ -28,7 +28,7 @@ int ft_check_map_line(char *line)
     return (i > 0);
 }
 
-int ft_check_and_se_map(t_cub *cub)
+int ft_check_map(t_cub *cub)
 {
     (void)cub;
     return (1);

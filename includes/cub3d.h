@@ -45,6 +45,7 @@ typedef struct  s_vars
 {
     void        *mlx_ptr;
     void        *win_ptr;
+    void        *img_ptr;
     double      posX;
     double      posY;
     double      dirX;
@@ -55,6 +56,10 @@ typedef struct  s_vars
     double      old_time;
     double      move_speed;
     double      rot_speed;
+    char        *addr;
+    int         bits_per_pixel;
+    int         line_length;
+    int         endian;
     t_cub       *cub;
 }               t_vars;
 
