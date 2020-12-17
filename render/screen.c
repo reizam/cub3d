@@ -136,7 +136,7 @@ int     ft_render_screen(t_vars *vars)
                 mapY += stepY;
                 side = 1;
             }
-            if (vars->cub->map[mapX][mapY] && vars->cub->map[mapX][mapY] == '1')
+            if (mapX > 0 && mapY > 0 && vars->cub->map[mapX][mapY] && vars->cub->map[mapX][mapY] == '1')
                 hit = 1;
         }
         if (side == 0)
@@ -161,10 +161,15 @@ int     ft_render_screen(t_vars *vars)
 
 void    ft_open_screen(t_cub *cub)
 {
-    t_vars    *vars;
+    t_vars  *vars;
+    int     width;
+    int     height;
 
+    width = 0;
+    height = 0;
     if (!(vars = (t_vars*)malloc(sizeof(t_vars))))
         return ;
+
     // INIT VARS
     vars->posX = 0;
     vars->posY = 0;
@@ -178,7 +183,8 @@ void    ft_open_screen(t_cub *cub)
     
     // INIT
     vars->mlx_ptr = mlx_init();
-    vars->win_ptr = mlx_new_window(vars->mlx_ptr, cub->width, cub->height, "Cub3d");
+    mlx_get_screen_size(vars->mlx_ptr, &width, &height);
+    vars->win_ptr = mlx_new_window(vars->mlx_ptr, cub->width > width ? cub->width : width, cub->height > height ? height : cub->height, "Cub3d");
     mlx_key_hook(vars->win_ptr, ft_key_hook, vars);
     mlx_loop_hook(vars->mlx_ptr, ft_render_screen, vars);
     mlx_loop(vars->mlx_ptr);
