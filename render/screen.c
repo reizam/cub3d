@@ -19,6 +19,7 @@ int     ft_key_hook(int keycode, t_vars *vars)
     // else if (keycode == 100)
     // else if (keycode == 115)
     // printf("%d\n", keycode);
+    (void)keycode;
     (void)vars;
     return (1);
 }
@@ -32,13 +33,13 @@ void    ft_draw_line(t_vars *vars, int start_x, int start_y, int end_x, int end_
     e = end_x - start_x;
     dx = e * 2;
     dy = (end_y - start_y) * 2;
-    while (start_x < end_x)
+    while (start_x <= end_x)
     {
         mlx_pixel_put(vars->mlx_ptr, vars->win_ptr, start_x, start_y, vars->cub->rgb_ground);
         start_x++;
         if ((e = e - dy) <= 0)
         {
-            start_y+=;
+            start_y++;
             e += dx;
         }
     }
@@ -67,15 +68,15 @@ int     ft_render_screen(t_vars *vars)
     hit = 0;
     while (x < vars->cub->width)
     {
-        cameraX = 2 * x / double(vars->cub->width) - 1;
+        cameraX = 2 * x / (double)vars->cub->width - 1;
         rayDirX = vars->dirX + vars->planeX * cameraX;
         rayDirY = vars->dirY + vars->planeY * cameraX;
 
-        mapX = int(vars->posX);
-        mapY = int(vars->posY);
+        mapX = (int)vars->posX;
+        mapY = (int)vars->posY;
 
-        deltaDistX = (rayDirY == 0) ? 0 : ((rayDirX == 0) ? 1 : abs(1 / rayDirX));
-        deltaDistY = (rayDirX == 0) ? 0 : ((rayDirY == 0) ? 1 : abs(1 / rayDirY));
+        deltaDistX = (rayDirY == 0) ? 0 : ((rayDirX == 0) ? 1 : fabs(1 / rayDirX));
+        deltaDistY = (rayDirX == 0) ? 0 : ((rayDirY == 0) ? 1 : fabs(1 / rayDirY));
 
         if (rayDirX < 0)
         {
@@ -154,7 +155,8 @@ void    ft_open_screen(t_cub *cub)
     vars->mlx_ptr = mlx_init();
     vars->win_ptr = mlx_new_window(vars->mlx_ptr, cub->width, cub->height, "Cub3d");
     mlx_key_hook(vars->win_ptr, ft_key_hook, vars);
-    mlx_loop_hook(vars->mlx_ptr, ft_render_screen, vars);
+    ft_draw_line(vars, 5, 50, 100, 100);
+    // mlx_loop_hook(vars->mlx_ptr, ft_render_screen, vars);
     mlx_loop(vars->mlx_ptr);
     
     // FREE
