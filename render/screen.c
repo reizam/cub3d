@@ -89,7 +89,7 @@ int     ft_render_screen(t_vars *vars)
 
     x = 0;
     hit = 0;
-    mlx_clear_window(vars->mlx_ptr, vars->win_ptdr);
+    mlx_clear_window(vars->mlx_ptr, vars->win_ptr);
     while (x < vars->cub->width)
     {
         cameraX = 2 * x / (double)vars->cub->width - 1;
@@ -153,7 +153,7 @@ int     ft_render_screen(t_vars *vars)
             drawEnd = vars->cub->height - 1;
         ft_draw_ver_line(vars, x, drawStart, drawEnd);
         if (hit)
-            printf("I HIT A WALL !\n");
+            printf("I HIT A WALL ! from %d to %d\n", drawStart, drawEnd);
         hit = 0;
         x++;
     }
