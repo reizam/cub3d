@@ -65,9 +65,9 @@ int     ft_render_screen(t_vars *vars)
 
     x = 0;
     hit = 0;
-    img_ptr = mlx_new_image(vars->mlx_ptr, vars->width, vars->height);
-    vars->addr = mlx_get_data_addr(vars->img_ptr, &vars.bits_per_pixel, &vars.line_length,
-                                 &vars.endian);
+    img_ptr = mlx_new_image(vars->mlx_ptr, vars->cub->width, vars->cub->height);
+    vars->addr = mlx_get_data_addr(vars->img_ptr, &vars->bits_per_pixel, &vars->line_length,
+                                 &vars->endian);
     while (x < vars->cub->width)
     {
         cameraX = 2 * x / (double)vars->cub->width - 1;
