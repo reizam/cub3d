@@ -38,3 +38,12 @@ t_cub *ft_parse_exit(t_cub *cub)
     free(cub);
     return (NULL);
 }
+
+void    ft_screen_exit(t_vars *vars)
+{
+    mlx_destroy_window(vars->mlx, vars->win);
+    ft_parse_exit(vars->cub);
+    vars->cub = NULL;
+    free(vars);
+    vars = NULL;
+}
