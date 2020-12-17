@@ -171,7 +171,7 @@ void    ft_open_screen(t_cub *cub)
         return ;
 
     // INIT VARS
-    vars->posX = 3;
+    vars->posX = 7;
     vars->posY = 3;
     vars->dirX = -1;
     vars->dirY = 0;
