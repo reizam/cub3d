@@ -28,7 +28,7 @@ int ft_check_map_line(char *line)
     return (i > 0);
 }
 
-int ft_check_map(t_cub *cub)
+int ft_check_and_se_map(t_cub *cub)
 {
     (void)cub;
     return (1);
@@ -54,7 +54,6 @@ int ft_parse_map(int fd, t_cub *cub)
         if (i && k)
             map = ft_strjoin(map, line, j);
         free(line);
-
         if (!i && k)
         {
             free(map);

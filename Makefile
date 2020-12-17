@@ -2,8 +2,9 @@ MAIN_DIR	= ./main/
 UTILS_DIR	= ./utils/
 PARSING_DIR = ./parsing/
 RENDER_DIR = ./render/
+CONTROLS_DIR = ./controls/
 
-SRC 		= ${RENDER_DIR}screen.c ${UTILS_DIR}ft_strlen.c ${UTILS_DIR}ft_strdup.c ${MAIN_DIR}start.c ${PARSING_DIR}parse.c ${UTILS_DIR}utils.c ${UTILS_DIR}ft_split.c ${UTILS_DIR}ft_atoi.c ${PARSING_DIR}parse_rgb.c ${PARSING_DIR}parse_map.c ${UTILS_DIR}ft_strcmp.c ${MAIN_DIR}close.c ${UTILS_DIR}ft_putstr_fd.c ${UTILS_DIR}get_next_line.c ${UTILS_DIR}ft_strjoin.c
+SRC 		= ${CONTROLS_DIR}controls.c ${RENDER_DIR}screen.c ${UTILS_DIR}ft_strlen.c ${UTILS_DIR}ft_strdup.c ${MAIN_DIR}start.c ${PARSING_DIR}parse.c ${UTILS_DIR}utils.c ${UTILS_DIR}ft_split.c ${UTILS_DIR}ft_atoi.c ${PARSING_DIR}parse_rgb.c ${PARSING_DIR}parse_map.c ${UTILS_DIR}ft_strcmp.c ${MAIN_DIR}close.c ${UTILS_DIR}ft_putstr_fd.c ${UTILS_DIR}get_next_line.c ${UTILS_DIR}ft_strjoin.c
 OBJS 		= ${SRC:.c=.o}
 
 NAME 		= Cub3D

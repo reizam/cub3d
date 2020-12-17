@@ -53,6 +53,8 @@ typedef struct  s_vars
     double      planeY;
     double      time;
     double      old_time;
+    double      move_speed;
+    double      rot_speed;
     t_cub       *cub;
 }               t_vars;
 
@@ -76,5 +78,6 @@ int     ft_check_rgb(int r, int g, int b);
 char    **ft_split(char const *s, char c);
 char	*ft_strdup(char *src);
 void    ft_open_screen(t_cub *cub);
+int     ft_key_hook(int keycode, t_vars *vars);
 
 #endif

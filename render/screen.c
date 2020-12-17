@@ -12,18 +12,6 @@
 
 #include "cub3d.h"
 
-int     ft_key_hook(int keycode, t_vars *vars)
-{
-    // if (keycode == 119)
-    // else if (keycode == 97)
-    // else if (keycode == 100)
-    // else if (keycode == 115)
-    // printf("%d\n", keycode);
-    (void)keycode;
-    (void)vars;
-    return (1);
-}
-
 void    ft_draw_ver_line(t_vars *vars, int x, int start_y, int end_y, int color)
 {
     int dx;
@@ -153,6 +141,8 @@ void    ft_open_screen(t_cub *cub)
     vars->planeY = 0.66;
     vars->time = 0;
     vars->old_time = 0;
+    vars->move_speed = 0.5;
+    vars->rot_speed = 0.3;
     vars->cub = cub;
     
     // INIT
@@ -161,6 +151,7 @@ void    ft_open_screen(t_cub *cub)
     cub->width = cub->width > width ? width : cub->width;
     cub->height = cub->height > height ? height : cub->height;
     vars->win_ptr = mlx_new_window(vars->mlx_ptr, cub->width, cub->height, "Cub3d");
+    mlx_do_key_autorepeaton(vars->mlx_ptr);
     mlx_key_hook(vars->win_ptr, ft_key_hook, vars);
     mlx_loop_hook(vars->mlx_ptr, ft_render_screen, vars);
     mlx_loop(vars->mlx_ptr);
