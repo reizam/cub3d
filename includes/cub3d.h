@@ -13,22 +13,18 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# define W_KEY 119
+# define A_KEY 97
+# define D_KEY 100
+# define S_KEY 115
+
 # include <stdlib.h>
 # include <unistd.h>
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
 # include "mlx.h"
-
-typedef struct  s_vars
-{
-    void        *mlx_ptr;
-    void        *win_ptr;
-    double      posX;
-    double      posY;
-    double      dirX;
-    double      dirY;
-}               t_vars;
+# include <math.h>
 
 typedef struct	s_cub
 {
@@ -42,8 +38,24 @@ typedef struct	s_cub
     char        *sprite_texture;
     int         rgb_ground;
     int         rgb_roof;
+    int         map_w_max;
     char        **map;
 }	            t_cub;
+
+typedef struct  s_vars
+{
+    void        *mlx_ptr;
+    void        *win_ptr;
+    double      posX;
+    double      posY;
+    double      dirX;
+    double      dirY;
+    double      planeX;
+    double      planeY;
+    double      time;
+    double      old_time;
+    t_cub       *cub;
+}               t_vars;
 
 int     ft_is_map_char(char c);
 size_t	ft_strlen(const char *s);
