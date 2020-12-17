@@ -24,28 +24,7 @@ int     ft_key_hook(int keycode, t_vars *vars)
     return (1);
 }
 
-void    ft_draw_hor_line(t_vars *vars, int start_x, int y, int end_x)
-{
-    int dx;
-    int dy;
-    int e;
-
-    e = end_x - start_x;
-    dx = e * 2;
-    dy = 0;
-    while (start_x <= end_x)
-    {
-        mlx_pixel_put(vars->mlx_ptr, vars->win_ptr, start_x, y, vars->cub->rgb_ground);
-        start_x++;
-        if ((e = e - dy) <= 0)
-        {
-            y++;
-            e += dx;
-        }
-    }
-}
-
-void    ft_draw_ver_line(t_vars *vars, int x, int start_y, int end_y)
+void    ft_draw_ver_line(t_vars *vars, int x, int start_y, int end_y, int color)
 {
     int dx;
     int dy;
@@ -56,7 +35,7 @@ void    ft_draw_ver_line(t_vars *vars, int x, int start_y, int end_y)
     dy = e * 2;
     while (start_y <= end_y)
     {
-        mlx_pixel_put(vars->mlx_ptr, vars->win_ptr, x, start_y, vars->cub->rgb_ground);
+        mlx_pixel_put(vars->mlx_ptr, vars->win_ptr, x, start_y, color);
         start_y++;
         if ((e = e - dx) <= 0)
         {
@@ -90,7 +69,6 @@ int     ft_render_screen(t_vars *vars)
     x = 0;
     hit = 0;
     mlx_clear_window(vars->mlx_ptr, vars->win_ptr);
-    ft_draw_ver_line(vars, 5, 5, 250);
     while (x < vars->cub->width)
     {
         cameraX = 2 * x / (double)vars->cub->width - 1;
@@ -152,9 +130,7 @@ int     ft_render_screen(t_vars *vars)
         int drawEnd = line_height / 2 + vars->cub->height / 2;
         if(drawEnd >= vars->cub->height)
             drawEnd = vars->cub->height - 1;
-        ft_draw_ver_line(vars, x, drawStart, drawEnd);
-        if (hit)
-            printf("I HIT A WALL ! from %d to %d, perpWallDist:%f, line_height:%d, deltaDistX:%f, deltaDistY:%f\n", drawStart, drawEnd, perpWallDist, line_height, deltaDistX, deltaDistY);
+        ft_draw_ver_line(vars, x, drawStart, drawEnd, side == 0 ? vars->cub->rgb_ground : vars->cub->rgb_roof);
         hit = 0;
         x++;
     }
