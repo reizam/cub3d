@@ -132,8 +132,8 @@ void    ft_init_vars(t_vars *vars, t_cub *cub)
 
 int   ft_resize_hook(int width, int height, t_vars *vars)
 {
-    cub->width = cub->width > width ? width : cub->width;
-    cub->height = cub->height > height ? height : cub->height;
+    vars->cub->width = vars->cub->width > width ? width : vars->cub->width;
+    vars->cub->height = vars->cub->height > height ? height : vars->cub->height;
     return (1);
 }
 
