@@ -15,9 +15,9 @@
 void    ft_move(t_vars *vars, int dir)
 {
     if (vars->cub->map[(int)vars->posY][(int)(vars->posX + (dir * (vars->dirX * vars->move_speed)))] != '1')
-        vars->posX += vars->dirX * vars->move_speed;
+        vars->posX += dir * (vars->dirX * vars->move_speed);
     if (vars->cub->map[(int)(vars->posY + (dir * (vars->dirX * vars->move_speed)))][(int)vars->posX] != '1')
-        vars->posY += vars->dirY * vars->move_speed;
+        vars->posY += dir * (vars->dirY * vars->move_speed);
 }
 
 void    ft_rot(t_vars *vars, int dir)
