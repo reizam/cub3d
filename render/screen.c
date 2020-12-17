@@ -68,6 +68,12 @@ void    ft_draw_ver_line(t_vars *vars, int x, int start_y, int end_y)
 
 #include <stdio.h>
 
+
+double  ft_myabs(double v)
+{
+    return (v < 0 ? -v : v);
+}
+
 int     ft_render_screen(t_vars *vars)
 {
     double cameraX;
@@ -100,8 +106,8 @@ int     ft_render_screen(t_vars *vars)
         mapY = (int)vars->posY;
         printf("posX:%d, posY:%d\n", mapX, mapY);
 
-        deltaDistX = (rayDirY == 0) ? 0 : ((rayDirX == 0) ? 1 : fabs(1 / rayDirX));
-        deltaDistY = (rayDirX == 0) ? 0 : ((rayDirY == 0) ? 1 : fabs(1 / rayDirY));
+        deltaDistX = (rayDirY == 0) ? 0 : ((rayDirX == 0) ? 1 : ft_myabs(1 / rayDirX));
+        deltaDistY = (rayDirX == 0) ? 0 : ((rayDirY == 0) ? 1 : ft_myabs(1 / rayDirY));
 
         if (rayDirX < 0)
         {
@@ -154,7 +160,7 @@ int     ft_render_screen(t_vars *vars)
             drawEnd = vars->cub->height - 1;
         ft_draw_ver_line(vars, x, drawStart, drawEnd);
         if (hit)
-            printf("I HIT A WALL ! from %d to %d, perpWallDist:%d, line_height:%d\n", drawStart, drawEnd, perpWallDist, line_height);
+            printf("I HIT A WALL ! from %d to %d, perpWallDist:%f, line_height:%d\n", drawStart, drawEnd, perpWallDist, line_height);
         hit = 0;
         x++;
     }
