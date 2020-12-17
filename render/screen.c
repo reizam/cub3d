@@ -141,8 +141,8 @@ void    ft_open_screen(t_cub *cub)
     vars->planeY = 0.66;
     vars->time = 0;
     vars->old_time = 0;
-    vars->move_speed = 0.5;
-    vars->rot_speed = 0.3;
+    vars->move_speed = 0.3;
+    vars->rot_speed = 0.15;
     vars->cub = cub;
     
     // INIT
