@@ -41,7 +41,7 @@ t_cub *ft_parse_exit(t_cub *cub)
 
 void    ft_screen_exit(t_vars *vars)
 {
-    mlx_destroy_window(vars->mlx, vars->win);
+    mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
     ft_parse_exit(vars->cub);
     vars->cub = NULL;
     free(vars);
