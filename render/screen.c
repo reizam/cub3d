@@ -90,6 +90,7 @@ int     ft_render_screen(t_vars *vars)
     x = 0;
     hit = 0;
     mlx_clear_window(vars->mlx_ptr, vars->win_ptr);
+    ft_draw_ver_line(vars, 5, 5, 250);
     while (x < vars->cub->width)
     {
         cameraX = 2 * x / (double)vars->cub->width - 1;
@@ -137,7 +138,7 @@ int     ft_render_screen(t_vars *vars)
                 mapY += stepY;
                 side = 1;
             }
-            if (mapX >= 0 && mapY >= 0 && vars->cub->map[mapX][mapY] && vars->cub->map[mapX][mapY] == '1')
+            if (mapX >= 0 && mapY >= 0 && vars->cub->map[mapY][mapX] && vars->cub->map[mapY][mapX] == '1')
                 hit = 1;
         }
         if (side == 0)
