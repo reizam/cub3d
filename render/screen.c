@@ -56,7 +56,7 @@ void    ft_draw_ver_line(t_vars *vars, int x, int start_y, int end_y)
     dy = e * 2;
     while (start_y <= end_y)
     {
-        mlx_pixel_put(vars->mlx_ptr, vars->win_ptr, start_x, start_y, vars->cub->rgb_ground);
+        mlx_pixel_put(vars->mlx_ptr, vars->win_ptr, x, start_y, vars->cub->rgb_ground);
         start_y++;
         if ((e = e - dx) <= 0)
         {
@@ -148,7 +148,7 @@ int     ft_render_screen(t_vars *vars)
         int drawEnd = line_height / 2 + vars->cub->height / 2;
         if(drawEnd >= vars->cub->height)
             drawEnd = vars->cub->height - 1;
-        ft_draw_line(vars, x, drawStart, x + 1, drawEnd);
+        ft_draw_ver_line(vars, x, drawStart, drawEnd);
         hit = 0;
         x++;
     }
@@ -177,7 +177,7 @@ void    ft_open_screen(t_cub *cub)
     vars->win_ptr = mlx_new_window(vars->mlx_ptr, cub->width, cub->height, "Cub3d");
     mlx_key_hook(vars->win_ptr, ft_key_hook, vars);
     ft_draw_ver_line(vars, 5, 50, 100, 100);
-    // mlx_loop_hook(vars->mlx_ptr, ft_render_screen, vars);
+    mlx_loop_hook(vars->mlx_ptr, ft_render_screen, vars);
     mlx_loop(vars->mlx_ptr);
     
     // FREE
