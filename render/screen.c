@@ -170,7 +170,8 @@ void    ft_open_screen(t_cub *cub)
     cub->width = cub->width > width ? width : cub->width;
     cub->height = cub->height > height ? height : cub->height;
     vars->win_ptr = mlx_new_window(vars->mlx_ptr, cub->width, cub->height, "Cub3d");
-    mlx_do_key_autorepeaton(vars->mlx_ptr);
+    mlx_do_key_autorepeatoff(vars->mlx_ptr);
+    mlx_mouse_hide();
     mlx_key_hook(vars->win_ptr, ft_key_hook, vars);
     mlx_loop_hook(vars->mlx_ptr, ft_render_screen, vars);
     mlx_loop(vars->mlx_ptr);
