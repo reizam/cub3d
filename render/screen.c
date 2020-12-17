@@ -68,7 +68,6 @@ int     ft_render_screen(t_vars *vars)
 
     x = 0;
     hit = 0;
-    mlx_clear_window(vars->mlx_ptr, vars->win_ptr);
     while (x < vars->cub->width)
     {
         cameraX = 2 * x / (double)vars->cub->width - 1;
@@ -77,7 +76,6 @@ int     ft_render_screen(t_vars *vars)
 
         mapX = (int)vars->posX;
         mapY = (int)vars->posY;
-        printf("posX:%d, posY:%d\n", mapX, mapY);
 
         deltaDistX = (rayDirY == 0) ? 0 : ((rayDirX == 0) ? 1 : fabs(1 / rayDirX));
         deltaDistY = (rayDirX == 0) ? 0 : ((rayDirY == 0) ? 1 : fabs(1 / rayDirY));
