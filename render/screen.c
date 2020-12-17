@@ -154,7 +154,7 @@ int     ft_render_screen(t_vars *vars)
             drawEnd = vars->cub->height - 1;
         ft_draw_ver_line(vars, x, drawStart, drawEnd);
         if (hit)
-            printf("I HIT A WALL ! from %d to %d, perpWallDist:%d\n", drawStart, drawEnd, perpWallDist);
+            printf("I HIT A WALL ! from %d to %d, perpWallDist:%d, line_height:%d\n", drawStart, drawEnd, perpWallDist, line_height);
         hit = 0;
         x++;
     }
