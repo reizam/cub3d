@@ -38,7 +38,6 @@ typedef struct	s_cub
     char        *sprite_texture;
     int         rgb_ground;
     int         rgb_roof;
-    int         map_w_max;
     char        **map;
 }	            t_cub;
 

@@ -24,7 +24,7 @@ int     ft_key_hook(int keycode, t_vars *vars)
     return (1);
 }
 
-void    ft_draw_line(t_vars *vars, int start_x, int start_y, int end_x, int end_y)
+void    ft_draw_hor_line(t_vars *vars, int start_x, int y, int end_x)
 {
     int dx;
     int dy;
@@ -32,15 +32,36 @@ void    ft_draw_line(t_vars *vars, int start_x, int start_y, int end_x, int end_
 
     e = end_x - start_x;
     dx = e * 2;
-    dy = (end_y - start_y) * 2;
+    dy = 0;
     while (start_x <= end_x)
     {
-        mlx_pixel_put(vars->mlx_ptr, vars->win_ptr, start_x, start_y, vars->cub->rgb_ground);
+        mlx_pixel_put(vars->mlx_ptr, vars->win_ptr, start_x, y, vars->cub->rgb_ground);
         start_x++;
         if ((e = e - dy) <= 0)
         {
-            start_y++;
+            y++;
             e += dx;
+        }
+    }
+}
+
+void    ft_draw_ver_line(t_vars *vars, int x, int start_y, int end_y)
+{
+    int dx;
+    int dy;
+    int e;
+
+    e = end_y - start_y;
+    dx = 0;
+    dy = e * 2;
+    while (start_y <= end_y)
+    {
+        mlx_pixel_put(vars->mlx_ptr, vars->win_ptr, start_x, start_y, vars->cub->rgb_ground);
+        start_y++;
+        if ((e = e - dx) <= 0)
+        {
+            x++;
+            e += dy;
         }
     }
 }
@@ -155,7 +176,7 @@ void    ft_open_screen(t_cub *cub)
     vars->mlx_ptr = mlx_init();
     vars->win_ptr = mlx_new_window(vars->mlx_ptr, cub->width, cub->height, "Cub3d");
     mlx_key_hook(vars->win_ptr, ft_key_hook, vars);
-    ft_draw_line(vars, 5, 50, 100, 100);
+    ft_draw_ver_line(vars, 5, 50, 100, 100);
     // mlx_loop_hook(vars->mlx_ptr, ft_render_screen, vars);
     mlx_loop(vars->mlx_ptr);
     
