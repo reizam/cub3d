@@ -89,6 +89,7 @@ int     ft_render_screen(t_vars *vars)
 
     x = 0;
     hit = 0;
+    mlx_clear_window(vars->mlx_ptr, vars->win_ptdr);
     while (x < vars->cub->width)
     {
         cameraX = 2 * x / (double)vars->cub->width - 1;
@@ -136,7 +137,7 @@ int     ft_render_screen(t_vars *vars)
                 mapY += stepY;
                 side = 1;
             }
-            if (mapX > 0 && mapY > 0 && vars->cub->map[mapX][mapY] && vars->cub->map[mapX][mapY] == '1')
+            if (mapX >= 0 && mapY >= 0 && vars->cub->map[mapX][mapY] && vars->cub->map[mapX][mapY] == '1')
                 hit = 1;
         }
         if (side == 0)
@@ -165,8 +166,6 @@ void    ft_open_screen(t_cub *cub)
     int     width;
     int     height;
 
-    width = 0;
-    height = 0;
     if (!(vars = (t_vars*)malloc(sizeof(t_vars))))
         return ;
 
