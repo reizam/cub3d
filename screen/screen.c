@@ -151,7 +151,7 @@ void    ft_open_screen(t_cub *cub)
 
     if (!(vars = (t_vars*)malloc(sizeof(t_vars))))
         return ;
-    ft_init_vars(vars);
+    ft_init_vars(vars, cub);
     vars->mlx_ptr = mlx_init();
     mlx_get_screen_size(vars->mlx_ptr, &width, &height);
     cub->width = cub->width > width ? width : cub->width;
