@@ -154,7 +154,7 @@ int     ft_render_screen(t_vars *vars)
             drawEnd = vars->cub->height - 1;
         ft_draw_ver_line(vars, x, drawStart, drawEnd);
         if (hit)
-            printf("I HIT A WALL ! from %d to %d\n", drawStart, drawEnd);
+            printf("I HIT A WALL ! from %d to %d, perpWallDist:%d\n", drawStart, drawEnd, perpWallDist);
         hit = 0;
         x++;
     }
@@ -184,7 +184,9 @@ void    ft_open_screen(t_cub *cub)
     // INIT
     vars->mlx_ptr = mlx_init();
     mlx_get_screen_size(vars->mlx_ptr, &width, &height);
-    vars->win_ptr = mlx_new_window(vars->mlx_ptr, cub->width > width ? cub->width : width, cub->height > height ? height : cub->height, "Cub3d");
+    cub->width = cub->width > width ? width : cub->width;
+    cub->height = cub->height > height ? height : cub->height;
+    vars->win_ptr = mlx_new_window(vars->mlx_ptr, cub->width, cub->height, "Cub3d");
     mlx_key_hook(vars->win_ptr, ft_key_hook, vars);
     mlx_loop_hook(vars->mlx_ptr, ft_render_screen, vars);
     mlx_loop(vars->mlx_ptr);
