@@ -20,11 +20,15 @@
 # include <fcntl.h>
 # include "mlx.h"
 
-typedef struct  s_screen
+typedef struct  s_vars
 {
     void        *mlx_ptr;
     void        *win_ptr;
-}               t_screen;
+    double      posX;
+    double      posY;
+    double      dirX;
+    double      dirY;
+}               t_vars;
 
 typedef struct	s_cub
 {
@@ -50,7 +54,7 @@ int     ft_is_cub_file(char *file_name);
 int		get_next_line(int fd, char **line);
 int     ft_parse_map(int fd, t_cub *cub);
 int		ft_nb_len(int nb);
-t_cub   *ft_parse_exit(t_cub *cub)
+t_cub   *ft_parse_exit(t_cub *cub);
 int		ft_is_full(t_cub *cub);
 int		ft_atoi(char *str);
 int     ft_parse_rgb(char *line, int id, t_cub *cub);
