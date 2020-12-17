@@ -31,7 +31,7 @@ void    ft_draw_ver_line(t_vars *vars, int x, int start_y, int end_y, int color)
     dy = e * 2;
     while (start_y <= end_y)
     {
-        mlx_pixel_put(vars->mlx_ptr, vars->win_ptr, x, start_y, color);
+        ft_put_pixel(vars->mlx_ptr, vars->win_ptr, x, start_y, color);
         start_y++;
         if ((e = e - dx) <= 0)
         {
