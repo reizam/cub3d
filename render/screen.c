@@ -66,6 +66,8 @@ void    ft_draw_ver_line(t_vars *vars, int x, int start_y, int end_y)
     }
 }
 
+#include <stdio.h>
+
 int     ft_render_screen(t_vars *vars)
 {
     double cameraX;
@@ -149,6 +151,8 @@ int     ft_render_screen(t_vars *vars)
         if(drawEnd >= vars->cub->height)
             drawEnd = vars->cub->height - 1;
         ft_draw_ver_line(vars, x, drawStart, drawEnd);
+        if (hit)
+            printf("I HIT A WALL !\n");
         hit = 0;
         x++;
     }
@@ -176,7 +180,6 @@ void    ft_open_screen(t_cub *cub)
     vars->mlx_ptr = mlx_init();
     vars->win_ptr = mlx_new_window(vars->mlx_ptr, cub->width, cub->height, "Cub3d");
     mlx_key_hook(vars->win_ptr, ft_key_hook, vars);
-    ft_draw_ver_line(vars, 5, 50, 100, 100);
     mlx_loop_hook(vars->mlx_ptr, ft_render_screen, vars);
     mlx_loop(vars->mlx_ptr);
     
