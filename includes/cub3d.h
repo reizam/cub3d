@@ -17,7 +17,7 @@
 # define A_KEY 97
 # define D_KEY 100
 # define S_KEY 115
-# define ESC_KEY 27
+# define ESC_KEY 65307
 
 # include <stdlib.h>
 # include <unistd.h>
