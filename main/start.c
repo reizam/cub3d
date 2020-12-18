@@ -40,6 +40,7 @@ int     start_cub3d(int ac, char **av)
         }
         cub->save_first_image = 1;
     }
+    cub->error = "";
     ft_open_screen(cub);
     return (1);
 }
