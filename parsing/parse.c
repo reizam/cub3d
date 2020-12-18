@@ -73,9 +73,9 @@ t_cub   *ft_create_cub()
     cub->width = 0;
     cub->south_texture = NULL;
     cub->west_texture = NULL;
-    cub->east_textur = NULL;
+    cub->east_texture = NULL;
     cub->north_texture = NULL;
-    ccub->sprite_texture = NULL;
+    cub->sprite_texture = NULL;
     cub->rgb_ground = -1;
     cub->rgb_roof = -1;
     cub->map = NULL;
