@@ -23,7 +23,7 @@ int     start_cub3d(int ac, char **av)
 {
     t_cub *cub;
 
-    if (!ft_is_cub_file(av[1]))
+    if (!ft_check_file_ext(av[1], ".cub"))
     {
         ft_print_error("Wrong file type.");
         return (0);

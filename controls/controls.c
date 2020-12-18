@@ -13,7 +13,7 @@
 #include "cub3d.h"
 
 void    ft_move(t_vars *vars, int dir)
-{
+{d
     if (vars->cub->map[(int)vars->posY][(int)(vars->posX + (dir * (vars->dirX * vars->move_speed)))] != '1')
         vars->posX += dir * (vars->dirX * vars->move_speed);
     if (vars->cub->map[(int)(vars->posY + (dir * (vars->dirX * vars->move_speed)))][(int)vars->posX] != '1')

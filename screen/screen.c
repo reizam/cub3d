@@ -12,7 +12,23 @@
 
 #include "cub3d.h"
 
-#include <stdio.h>
+void    ft_draw_ground(t_vars *vars)
+{
+    int x;
+    int y;
+
+    y = vars->cub->height / 2;
+    while (y < vars->cub->height - 1)
+    {
+        x = 0;
+        while (x < vars->cub->width - 1)
+        {
+            ft_draw_pixel(vars, x, y, vars->cub->rgb_ground);
+            x++;
+        }
+        y++;
+    }
+}
 
 int     ft_render_screen(t_vars *vars)
 {
@@ -98,7 +114,7 @@ int     ft_render_screen(t_vars *vars)
         int drawEnd = line_height / 2 + vars->cub->height / 2;
         if(drawEnd >= vars->cub->height)
             drawEnd = vars->cub->height - 1;
-        ft_draw_ver_line(vars, x, drawStart, drawEnd, side == 0 ? vars->cub->rgb_ground : vars->cub->rgb_roof);
+        ft_draw_ver_line(vars, x, drawStart, drawEnd, side == 0 ?  (0 << 24 | 41 << 16 | 128 << 8 | 185) :  (0 << 24 | 243 << 16 | 156 << 8 | 18));
         hit = 0;
         x++;
     }

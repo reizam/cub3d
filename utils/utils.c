@@ -12,20 +12,18 @@
 
 #include "cub3d.h"
 
-int    ft_is_cub_file(char *file)
+int    ft_check_file_ext(char *file, char *extension)
 {
-    char    *end;
     int     i;
     int     len;
 
-    end = ".cub";
     len = ft_strlen(file);
-    i = ft_strlen(end);
+    i = ft_strlen(extension);
     if (len <= i)
         return (0);
     while (i > 0)
     {
-        if (end[i - 1] != file[len - (4 - i) - 1])
+        if (extension[i - 1] != file[len - (4 - i) - 1])
             return (0);
         i--;
     }

@@ -69,7 +69,7 @@ size_t	ft_strlen(const char *s);
 void	ft_putstr_fd(char *s, int fd);
 int     ft_strcmp(char *s1, char *s2);
 int     ft_strncmp(char *s1, char *s2, size_t n);
-int     ft_is_cub_file(char *file_name);
+int     ft_check_file_ext(char *file, char *extension);
 int		get_next_line(int fd, char **line);
 int     ft_parse_map(int fd, t_cub *cub);
 int		ft_nb_len(int nb);
