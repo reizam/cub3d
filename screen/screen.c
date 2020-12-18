@@ -142,6 +142,11 @@ void    ft_init_vars(t_vars *vars, t_cub *cub)
 {
     vars->posX = 7;
     vars->posY = 3;
+    vars->addr = NULL;
+    vars->mlx_ptr = NULL;
+    vars->win_ptr = NULL;
+    vars->img_ptr = NULL;
+    vars->li
     vars->dirX = -1;
     vars->dirY = 0;
     vars->planeX = 0;
