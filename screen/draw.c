@@ -31,7 +31,7 @@ void    ft_draw_ver_line(t_vars *vars, int x, int start_y, int end_y, int color)
     dy = e * 2;
     while (start_y <= end_y)
     {
-        ft_draw_pixel(vars, x, start_y, color);
+        ft_draw_pixel(vars, x, start_y, color);1
         start_y++;
         if ((e = e - dx) <= 0)
         {

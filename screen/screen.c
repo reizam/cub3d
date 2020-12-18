@@ -36,7 +36,7 @@ void    ft_draw_roof(t_vars *vars)
     {
         x = -1;
         while (++x < vars->cub->width - 1)
-            ft_draw_pixel(vars, x, y, vars->cub->rgb_ground);
+            ft_draw_pixel(vars, x, y, vars->cub->rgb_roof);
     }
 }
 
@@ -112,6 +112,8 @@ int     ft_render_screen(t_vars *vars)
                 mapY += stepY;
                 side = 1;
             }
+            if (!vars->cub->map[mapY][mapX])
+                break ;
             if (mapX >= 0 && mapY >= 0 && vars->cub->map[mapY][mapX] && vars->cub->map[mapY][mapX] == '1')
                 hit = 1;
         }
