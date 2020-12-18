@@ -112,8 +112,6 @@ int     ft_render_screen(t_vars *vars)
                 mapY += stepY;
                 side = 1;
             }
-            if (!vars->cub->map[mapY][mapX])
-                break ;
             if (mapX >= 0 && mapY >= 0 && vars->cub->map[mapY][mapX] && vars->cub->map[mapY][mapX] == '1')
                 hit = 1;
         }

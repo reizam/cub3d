@@ -67,7 +67,7 @@ char			**ft_split(char const *s, char c)
 		j = 0;
 		while (s && s[i + j] && s[i + j] != c)
 			j++;
-		if (j)
+		if (j && i + j < ft_strlen(s))
 		{
 			if (!(result[k++] = ft_allocate_entry(s, i, i + j)))
 				return (NULL);
