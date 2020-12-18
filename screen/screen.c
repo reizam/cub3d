@@ -164,7 +164,8 @@ int   ft_resize_hook(int width, int height, t_vars *vars)
 
 int   ft_leave_hook(t_vars *vars)
 {
-    ft_screen_exit(vars);
+    (void)vars;
+    // ft_screen_exit(vars);
     return (1);
 }  
 
