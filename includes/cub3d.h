@@ -98,5 +98,6 @@ void    ft_draw_pixel(t_vars *vars, int x, int y, int color);
 void    ft_draw_ver_line(t_vars *vars, int x, int start_y, int end_y, int color);
 void    ft_screen_exit(t_vars *vars);
 int     ft_parse_texture(char *line, int id, t_cub *cub);
+void    ft_print_error(char *error);
 
 #endif

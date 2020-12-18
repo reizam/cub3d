@@ -19,7 +19,7 @@ t_cub *ft_parse_exit(t_cub *cub)
     i = 0;
     if (!cub)
     {
-        ft_print_parse_error("A malloc failed");
+        ft_print_error("A malloc failed");
         return (NULL);
     }
     if (cub->east_texture)
