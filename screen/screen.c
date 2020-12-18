@@ -31,15 +31,12 @@ void    ft_draw_roof(t_vars *vars)
     int x;
     int y;
 
-    y = 0;
-    while (y < vars->cub->height / 2 - 1)
+    y = -1;
+    while (++y < vars->cub->height / 2 - 1)
     {
-        x = 0;
-        while (x < vars->cub->width - 1)
-        {
+        x = -1;
+        while (++x < vars->cub->width - 1)
             ft_draw_pixel(vars, x, y, vars->cub->rgb_ground);
-            x++;
-        }
         y++;
     }
 }
