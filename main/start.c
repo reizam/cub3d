@@ -29,10 +29,7 @@ int     start_cub3d(int ac, char **av)
         return (0);
     }
     if (!(cub = ft_parse_cub_file(av[1])))
-    {
-        ft_print_error("Wrong config.");
         return (0);
-    }
     if (ac == 3)
     {
         if (ft_strcmp(av[2], "--save") != 0)
@@ -43,6 +40,7 @@ int     start_cub3d(int ac, char **av)
         }
         cub->save_first_image = 1;
     }
+    cub->sta
     ft_open_screen(cub);
     return (1);
 }

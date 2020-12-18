@@ -39,7 +39,7 @@ int     ft_parse_rgb(char *line, int id, t_cub *cub)
 
     s = ft_split(line, ',');
     i = 0;
-    cub->error = 3;
+    cub->error = "Wrong RGB parameter...";
     while (s && s[i])
         i++;
     if (!s || i != 3)

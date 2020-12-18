@@ -17,7 +17,7 @@ int     ft_parse_res(char *line, t_cub *cub)
     int height;
     int width;
     
-    cub->error = 1;
+    cub->error = "Wrong resolution...";
     width = ft_atoi(line);
     height = ft_atoi(line + ft_nb_len(width) + 1);
     if (ft_strlen(line) != ft_nb_len(width) + ft_nb_len(height) + (size_t)1)
@@ -65,7 +65,7 @@ t_cub   *ft_create_cub()
     cub->rgb_ground = -1;
     cub->rgb_roof = -1;
     cub->map = NULL;
-    cub->error = 0;
+    cub->error = "";
     return (cub);
 }
 
@@ -77,7 +77,7 @@ t_cub   *ft_parse_cub_file(char *file)
     t_cub   *cub;
 
     if (!(cub = (t_cub*)ft_create_cub()))
-        return (NULL);
+        return (ft_parse_exit(cub));
     fd = open(file, O_RDONLY);
     if (fd < 0)
         return (ft_parse_exit(cub));

@@ -18,7 +18,10 @@ t_cub *ft_parse_exit(t_cub *cub)
 
     i = 0;
     if (!cub)
+    {
+        ft_print_parse_error("A malloc failed");
         return (NULL);
+    }
     if (cub->east_texture)
         free(cub->east_texture);
     if (cub->west_texture)
@@ -36,18 +39,15 @@ t_cub *ft_parse_exit(t_cub *cub)
         free(cub->map);
     }
     free(cub);
+    if (ft_strlen(cub->error) > 0)
+        ft_print_error(cub->error);
     return (NULL);
 }
 
 void    ft_screen_exit(t_vars *vars)
 {
-    if (vars->img_ptr)
-        mlx_destroy_image(vars->mlx_ptr, vars->img_ptr);
-    mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
-    if (vars->win_ptr)
-        free(vars->win_ptr);
     ft_parse_exit(vars->cub);
-    vars->cub = NULL;
+    vars->cub = NULL;./c
     free(vars);
     vars = NULL;
     exit(EXIT_SUCCESS);

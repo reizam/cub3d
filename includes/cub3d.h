@@ -27,6 +27,13 @@
 # include "mlx.h"
 # include <math.h>
 
+typedef struct  s_img
+{
+    void    *img;
+    int     width;
+    int     height;
+}               t_img;
+
 typedef struct	s_cub
 {
     int         save_first_image;
@@ -39,13 +46,12 @@ typedef struct	s_cub
     char        *sprite_texture;
     int         rgb_ground;
     int         rgb_roof;
-    int         error;
+    char        *error;
     char        **map;
 }	            t_cub;
 
 typedef struct  s_vars
 {
-    int         close;
     void        *mlx_ptr;
     void        *win_ptr;
     void        *img_ptr;
@@ -63,6 +69,7 @@ typedef struct  s_vars
     int         bits_per_pixel;
     int         line_length;
     int         endian;
+    t_img       textures[5];
     t_cub       *cub;
 }               t_vars;
 

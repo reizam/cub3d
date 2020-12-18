@@ -19,7 +19,7 @@ void    ft_move(t_vars *vars, int dir)
     if (vars->cub->map[(int)(vars->posY + (dir * (vars->dirX * vars->move_speed)))][(int)vars->posX] != '1')
         vars->posY += dir * (vars->dirY * vars->move_speed);
 }
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
 void    ft_rot(t_vars *vars, int dir)
 {
     double temp;

@@ -61,11 +61,6 @@ int     ft_render_screen(t_vars *vars)
 
     x = 0;
     hit = 0;
-    // if (vars->close)
-    // {
-    //     ft_screen_exit(vars);
-    //     return (0);
-    // }
     ft_draw_ground(vars);
     ft_draw_roof(vars);
     while (x < vars->cub->width)
@@ -140,7 +135,6 @@ void    ft_init_vars(t_vars *vars, t_cub *cub)
 {
     vars->posX = 7;
     vars->posY = 3;
-    vars->close = 0;
     vars->addr = NULL;
     vars->mlx_ptr = NULL;
     vars->win_ptr = NULL;

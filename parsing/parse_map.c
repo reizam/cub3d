@@ -44,7 +44,7 @@ int ft_parse_map(int fd, t_cub *cub)
 
     k = 0;
     map = NULL;
-    cub->error = 4;
+    cub->error = "Wrong map."
     while ((j = get_next_line(fd, &line)) >= 0)
     {
         k = ft_strlen(line) > 0 && !k ? 1 : k;
