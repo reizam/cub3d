@@ -79,6 +79,7 @@ t_cub   *ft_create_cub()
     cub->rgb_ground = -1;
     cub->rgb_roof = -1;
     cub->map = NULL;
+    return (cub);
 }
 
 t_cub   *ft_parse_cub_file(char *file)
@@ -88,7 +89,7 @@ t_cub   *ft_parse_cub_file(char *file)
     int     i;
     t_cub   *cub;
 
-    if (!(cub = (t_cub*)ft_create_cub())))
+    if (!(cub = (t_cub*)ft_create_cub()))
         return (NULL);
     fd = open(file, O_RDONLY);
     if (fd < 0)
