@@ -62,12 +62,9 @@ int     ft_render_screen(t_vars *vars)
 
     x = 0;
     hit = 0;
+    if (vars->close)
+        return (0);
     img_ptr = mlx_new_image(vars->mlx_ptr, vars->cub->width, vars->cub->height);
-    if (vars->addr)
-    {
-        free(vars->addr);
-        vars->addr = NULL;
-    }
     vars->addr = mlx_get_data_addr(img_ptr, &vars->bits_per_pixel, &vars->line_length, &vars->endian);
     ft_draw_ground(vars);
     ft_draw_roof(vars);
@@ -146,6 +143,7 @@ void    ft_init_vars(t_vars *vars, t_cub *cub)
 {
     vars->posX = 7;
     vars->posY = 3;
+    vars->close = 0;
     vars->addr = NULL;
     vars->mlx_ptr = NULL;
     vars->win_ptr = NULL;
@@ -173,8 +171,7 @@ int   ft_resize_hook(int width, int height, t_vars *vars)
 
 int   ft_leave_hook(t_vars *vars)
 {
-    (void)vars;
-    // ft_screen_exit(vars);
+    vars->close = 1;
     return (1);
 }  
 

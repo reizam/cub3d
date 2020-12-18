@@ -44,6 +44,7 @@ typedef struct	s_cub
 
 typedef struct  s_vars
 {
+    int         close;
     void        *mlx_ptr;
     void        *win_ptr;
     void        *img_ptr;
