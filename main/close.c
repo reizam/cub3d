@@ -38,16 +38,16 @@ t_cub *ft_parse_exit(t_cub *cub)
             free(cub->map[i++]);
         free(cub->map);
     }
-    free(cub);
     if (ft_strlen(cub->error) > 0)
         ft_print_error(cub->error);
+    free(cub);
     return (NULL);
 }
 
 void    ft_screen_exit(t_vars *vars)
 {
     ft_parse_exit(vars->cub);
-    vars->cub = NULL;./c
+    vars->cub = NULL;
     free(vars);
     vars = NULL;
     exit(EXIT_SUCCESS);
