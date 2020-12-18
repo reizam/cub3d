@@ -130,9 +130,9 @@ int     ft_render_screen(t_vars *vars)
         hit = 0;
         x++;
     }
-    mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, img_ptr, 0, 0);
-    if (vars->img_ptr)
+    if (vars->img_ptr && mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, img_ptr, 0, 0))
         mlx_destroy_image(vars->mlx_ptr, vars->img_ptr);
+    vars->img_ptr = NULL;
     vars->img_ptr = img_ptr;
     return (1);
 }
