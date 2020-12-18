@@ -16,14 +16,16 @@ int    ft_check_file_ext(char *file, char *extension)
 {
     int     i;
     int     len;
+    int     ext_len;
 
     len = ft_strlen(file);
-    i = ft_strlen(extension);
+    ext_len = ft_strlen(extension);
+    i = ext_len;
     if (len <= i)
         return (0);
     while (i > 0)
     {
-        if (extension[i - 1] != file[len - (4 - i) - 1])
+        if (extension[i - 1] != file[len - (ext_len - i) - 1])
             return (0);
         i--;
     }

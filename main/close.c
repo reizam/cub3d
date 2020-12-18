@@ -44,8 +44,6 @@ void    ft_screen_exit(t_vars *vars)
     if (vars->img_ptr)
         mlx_destroy_image(vars->mlx_ptr, vars->img_ptr);
     mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
-    if (vars->mlx_ptr)
-        free(vars->mlx_ptr);
     if (vars->win_ptr)
         free(vars->win_ptr);
     ft_parse_exit(vars->cub);

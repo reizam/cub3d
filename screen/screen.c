@@ -138,6 +138,8 @@ int     ft_render_screen(t_vars *vars)
     }
     if (vars->img_ptr && mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, img_ptr, 0, 0))
         mlx_destroy_image(vars->mlx_ptr, vars->img_ptr);
+    if (vars->img_ptr)
+        free(img->ptr);
     vars->img_ptr = NULL;
     vars->img_ptr = img_ptr;
     return (1);
@@ -196,7 +198,7 @@ void    ft_open_screen(t_cub *cub)
     mlx_mouse_hide(vars->mlx_ptr, vars->win_ptr);
     mlx_hook(vars->win_ptr, 2, 1L<<0, ft_key_hook, vars);
     mlx_hook(vars->win_ptr, 25, 1L<<18, ft_resize_hook, vars);
-    mlx_hook(vars->win_ptr, 8, 1L<<5, ft_leave_hook, vars);
+    mlx_hook(vars->win_ptr, 17, 1L << 17, ft_leave_hook, vars);
     mlx_do_key_autorepeaton(vars->mlx_ptr);
     mlx_loop_hook(vars->mlx_ptr, ft_render_screen, vars);
     mlx_loop(vars->mlx_ptr);

@@ -17,6 +17,7 @@ int     ft_parse_res(char *line, t_cub *cub)
     int height;
     int width;
     
+    cub->error = 1;
     width = ft_atoi(line);
     height = ft_atoi(line + ft_nb_len(width) + 1);
     if (ft_strlen(line) != ft_nb_len(width) + ft_nb_len(height) + (size_t)1)
@@ -26,35 +27,20 @@ int     ft_parse_res(char *line, t_cub *cub)
     return (width != 0 && height != 0);
 }
 
-int     ft_parse_path(char *line, int id, t_cub *cub)
-{
-    if (id == 0)
-        cub->north_texture = ft_strdup(line);
-    else if (id == 1)
-        cub->south_texture = ft_strdup(line);
-    else if (id == 2)
-        cub->west_texture = ft_strdup(line);
-    else if (id == 3)
-        cub->east_texture = ft_strdup(line);
-    else if (id == 4)
-        cub->sprite_texture = ft_strdup(line);
-    return (1);
-}
-
 int     ft_parse_line(char *line, t_cub *cub)
 {
     if (ft_strncmp(line, "R ", 2) == 0)
         return (ft_parse_res(line + 2, cub));
     else if (ft_strncmp(line, "NO ", 3) == 0)
-        return (ft_parse_path(line + 3, 0, cub));
+        return (ft_parse_texture(line + 3, 0, cub));
     else if (ft_strncmp(line, "SO ", 3) == 0)
-        return (ft_parse_path(line + 3, 1, cub));
+        return (ft_parse_texture(line + 3, 1, cub));
     else if (ft_strncmp(line, "WE ", 3) == 0)
-        return (ft_parse_path(line + 3, 2, cub));
+        return (ft_parse_texture(line + 3, 2, cub));
     else if (ft_strncmp(line, "EA ", 3) == 0)
-        return (ft_parse_path(line + 3, 3, cub));
+        return (ft_parse_texture(line + 3, 3, cub));
     else if (ft_strncmp(line, "S ", 2) == 0)
-        return (ft_parse_path(line + 3, 4, cub));
+        return (ft_parse_texture(line + 3, 4, cub));
     else if (ft_strncmp(line, "F ", 2) == 0) 
         return (ft_parse_rgb(line + 2, 0, cub));
     else if (ft_strncmp(line, "C ", 2) == 0)
@@ -79,6 +65,7 @@ t_cub   *ft_create_cub()
     cub->rgb_ground = -1;
     cub->rgb_roof = -1;
     cub->map = NULL;
+    cub->error = 0;
     return (cub);
 }
 
