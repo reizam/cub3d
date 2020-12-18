@@ -62,8 +62,12 @@ int     ft_render_screen(t_vars *vars)
 
     x = 0;
     hit = 0;
+    
     if (vars->close)
+    {
+        ft_screen_exit(vars);
         return (0);
+    }
     img_ptr = mlx_new_image(vars->mlx_ptr, vars->cub->width, vars->cub->height);
     vars->addr = mlx_get_data_addr(img_ptr, &vars->bits_per_pixel, &vars->line_length, &vars->endian);
     ft_draw_ground(vars);
