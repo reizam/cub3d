@@ -57,19 +57,20 @@ int     ft_render_screen(t_vars *vars)
     int stepY;
     int hit;
     int side;
-    void    *img_ptr;
     int x;
 
     x = 0;
     hit = 0;
-    
     if (vars->close)
     {
         ft_screen_exit(vars);
         return (0);
     }
-    img_ptr = mlx_new_image(vars->mlx_ptr, vars->cub->width, vars->cub->height);
-    vars->addr = mlx_get_data_addr(img_ptr, &vars->bits_per_pixel, &vars->line_length, &vars->endian);
+    if (vars->img_ptr == NULL)
+    {
+        vars->img_ptr = mlx_new_image(vars->mlx_ptr, vars->cub->width, vars->cub->height);
+        vars->addr = mlx_get_data_addr(vars->img_ptr, &vars->bits_per_pixel, &vars->line_length, &vars->endian);
+    }
     ft_draw_ground(vars);
     ft_draw_roof(vars);
     while (x < vars->cub->width)
@@ -136,12 +137,7 @@ int     ft_render_screen(t_vars *vars)
         hit = 0;
         x++;
     }
-    if (vars->img_ptr && mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, img_ptr, 0, 0))
-        mlx_destroy_image(vars->mlx_ptr, vars->img_ptr);
-    if (vars->img_ptr)
-        free(img->ptr);
-    vars->img_ptr = NULL;
-    vars->img_ptr = img_ptr;
+    mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img_ptr, 0, 0);
     return (1);
 }
 
