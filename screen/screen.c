@@ -37,7 +37,6 @@ void    ft_draw_roof(t_vars *vars)
         x = -1;
         while (++x < vars->cub->width - 1)
             ft_draw_pixel(vars, x, y, vars->cub->rgb_ground);
-        y++;
     }
 }
 
