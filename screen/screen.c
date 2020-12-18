@@ -61,11 +61,11 @@ int     ft_render_screen(t_vars *vars)
 
     x = 0;
     hit = 0;
-    if (vars->close)
-    {
-        ft_screen_exit(vars);
-        return (0);
-    }
+    // if (vars->close)
+    // {
+    //     ft_screen_exit(vars);
+    //     return (0);
+    // }
     ft_draw_ground(vars);
     ft_draw_roof(vars);
     while (x < vars->cub->width)
@@ -168,7 +168,7 @@ int   ft_resize_hook(int width, int height, t_vars *vars)
 
 int   ft_leave_hook(t_vars *vars)
 {
-    vars->close = 1;
+    ft_screen_exit(vars);
     return (1);
 }  
 
