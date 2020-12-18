@@ -62,6 +62,25 @@ int     ft_parse_line(char *line, t_cub *cub)
     return (0);
 }
 
+t_cub   *ft_create_cub()
+{
+    t_cub   *cub;
+
+    if (!(cub = (t_cub*)malloc(sizeof(t_cub))))
+        return (NULL);
+    cub->save_first_image = 0;
+    cub->height = 0;
+    cub->width = 0;
+    cub->south_texture = NULL;
+    cub->west_texture = NULL;
+    cub->east_textur = NULL;
+    cub->north_texture = NULL;
+    ccub->sprite_texture = NULL;
+    cub->rgb_ground = -1;
+    cub->rgb_roof = -1;
+    cub->map = NULL;
+}
+
 t_cub   *ft_parse_cub_file(char *file)
 {
     char    *line;
@@ -69,10 +88,8 @@ t_cub   *ft_parse_cub_file(char *file)
     int     i;
     t_cub   *cub;
 
-    if (!(cub = (t_cub*)malloc(sizeof(t_cub))))
+    if (!(cub = (t_cub*)ft_create_cub())))
         return (NULL);
-    cub->rgb_roof = -1;
-    cub->rgb_ground = -1;
     fd = open(file, O_RDONLY);
     if (fd < 0)
         return (ft_parse_exit(cub));
