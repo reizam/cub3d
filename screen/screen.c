@@ -30,6 +30,24 @@ void    ft_draw_ground(t_vars *vars)
     }
 }
 
+void    ft_draw_roof(t_vars *vars)
+{
+    int x;
+    int y;
+
+    y = 0;
+    while (y < vars->cub->height / 2 - 1)
+    {
+        x = 0;
+        while (x < vars->cub->width - 1)
+        {
+            ft_draw_pixel(vars, x, y, vars->cub->rgb_ground);
+            x++;
+        }
+        y++;
+    }
+}
+
 int     ft_render_screen(t_vars *vars)
 {
     double cameraX;
@@ -54,6 +72,8 @@ int     ft_render_screen(t_vars *vars)
     hit = 0;
     img_ptr = mlx_new_image(vars->mlx_ptr, vars->cub->width, vars->cub->height);
     vars->addr = mlx_get_data_addr(img_ptr, &vars->bits_per_pixel, &vars->line_length, &vars->endian);
+    ft_draw_ground(vars);
+    ft_draw_roof(vars);
     while (x < vars->cub->width)
     {
         cameraX = 2 * x / (double)vars->cub->width - 1;
