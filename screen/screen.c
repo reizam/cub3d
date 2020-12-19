@@ -112,7 +112,7 @@ int     ft_render_screen(t_vars *vars)
                 
             if (mapX >= 0 && mapY >= 0 && vars->cub->map[mapY][mapX] && vars->cub->map[mapY][mapX] == '1')
                 hit = 1;
-            if (vars->cub->map[mapY][mapX] == NULL || !vars->cub->map[mapY][mapX])
+            if (mapX < 0 || mapY < 0 || !vars->cub->map[mapY][mapX])
                 break ;
         }
         if (!hit)
