@@ -27,4 +27,6 @@ int     ft_load_texture(t_vars *vars, char *path, int index)
 
 void    ft_load_all_texture(t_vars *vars)
 {
+    ft_print_error("Wrong texture.");
+    ft_screen_exit(vars);
 }
