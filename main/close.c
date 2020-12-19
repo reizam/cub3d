@@ -53,5 +53,5 @@ void    ft_screen_exit(t_vars *vars)
     vars->cub = NULL;
     free(vars);
     vars = NULL;
-    exit(EXIT_SUCCESS);
+    exit(0);
 }
