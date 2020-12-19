@@ -182,7 +182,6 @@ void    ft_open_screen(t_cub *cub)
     vars->win_ptr = mlx_new_window(vars->mlx_ptr, cub->width, cub->height, "Cub3d");
     vars->img_ptr = mlx_new_image(vars->mlx_ptr, vars->cub->width, vars->cub->height);
     vars->addr = mlx_get_data_addr(vars->img_ptr, &vars->bits_per_pixel, &vars->line_length, &vars->endian);
-    mlx_mouse_hide(vars->mlx_ptr, vars->win_ptr);
     mlx_hook(vars->win_ptr, 2, 1L<<0, ft_key_hook, vars);
     mlx_hook(vars->win_ptr, 25, 1L<<18, ft_resize_hook, vars);
     mlx_hook(vars->win_ptr, 17, 1L << 17, ft_leave_hook, vars);
