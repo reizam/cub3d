@@ -112,9 +112,11 @@ int     ft_render_screen(t_vars *vars)
                 
             if (mapX >= 0 && mapY >= 0 && vars->cub->map[mapY][mapX] && vars->cub->map[mapY][mapX] == '1')
                 hit = 1;
-            if (!vars->cub->map[mapY][mapX])
+            if (vars->cub->map[mapY][mapX] == NULL || !vars->cub->map[mapY][mapX])
                 break ;
         }
+        if (!hit)
+            continue ;
         if (side == 0)
             perpWallDist = (mapX - vars->posX + (1 - stepX) / 2) / rayDirX;
         else
@@ -131,6 +133,7 @@ int     ft_render_screen(t_vars *vars)
         x++;
     }
     mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img_ptr, 0, 0);
+    return (1);
 }
 
 void    ft_init_vars(t_vars *vars, t_cub *cub)
@@ -159,11 +162,13 @@ int   ft_resize_hook(int width, int height, t_vars *vars)
 {
     vars->cub->width = vars->cub->width > width ? width : vars->cub->width;
     vars->cub->height = vars->cub->height > height ? height : vars->cub->height;
+    return (1);
 }
 
 int   ft_leave_hook(t_vars *vars)
 {
     ft_screen_exit(vars);
+    return (1);
 }  
 
 void    ft_open_screen(t_cub *cub)
