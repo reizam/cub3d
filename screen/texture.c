@@ -12,22 +12,22 @@
 
 #include "cub3d.h"
 
-int     ft_load_texture(t_vars *vars, t_img texture[5], char *path, int index)
+int     ft_load_texture(t_vars *vars, t_img *textures, char *path, int index)
 {
-    texture[index].img = mlx_xpm_file_to_image(vars->mlx_ptr, path, &texture[index].width, &texture[index].height);
-    if (img.img == NULL)
-        return (0);
+    textures[index].img = mlx_xpm_file_to_image(vars->mlx_ptr, path, &textures[index].width, &textures[index].height);
     return (1);
 }
 
 void    ft_load_all_texture(t_vars *vars)
 {
-    t_img   texture[5];
+    t_img   *textures;
 
-    ft_load_texture(vars, texture, vars->cub->east_texture, 0);
-    ft_load_texture(vars, texture, vars->cub->west_texture, 1);
-    ft_load_texture(vars, texture, vars->cub->north_texture, 2);
-    ft_load_texture(vars, texture, vars->cub->south_texture, 3);
-    vars->texture = texture;
+    if (!(textures = (t_img*)malloc(sizeof(t_img) * 5)))
+        return ;
+    ft_load_texture(vars, textures, vars->cub->east_texture, 0);
+    ft_load_texture(vars, textures, vars->cub->west_texture, 1);
+    ft_load_texture(vars, textures, vars->cub->north_texture, 2);
+    ft_load_texture(vars, textures, vars->cub->south_texture, 3);
+    vars->textures = textures;
     ft_screen_exit(vars);
 }

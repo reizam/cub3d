@@ -71,7 +71,7 @@ typedef struct  s_vars
     int         bits_per_pixel;
     int         line_length;
     int         endian;
-    t_img       texture[];
+    t_img       *textures;
     t_cub       *cub;
 }               t_vars;
 
