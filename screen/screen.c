@@ -157,12 +157,12 @@ void    ft_init_vars(t_vars *vars, t_cub *cub)
     vars->bits_per_pixel = 0;
     vars->line_length = 0;
     vars->endian = 0;
-    vars->textures = NULL:
     vars->cub = cub;
 }
 
 int   ft_resize_hook(t_vars *vars)
 {
+    (void)vars;
     return (1);
 }
 
