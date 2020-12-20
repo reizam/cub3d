@@ -46,13 +46,13 @@ t_cub *ft_parse_exit(t_cub *cub)
 
 void    ft_screen_init_exit(t_vars *vars, int exit)
 {
-    if (vars->textures[0] && vars->textures[0].img_ptr)
+    if (vars->textures[0].img_ptr)
         mlx_destroy_image(vars->mlx_ptr, vars->textures[0].img_ptr);
-    if (vars->textures[1] && vars->textures[1].img_ptr)
+    if (vars->textures[1].img_ptr)
         mlx_destroy_image(vars->mlx_ptr, vars->textures[1].img_ptr);
-    if (vars->textures[2] && vars->textures[2].img_ptr)
+    if (vars->textures[2].img_ptr)
         mlx_destroy_image(vars->mlx_ptr, vars->textures[2].img_ptr);
-    if (vars->textures[3] && vars->textures[3].img_ptr)
+    if (vars->textures[3].img_ptr)
         mlx_destroy_image(vars->mlx_ptr, vars->textures[3].img_ptr);
     if (exit)
     {
