@@ -20,13 +20,20 @@ void    ft_draw_pixel(t_vars *vars, int x, int y, int color)
     *(unsigned int*)dst = color;
 }
 
-void    ft_draw_ver_line_tex(t_vars *vars, t_img img, int x, int start_y, int end_y, int texX)
+void    ft_draw_ver_line_tex(t_vars *vars, t_img img, int x, int start_y, int end_y, int line_height, int tex_x)
 {
-    int real_start = start_y;
-    while (start_y <= end_y)
+    double  step;
+    double  tex_pos;
+    int     tex_y;
+
+    step = img.height / line_height; 
+    tex_pos = (start_y - img.height / 2 + line_height / 2) * step;
+    while (start_y < end_y)
     {
-        ft_draw_pixel(vars, x, start_y, (int)img.addr[img.width * (start_y - real_start) + texX]);
-        start_y++;
+       tex_y = (int)tex_pos & (img.height - 1);
+       tex_pos  += step;
+       ft_draw_pixel(vars, x, start_y, img.addr[img.width * tex_y + tex_x]);
+       start_y++;
     }
 }
 

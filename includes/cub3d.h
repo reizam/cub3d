@@ -105,6 +105,6 @@ void    ft_screen_exit(t_vars *vars);
 int     ft_parse_texture(char *line, int id, t_cub *cub);
 void    ft_print_error(char *error);
 void    ft_load_all_texture(t_vars *vars);
-void    ft_draw_ver_line_tex(t_vars *vars, t_img img, int x, int start_y, int end_y, int texX);
+void    ft_draw_ver_line_tex(t_vars *vars, t_img img, int x, int start_y, int end_y, int line_height, int tex_x);
 
 #endif
