@@ -18,10 +18,10 @@ void    ft_draw_ground(t_vars *vars)
     int y;
 
     y = vars->cub->height / 2 - 1;
-    while (++y < vars->cub->height)
+    while (++y < vars->cub->height - 1)
     {
         x = -1;
-        while (++x < vars->cub->width)
+        while (++x < vars->cub->width - 1)
             ft_draw_pixel(vars, x, y, vars->cub->rgb_ground);
     }
 }
@@ -32,10 +32,10 @@ void    ft_draw_roof(t_vars *vars)
     int y;
 
     y = -1;
-    while (++y < vars->cub->height / 2)
+    while (++y < vars->cub->height / 2 - 1)
     {
         x = -1;
-        while (++x < vars->cub->width)
+        while (++x < vars->cub->width - 1)
             ft_draw_pixel(vars, x, y, vars->cub->rgb_roof);
     }
 }
@@ -122,9 +122,15 @@ int     ft_render_screen(t_vars *vars)
         else
             perpWallDist = (mapY - vars->posY + (1 - stepY) / 2) / rayDirY;
         line_height = (int)(vars->cub->height / perpWallDist);
+        int drawStart = -line_height / 2 + vars->cub->height / 2;
+        if(drawStart < 0)
+            drawStart = 0;
+        int drawEnd = line_height / 2 + vars->cub->height / 2;
+        if(drawEnd >= vars->cub->height)
+            drawEnd = vars->cub->height - 1;
         t_img img = vars->textures[side];
         int texX = (int)((img.width * (mapX + mapY)) % img.width);
-        ft_draw_ver_line_tex(vars, img, x, line_height, texX);
+        ft_draw_ver_line_tex(vars, img, x, drawStart, drawEnd, texX);
         hit = 0;
         x++;
     }
