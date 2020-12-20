@@ -14,9 +14,9 @@
 
 int     ft_load_texture(t_vars *vars, char *path, int index)
 {
-    t_img   img;
+    t_img   *img;
 
-    if (!(img = (t_img)malloc(sizeof(t_img))))
+    if (!(img = (*t_img)malloc(sizeof(t_img))))
         return (0);
     img->img = mlx_xpm_file_to_image(vars->mlx_ptr, path, &img->width, &img->height);
     if (img == NULL)
