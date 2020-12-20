@@ -31,7 +31,7 @@ void    ft_draw_ver_line_tex(t_vars *vars, t_img img, int x, int line_height, in
     i = -1;
     while (++i < img.height)
     {
-        ft_draw_pixel(vars, x, y, img.addr[img->img_width * i + texX]);
+        ft_draw_pixel(vars, x, y, img.addr[img.width * y + texX]);
         y += y_increment;
     }
 }

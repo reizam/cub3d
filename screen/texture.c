@@ -19,7 +19,7 @@ int     ft_load_texture(t_vars *vars, t_img textures[5], char *path, int index)
     img_ptr = mlx_xpm_file_to_image(vars->mlx_ptr, path, &textures[index].width, &textures[index].height);
     if (img_ptr == NULL)
         return (0);
-    textures[index].addr = mlx_get_data_addr(img_ptr, &textures[index].bits_per_pixel, &textures[index].line_length, &textures[index].endian);
+    textures[index].addr = (int*)mlx_get_data_addr(img_ptr, &textures[index].bits_per_pixel, &textures[index].line_length, &textures[index].endian);
     return (1);
 }
 

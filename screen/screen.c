@@ -130,7 +130,7 @@ int     ft_render_screen(t_vars *vars)
             drawEnd = vars->cub->height - 1;
         t_img img = vars->textures[side];
         int texX = (int)((img.width * (mapX + mapY)) % img.width);
-        ft_draw_ver_line_tex(vars, img, drawStart, line_height, texX);
+        ft_draw_ver_line_tex(vars, img, x, line_height, texX);
         hit = 0;
         x++;
     }
