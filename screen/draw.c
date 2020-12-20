@@ -22,23 +22,11 @@ void    ft_draw_pixel(t_vars *vars, int x, int y, int color)
 
 void    ft_draw_ver_line_tex(t_vars *vars, t_img img, int x, int start_y, int end_y, int texX)
 {
-    int dx;
-    int dy;
-    int e;
-
     int real_start = start_y;
-    e = end_y - start_y;
-    dx = 0;
-    dy = e * 2;
     while (start_y <= end_y)
     {
-        ft_draw_pixel(vars, x, start_y, (int)img.addr[img.width * (real_start - start_y) + texX]);
+        ft_draw_pixel(vars, x, start_y, (int)img.addr[img.width * (start_y - real_start) + texX]);
         start_y++;
-        if ((e = e - dx) <= 0)
-        {
-            x++;
-            e += dy;
-        }
     }
 }
 
