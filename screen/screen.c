@@ -128,8 +128,8 @@ int     ft_render_screen(t_vars *vars)
         int drawEnd = line_height / 2 + vars->cub->height / 2;
         if(drawEnd >= vars->cub->height)
             drawEnd = vars->cub->height - 1;
-        int wallX;
-       if (side == 0) wallX = vars->posY + perpWallDist * rayDirY;
+        double wallX;
+        if (side == 0) wallX = vars->posY + perpWallDist * rayDirY;
         else           wallX = vars->posX + perpWallDist * rayDirX;
         wallX -= floor((wallX));
         t_img img = vars->textures[side];
