@@ -20,6 +20,22 @@ void    ft_draw_pixel(t_vars *vars, int x, int y, int color)
     *(unsigned int*)dst = color;
 }
 
+void    ft_draw_ver_line_tex(t_vars *vars, t_img img, int x, int line_height, int texX)
+{
+    int y_increment;
+    int y;
+    int i;
+
+    y_increment = (line_height * 2) / img.height;
+    y = vars->cub->height / 2 - line_height;
+    i = -1;
+    while (++i < img.height)
+    {
+        ft_draw_pixel(vars, x, y, img.addr[i][teX]);
+        y += y_increment;
+    }
+}
+
 void    ft_draw_ver_line(t_vars *vars, int x, int start_y, int end_y, int color)
 {
     int dx;

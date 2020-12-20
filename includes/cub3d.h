@@ -29,9 +29,12 @@
 
 typedef struct  s_img
 {
-    void    *img;
+    int     *addr;
     int     width;
     int     height;
+    int     bits_per_pixel;
+    int     line_length;
+    int     endian;
 }               t_img;
 
 typedef struct	s_cub
@@ -102,5 +105,6 @@ void    ft_screen_exit(t_vars *vars);
 int     ft_parse_texture(char *line, int id, t_cub *cub);
 void    ft_print_error(char *error);
 void    ft_load_all_texture(t_vars *vars);
+void    ft_draw_ver_line_tex(t_vars *vars, t_img img, int x, int line_height, int texX);
 
 #endif
