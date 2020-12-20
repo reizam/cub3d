@@ -40,7 +40,7 @@ int     ft_parse_line(char *line, t_cub *cub)
     else if (ft_strncmp(line, "EA ", 3) == 0)
         return (ft_parse_texture(line + 3, 3, cub));
     else if (ft_strncmp(line, "S ", 2) == 0)
-        return (ft_parse_texture(line + 3, 4, cub));
+        return (ft_parse_texture(line + 2, 4, cub));
     else if (ft_strncmp(line, "F ", 2) == 0) 
         return (ft_parse_rgb(line + 2, 0, cub));
     else if (ft_strncmp(line, "C ", 2) == 0)
