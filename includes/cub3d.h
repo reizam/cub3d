@@ -36,6 +36,7 @@ typedef struct  s_img
     int     bits_per_pixel;
     int     line_length;
     int     endian;
+    int     define;
 }               t_img;
 
 typedef struct	s_cub
