@@ -29,6 +29,7 @@
 
 typedef struct  s_img
 {
+    char    *img_ptr;
     int     *addr;
     int     width;
     int     height;

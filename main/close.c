@@ -44,9 +44,19 @@ t_cub *ft_parse_exit(t_cub *cub)
     return (NULL);
 }
 
+void    ft_free_texture(t_vars *vars, int index)
+{
+    if (vars->textures[index] && vars->textures[index].img_ptr)
+        mlx_destroy_image(vars->mlx_ptr, vars->textures[index].img_ptr);
+}
+
 void    ft_screen_exit(t_vars *vars)
 {
     mlx_destroy_image(vars->mlx_ptr, vars->img_ptr);
+    ft_free_texture(vars, 0);
+    ft_free_texture(vars, 1);
+    ft_free_texture(vars, 2);
+    ft_free_texture(vars, 3);
     mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
     free(vars->mlx_ptr);
     ft_parse_exit(vars->cub);

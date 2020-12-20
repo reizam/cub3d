@@ -56,7 +56,6 @@ int     ft_render_screen(t_vars *vars)
     int stepX;
     int stepY;
     int hit;
-    int dir;
     int side;
     int x;
 
@@ -117,8 +116,6 @@ int     ft_render_screen(t_vars *vars)
         }
         if (!hit)
             continue ;
-        int distance = sqrt((mapX - (int)vars->posX) * (mapX - (int)vars->posX) + (mapY - (int)vars->posY) * (mapY - (int)vars->posY)));
-        printf("%d\n", distance);
         if (side == 0)
             perpWallDist = (mapX - vars->posX + (1 - stepX) / 2) / rayDirX;
         else
