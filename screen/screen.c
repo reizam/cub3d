@@ -117,6 +117,10 @@ int     ft_render_screen(t_vars *vars)
         }
         if (!hit)
             continue ;
+        // -1 1 OUEST
+        // 1 -1 EST
+        // 1 1 SUD
+        // -1 -1 NORD 
         if (side == 0)
             perpWallDist = (mapX - vars->posX + (1 - stepX) / 2) / rayDirX;
         else
@@ -132,6 +136,14 @@ int     ft_render_screen(t_vars *vars)
         if (side == 0) wallX = vars->posY + perpWallDist * rayDirY;
         else           wallX = vars->posX + perpWallDist * rayDirX;
         wallX -= floor((wallX));
+        if (rayDirX == 1 && rayDirY == -1)
+            side = 0;
+        else if (rayDirX == 1 && rayDirY == -1)
+            side = 1;
+        else if (rayDirX == -1 && rayDirY == -1)
+            side = 2;
+        else if (rayDirX == 1 && rayDirY == 1)
+            side = 3;
         t_img img = vars->textures[side];
         int texX = (int)(wallX * (double)img.width);
         if(side == 0 && rayDirX > 0) texX = img.width - texX - 1;
