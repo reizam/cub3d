@@ -166,8 +166,6 @@ void    ft_init_vars(t_vars *vars, t_cub *cub)
     vars->cub = cub;
 }
 
-#include <stdio>
-
 int   ft_resize_hook(t_vars *vars)
 {
     return (1);
