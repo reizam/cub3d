@@ -27,7 +27,7 @@ void    ft_draw_ver_line_tex(t_vars *vars, t_img img, int x, int start_y, int en
     int     tex_y;
 
     step = img.height / line_height; 
-    tex_pos = (start_y - img.height / 2 + line_height / 2) * step;
+    tex_pos = (start_y - vars->cub->height / 2 + line_height / 2) * step;
     while (start_y < end_y)
     {
        tex_y = (int)tex_pos & (img.height - 1);
