@@ -56,6 +56,7 @@ int     ft_render_screen(t_vars *vars)
     int stepX;
     int stepY;
     int hit;
+    int dir;
     int side;
     int x;
 
@@ -109,7 +110,6 @@ int     ft_render_screen(t_vars *vars)
                 mapY += stepY;
                 side = 1;
             }
-                
             if (mapX >= 0 && mapY >= 0 && vars->cub->map[mapY][mapX] && vars->cub->map[mapY][mapX] == '1')
                 hit = 1;
             if (mapX < 0 || mapY < 0 || !vars->cub->map[mapY][mapX])
@@ -117,10 +117,8 @@ int     ft_render_screen(t_vars *vars)
         }
         if (!hit)
             continue ;
-        // -1 1 OUEST
-        // 1 -1 EST
-        // 1 1 SUD
-        // -1 -1 NORD 
+        int distance = sqrt((mapX - (int)vars->posX) * (mapX - (int)vars->posX) + (mapY - (int)vars->posY) * (mapY - (int)vars->posY)));
+        printf("%d\n", distance);
         if (side == 0)
             perpWallDist = (mapX - vars->posX + (1 - stepX) / 2) / rayDirX;
         else
@@ -136,14 +134,6 @@ int     ft_render_screen(t_vars *vars)
         if (side == 0) wallX = vars->posY + perpWallDist * rayDirY;
         else           wallX = vars->posX + perpWallDist * rayDirX;
         wallX -= floor((wallX));
-        if (rayDirX == 1 && rayDirY == -1)
-            side = 0;
-        else if (rayDirX == 1 && rayDirY == -1)
-            side = 1;
-        else if (rayDirX == -1 && rayDirY == -1)
-            side = 2;
-        else if (rayDirX == 1 && rayDirY == 1)
-            side = 3;
         t_img img = vars->textures[side];
         int texX = (int)(wallX * (double)img.width);
         if(side == 0 && rayDirX > 0) texX = img.width - texX - 1;
