@@ -44,19 +44,29 @@ t_cub *ft_parse_exit(t_cub *cub)
     return (NULL);
 }
 
-void    ft_free_texture(t_vars *vars, int index)
+void    ft_screen_init_exit(t_vars *vars, int exit)
 {
-    if (vars->textures[index] && vars->textures[index].img_ptr)
-        mlx_destroy_image(vars->mlx_ptr, vars->textures[index].img_ptr);
+    if (vars->textures[0] && vars->textures[0].img_ptr)
+        mlx_destroy_image(vars->mlx_ptr, vars->textures[0].img_ptr);
+    if (vars->textures[1] && vars->textures[1].img_ptr)
+        mlx_destroy_image(vars->mlx_ptr, vars->textures[1].img_ptr);
+    if (vars->textures[2] && vars->textures[2].img_ptr)
+        mlx_destroy_image(vars->mlx_ptr, vars->textures[2].img_ptr);
+    if (vars->textures[3] && vars->textures[3].img_ptr)
+        mlx_destroy_image(vars->mlx_ptr, vars->textures[3].img_ptr);
+    if (exit)
+    {
+        cub->error = "A texture is corrupt.";
+        ft_parse_exit(cub);
+        free(vars);
+        exit(1);
+    }
 }
 
 void    ft_screen_exit(t_vars *vars)
 {
     mlx_destroy_image(vars->mlx_ptr, vars->img_ptr);
-    ft_free_texture(vars, 0);
-    ft_free_texture(vars, 1);
-    ft_free_texture(vars, 2);
-    ft_free_texture(vars, 3);
+    ft_free_textures(vars);
     mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
     free(vars->mlx_ptr);
     ft_parse_exit(vars->cub);

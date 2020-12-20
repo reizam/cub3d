@@ -187,7 +187,8 @@ void    ft_open_screen(t_cub *cub)
         return ;
     ft_init_vars(vars, cub);
     vars->mlx_ptr = mlx_init();
-    ft_load_all_texture(vars);
+    if(!ft_load_all_texture(vars))
+        ft_screen_init_exit(vars, 1);
     mlx_get_screen_size(vars->mlx_ptr, &width, &height);
     cub->width = cub->width > width ? width : cub->width;
     cub->height = cub->height > height ? height : cub->height;

@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-int     ft_load_texture(t_vars *vars, t_img textures[5], char *path, int index)
+int ft_load_texture(t_vars *vars, t_img textures[5], char *path, int index)
 {
     textures[index].img_ptr = mlx_xpm_file_to_image(vars->mlx_ptr, path, &textures[index].width, &textures[index].height);
     if (textures[index].img_ptr == NULL)
@@ -21,10 +21,15 @@ int     ft_load_texture(t_vars *vars, t_img textures[5], char *path, int index)
     return (1);
 }
 
-void    ft_load_all_texture(t_vars *vars)
+int ft_load_all_texture(t_vars *vars)
 {
-    ft_load_texture(vars, vars->textures, vars->cub->east_texture, 0);
-    ft_load_texture(vars, vars->textures, vars->cub->west_texture, 1);
-    ft_load_texture(vars, vars->textures, vars->cub->north_texture, 2);
-    ft_load_texture(vars, vars->textures, vars->cub->south_texture, 3);
+    if (!ft_load_texture(vars, vars->textures, vars->cub->east_texture, 0))
+        return (0);
+    if (!ft_load_texture(vars, vars->textures, vars->cub->west_texture, 1))
+        return (0);
+    if (!ft_load_texture(vars, vars->textures, vars->cub->north_texture, 2))
+        return (0);
+    if (!ft_load_texture(vars, vars->textures, vars->cub->south_texture, 3))
+        return (0);
+    return (1);
 }
