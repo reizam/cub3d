@@ -44,7 +44,7 @@ t_cub *ft_parse_exit(t_cub *cub)
     return (NULL);
 }
 
-void    ft_screen_init_exit(t_vars *vars, int exit)
+void    ft_screen_init_exit(t_vars *vars, int do_exit)
 {
     if (vars->textures[0].img_ptr)
         mlx_destroy_image(vars->mlx_ptr, vars->textures[0].img_ptr);
@@ -54,10 +54,10 @@ void    ft_screen_init_exit(t_vars *vars, int exit)
         mlx_destroy_image(vars->mlx_ptr, vars->textures[2].img_ptr);
     if (vars->textures[3].img_ptr)
         mlx_destroy_image(vars->mlx_ptr, vars->textures[3].img_ptr);
-    if (exit)
+    if (do_exit)
     {
-        cub->error = "A texture is corrupt.";
-        ft_parse_exit(cub);
+        vars->cub->error = "A texture is corrupt.";
+        ft_parse_exit(vars->cub);
         free(vars);
         exit(1);
     }
