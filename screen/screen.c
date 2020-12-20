@@ -162,6 +162,10 @@ void    ft_init_vars(t_vars *vars, t_cub *cub)
     vars->bits_per_pixel = 0;
     vars->line_length = 0;
     vars->endian = 0;
+    vars->textures[0].img_ptr = NULL;
+    vars->textures[1].img_ptr = NULL;
+    vars->textures[2].img_ptr = NULL;
+    vars->textures[3].img_ptr = NULL;
     vars->cub = cub;
 }
 
