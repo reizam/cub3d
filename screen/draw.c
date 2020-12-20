@@ -32,7 +32,7 @@ void    ft_draw_ver_line_tex(t_vars *vars, t_img img, int x, int start_y, int en
     dy = e * 2;
     while (start_y <= end_y)
     {
-        ft_draw_pixel(vars, x, start_y, img.addr[img.width * (real_start - start_y) + texX]);
+        ft_draw_pixel(vars, x, start_y, (int)img.addr[img.width * (real_start - start_y) + texX]);
         start_y++;
         if ((e = e - dx) <= 0)
         {
