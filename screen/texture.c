@@ -29,5 +29,4 @@ void    ft_load_all_texture(t_vars *vars)
     ft_load_texture(vars, textures, vars->cub->north_texture, 2);
     ft_load_texture(vars, textures, vars->cub->south_texture, 3);
     vars->textures = textures;
-    ft_screen_exit(vars);
 }

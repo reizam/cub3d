@@ -128,6 +128,7 @@ int     ft_render_screen(t_vars *vars)
         int drawEnd = line_height / 2 + vars->cub->height / 2;
         if(drawEnd >= vars->cub->height)
             drawEnd = vars->cub->height - 1;
+        ft_draw_ver_line(vars, x, drawStart, drawEnd, side == 0 ?  (0 << 24 | 41 << 16 | 128 << 8 | 185) :  (0 << 24 | 243 << 16 | 156 << 8 | 18));
         if (stepX == 1 && stepY == -1)
             side = 0;
         else if (stepX == -1 && stepY == 1)
@@ -136,7 +137,6 @@ int     ft_render_screen(t_vars *vars)
             side = 2;
         else if (stepX == 1 && stepY == 1)
             side = 3;
-        ft_draw_ver_line(vars, x, drawStart, drawEnd, side == 0 ?  (0 << 24 | 41 << 16 | 128 << 8 | 185) :  (0 << 24 | 243 << 16 | 156 << 8 | 18));
         hit = 0;
         x++;
     }
@@ -163,6 +163,7 @@ void    ft_init_vars(t_vars *vars, t_cub *cub)
     vars->bits_per_pixel = 0;
     vars->line_length = 0;
     vars->endian = 0;
+    vars->textures = NULL:
     vars->cub = cub;
 }
 
