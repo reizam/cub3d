@@ -56,6 +56,7 @@ void    ft_screen_init_exit(t_vars *vars, int do_exit)
         mlx_destroy_image(vars->mlx_ptr, vars->textures[3].img_ptr);
     if (do_exit)
     {
+        free(vars->mlx_ptr);
         vars->cub->error = "A texture is corrupt.";
         ft_parse_exit(vars->cub);
         free(vars);
