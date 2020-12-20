@@ -21,12 +21,15 @@ int     ft_load_texture(t_vars *vars, char *path, int index)
     img->img = mlx_xpm_file_to_image(vars->mlx_ptr, path, &img->width, &img->height);
     if (img == NULL)
         return (0);
-    vars->textures[index] = img;
+    vars->textures[index] = *img;
     return (1);
 }
 
 void    ft_load_all_texture(t_vars *vars)
 {
-    ft_print_error("Wrong texture.");
+    ft_load_texture(vars, vars->cub->east_texture, 0);
+    ft_load_texture(vars, vars->cub->west_texture, 1);
+    ft_load_texture(vars, vars->cub->north_texture, 2);
+    ft_load_texture(vars, vars->cub->south_texture, 3);
     ft_screen_exit(vars);
 }

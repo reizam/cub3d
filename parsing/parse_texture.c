@@ -26,8 +26,8 @@ int     ft_check_file(char *file)
 int     ft_parse_texture(char *line, int id, t_cub *cub)
 {
     cub->error = "Wrong texture path.";
-    // if (!ft_check_file(line))
-        // return (0);
+    if (!ft_check_file(line))
+        return (0);
     if (id == 0)
         cub->north_texture = ft_strdup(line);
     else if (id == 1)

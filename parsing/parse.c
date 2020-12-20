@@ -54,6 +54,8 @@ t_cub   *ft_create_cub()
 
     if (!(cub = (t_cub*)malloc(sizeof(t_cub))))
         return (NULL);
+    cub->spawnX = 0;
+    cub->spawnY = 0;
     cub->save_first_image = 0;
     cub->height = 0;
     cub->width = 0;

@@ -128,6 +128,14 @@ int     ft_render_screen(t_vars *vars)
         int drawEnd = line_height / 2 + vars->cub->height / 2;
         if(drawEnd >= vars->cub->height)
             drawEnd = vars->cub->height - 1;
+        if (stepX == 1 && stepY == -1)
+            side = 0;
+        else if (stepX == -1 && stepY == 1)
+            side = 1;
+        else if (stepX == -1 && stepY == -1)
+            side = 2;
+        else if (stepX == 1 && stepY == 1)
+            side = 3;
         ft_draw_ver_line(vars, x, drawStart, drawEnd, side == 0 ?  (0 << 24 | 41 << 16 | 128 << 8 | 185) :  (0 << 24 | 243 << 16 | 156 << 8 | 18));
         hit = 0;
         x++;
@@ -138,8 +146,8 @@ int     ft_render_screen(t_vars *vars)
 
 void    ft_init_vars(t_vars *vars, t_cub *cub)
 {
-    vars->posX = 7;
-    vars->posY = 3;
+    vars->posX = cub->spawnX;
+    vars->posY = cub->spawnY;
     vars->addr = NULL;
     vars->mlx_ptr = NULL;
     vars->win_ptr = NULL;
@@ -158,11 +166,10 @@ void    ft_init_vars(t_vars *vars, t_cub *cub)
     vars->cub = cub;
 }
 
-#include <stdio.h>
+#include <stdio>
 
 int   ft_resize_hook(t_vars *vars)
 {
-    printf("yes yes yes\n");
     return (1);
 }
 
@@ -182,6 +189,7 @@ void    ft_open_screen(t_cub *cub)
         return ;
     ft_init_vars(vars, cub);
     vars->mlx_ptr = mlx_init();
+    ft_load_all_texture(vars);
     mlx_get_screen_size(vars->mlx_ptr, &width, &height);
     cub->width = cub->width > width ? width : cub->width;
     cub->height = cub->height > height ? height : cub->height;

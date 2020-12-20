@@ -17,6 +17,11 @@ int ft_is_map_char(char c)
     return (c == '1' || c == '2' || c == '0' || c == 'N' || c =='S' || c == 'E' || c == 'W' || c == ' ');
 }
 
+int ft_is_spawn_char(char c)
+{
+    return (c == 'N' || c == 'W' || c == 'E' || c == 'S');
+}
+
 int ft_check_map_line(char *line)
 {
     int i;
@@ -30,7 +35,22 @@ int ft_check_map_line(char *line)
 
 int ft_check_map(t_cub *cub)
 {
-    (void)cub;
+    int i;
+    int j;
+
+    i = -1;
+    while (cub->map[++i])
+    {
+        j = -1;
+        while (cub->map[i][++j])
+            if (ft_is_spawn_char(cub->map[i][j]))
+            {
+                if (cub->spawnX > 0 || cub->spawnX > 0)
+                    return (0);
+                cub->spawnX = j;
+                cub->spawnY = i;
+            }
+    }
     return (1);
 }
 
