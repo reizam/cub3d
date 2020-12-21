@@ -113,14 +113,14 @@ int     ft_render_screen(t_vars *vars)
         double wallX;
         wallX = j[4] == 0 ? (vars->posY + i[7] * i[2]) : (wallX = vars->posX + i[7] * i[1]);
         wallX -= floor((wallX));
-        t_img img = vars->textures[j[4]];
-        int texX = (int)(wallX * (double)img.width);
-        texX = img.width - texX - 1;
         if (j[4] == 0)
             j[4] = j[2] > 0 ? 0 : 1;
         else
             j[4] = j[3] > 0 ? 2 : 3;
-        ft_draw_ver_line_tex(vars, img, x, drawStart, drawEnd, line_height, texX);
+        t_img img = vars->textures[j[4]];
+        int texX = (int)(wallX * (double)img.width);
+        texX = img.width - texX - 1;
+        ft_draw_texture_line(vars, img, x, drawStart, drawEnd, line_height, texX);
         hit = 0;
         x++;
     }
