@@ -45,12 +45,12 @@ void    ft_calc_side_dist(t_vars *vars, double (*i)[8], int (*j)[5])
     else
     {
         (*j)[2] = 1;
-        (*i)[5] = (*j[0] + 1.0 - vars->posX) * (*i)[3];
+        (*i)[5] = ((*j)[0] + 1.0 - vars->posX) * (*i)[3];
     }
     if ((*i)[2] < 0)
     {
         (*j)[3] = -1;
-        (*i)[6] = (vars->posY - *j[1]) * (*i)[4];
+        (*i)[6] = (vars->posY - (*j)[1]) * (*i)[4];
     }
     else
     {
