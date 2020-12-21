@@ -44,15 +44,14 @@ int     ft_render_screen(t_vars *vars)
 {
     double  i[8];
     int     j[5];
-    int line_height;
     int hit;
     int x;
 
-    x = 0;
+    x = -1;
     hit = 0;
     ft_draw_ground(vars);
     ft_draw_roof(vars);
-    while (x < vars->cub->width)
+    while (++x < vars->cub->width)
     {
         i[0] = 2 * x / (double)vars->cub->width - 1;
         i[1] = vars->dirX + vars->planeX * i[0];
@@ -103,26 +102,8 @@ int     ft_render_screen(t_vars *vars)
         if (!hit)
             continue ;
         i[7] = j[4] == 0 ? ((j[0] - vars->posX + (1 - j[2]) / 2) / i[1]) : ((j[1] - vars->posY + (1 - j[3]) / 2) / i[2]);
-        line_height = (int)(vars->cub->height / i[7]);
-        int drawStart = -line_height / 2 + vars->cub->height / 2;
-        if(drawStart < 0)
-            drawStart = 0;
-        int drawEnd = line_height / 2 + vars->cub->height / 2;
-        if(drawEnd >= vars->cub->height)
-            drawEnd = vars->cub->height - 1;
-        double wallX;
-        wallX = j[4] == 0 ? (vars->posY + i[7] * i[2]) : (wallX = vars->posX + i[7] * i[1]);
-        wallX -= floor((wallX));
-        if (j[4] == 0)
-            j[4] = j[2] > 0 ? 0 : 1;
-        else
-            j[4] = j[3] > 0 ? 2 : 3;
-        t_img img = vars->textures[j[4]];
-        int texX = (int)(wallX * (double)img.width);
-        texX = img.width - texX - 1;
-        ft_draw_texture_line(vars, img, x, drawStart, drawEnd, line_height, texX);
+        ft_draw_wall_line(vars, x, j, i);
         hit = 0;
-        x++;
     }
     mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img_ptr, 0, 0);
     return (1);

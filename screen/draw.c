@@ -20,19 +20,19 @@ void    ft_draw_pixel(t_vars *vars, int x, int y, int color)
     *(unsigned int*)dst = color;
 }
 
-void    ft_draw_texture_line(t_vars *vars, t_img img, int x, int start_y, int end_y, int line_height, int tex_x)
+void    ft_draw_texture_line(t_vars *vars, t_img img, int x, int j[5])
 {
     double  step;
     double  tex_pos;
     int     tex_y;
 
-    step = 1.0 * img.height / line_height;
-    tex_pos = (start_y - vars->cub->height / 2 + line_height / 2) * step;
-    while (start_y < end_y)
+    step = 1.0 * img.height / k[2];
+    tex_pos = (k[0] - vars->cub->height / 2 + k[2] / 2) * step;
+    while (k[0] < k[1])
     {
        tex_y = (int)tex_pos & (img.height - 1);
        tex_pos  += step;
-       ft_draw_pixel(vars, x, start_y, img.addr[img.width * tex_y + tex_x]);
-       start_y++;
+       ft_draw_pixel(vars, x, k[0], img.addr[img.width * tex_y + k[3]]);
+       k[0]++;
     }
 }
