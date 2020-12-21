@@ -104,6 +104,5 @@ void    ft_draw_wall(t_vars *vars)
             continue ;
         i[7] = j[4] == 0 ? ((j[0] - vars->posX + (1 - j[2]) / 2) / i[1]) : ((j[1] - vars->posY + (1 - j[3]) / 2) / i[2]);
         ft_draw_wall_line(vars, x, j, i);
-        hit = 0;
     }
 }
