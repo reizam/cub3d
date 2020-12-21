@@ -23,7 +23,7 @@ void    ft_draw_wall_line(t_vars *vars, int x, int j[5], double i[8])
     k[0] = k[0] < 0 ? 0 : k[0];
     k[1] = k[2] / 2 + vars->cub->height / 2;
     k[1] = k[1] >= vars->cub->height ? vars->cub->height - 1 : k[1];
-    wall_x = j[4] == 0 ? (vars->posY + i[7] * i[2]) : (wall_x = vars->posX + i[7] * i[2]);
+    wall_x = j[4] == 0 ? (vars->posY + i[7] * i[2]) : (vars->posX + i[7] * i[1]);
     wall_x -= floor((wall_x));
     if (j[4] == 0)
         j[4] = j[2] > 0 ? 0 : 1;
