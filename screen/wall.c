@@ -61,10 +61,7 @@ void    ft_calc_side_dist(t_vars *vars, double (*i)[8], int (*j)[5])
 
 int     ft_raycast(t_vars *vars, double (*i)[8], int (*j)[5])
 {
-    int hit;
-
-    hit = 0;
-    while (!hit)
+    while (1)
     {
         if ((*i)[5] < (*i)[6])
         {
@@ -79,11 +76,11 @@ int     ft_raycast(t_vars *vars, double (*i)[8], int (*j)[5])
             (*j)[4] = 1;
         }
         if ((*j)[0] >= 0 && (*j)[1] >= 0 && vars->cub->map[(*j)[1]][(*j)[0]] && vars->cub->map[(*j)[1]][(*j)[0]] == '1')
-            hit = 1;
+            return (1);
         if ((*j)[0] < 0 || (*j)[1] < 0 || !vars->cub->map[(*j)[1]][(*j)[0]])
-            break ;
+            return (0);
     }
-    return (hit);
+    return (0);
 }
 
 void    ft_draw_wall(t_vars *vars)
@@ -94,7 +91,6 @@ void    ft_draw_wall(t_vars *vars)
     int     x;
 
     x = -1;
-    hit = 0;
     while (++x < vars->cub->width)
     {
         i[0] = 2 * x / (double)vars->cub->width - 1;
