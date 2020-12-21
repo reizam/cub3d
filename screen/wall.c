@@ -76,10 +76,10 @@ int     ft_raycast(t_vars *vars, double (*i)[8], int (*j)[5])
             (*j)[1] += (*j)[3];
             (*j)[4] = 1;
         }
-        if ((*j)[0] >= 0 && (*j)[1] >= 0 && vars->cub->map[(*j)[1]][(*j)[0]] && vars->cub->map[(*j)[1]][(*j)[0]] == '1')
-            return (1);
         if ((*j)[0] < 0 || (*j)[1] < 0 || !vars->cub->map[(*j)[1]][(*j)[0]])
             break ;
+        if ((*j)[0] >= 0 && (*j)[1] >= 0 && vars->cub->map[(*j)[1]][(*j)[0]] == '1')
+            return (1);
     }
     return (0);
 }
