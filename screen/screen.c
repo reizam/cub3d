@@ -40,10 +40,13 @@ void    ft_draw_roof(t_vars *vars)
     }
 }
 
+#include <stdio.h>
+
 int     ft_render_screen(t_vars *vars)
 {
     ft_draw_ground(vars);
     ft_draw_roof(vars);
+    printf("%d %d\n", vars->posX, vars->posY);
     ft_draw_wall(vars);
     mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img_ptr, 0, 0);
     return (1);
