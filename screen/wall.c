@@ -35,16 +35,81 @@ void    ft_draw_wall_line(t_vars *vars, int x, int j[5], double i[8])
     ft_draw_texture_line(vars, img, x, k);
 }
 
-void    ft_draw_wall(t_vars *vars)
+void    ft_calc_side_dist(double *i[8], int *j[5])
 {
-    int i;
-    int x;
+    if (*i[1] < 0)
+    {
+        *j[2] = -1;
+        *i[5] = (vars->posX - *j[0]) * *i[3];
+    }
+    else
+    {
+        *j[2] = 1;
+        *i[5] = (*j[0] + 1.0 - vars->posX) * *i[3];
+    }
+    if (*i[2] < 0)
+    {
+        *j[3] = -1;
+        *i[6] = (vars->posY - *j[1]) * *i[4];
+    }
+    else
+    {
+        *j[3] = 1;
+        *i[6] = (*j[1] + 1.0 - vars->posY) * *i[4];
+    }
+}
+
+int     ft_raycast(double *i[8], int *j[5])
+{
     int hit;
 
+    hit = 0;
+    while (!hit)
+    {
+        if (*i[5] < *i[6])
+        {
+            *i[5] += *i[3];
+            *j[0] += *j[2];
+            *j[4] = 0;
+        }
+        else
+        {
+            *i[6] += *i[4];
+            *j[1] += *j[3];
+            *j[4] = 1;
+        }
+        if (*j[0] >= 0 && *j[1] >= 0 && vars->cub->map[*j[1]][*j[0]] && vars->cub->map[*j[1]][*j[0]] == '1')
+            hit = 1;
+        if (*j[0] < 0 || *j[1] < 0 || !vars->cub->map[*j[1]][*j[0]])
+            break ;
+    }
+    return (hit);
+}
+
+void    ft_draw_wall(t_vars *vars)
+{
+    double  i[8];
+    int     j[5];
+    int     hit;
+    int     x;
+
     x = -1;
+    hit = 0;
     while (++x < vars->cub->width)
     {
+        i[0] = 2 * x / (double)vars->cub->width - 1;
+        i[1] = vars->dirX + vars->planeX * i[0];
+        i[2] = vars->dirY + vars->planeY * i[0];
+        j[0] = (int)vars->posX;
+        j[1] = (int)vars->posY;
+        i[3] = (i[2] == 0) ? 0 : ((i[1] == 0) ? 1 : fabs(1 / i[1]));
+        i[4] = (i[1] == 0) ? 0 : ((i[2] == 0) ? 1 : fabs(1 / i[2]));
+        ft_calc_side_dist(&i, &j);
+        hit = ft_raycast(&i, &k);
+        if (!hit)
+            continue ;
+        i[7] = j[4] == 0 ? ((j[0] - vars->posX + (1 - j[2]) / 2) / i[1]) : ((j[1] - vars->posY + (1 - j[3]) / 2) / i[2]);
+        ft_draw_wall_line(vars, x, j, i);
         hit = 0;
-
     }
 }

@@ -42,69 +42,9 @@ void    ft_draw_roof(t_vars *vars)
 
 int     ft_render_screen(t_vars *vars)
 {
-    double  i[8];
-    int     j[5];
-    int hit;
-    int x;
-
-    x = -1;
-    hit = 0;
     ft_draw_ground(vars);
     ft_draw_roof(vars);
-    while (++x < vars->cub->width)
-    {
-        i[0] = 2 * x / (double)vars->cub->width - 1;
-        i[1] = vars->dirX + vars->planeX * i[0];
-        i[2] = vars->dirY + vars->planeY * i[0];
-        j[0] = (int)vars->posX;
-        j[1] = (int)vars->posY;
-        i[3] = (i[2] == 0) ? 0 : ((i[1] == 0) ? 1 : fabs(1 / i[1]));
-        i[4] = (i[1] == 0) ? 0 : ((i[2] == 0) ? 1 : fabs(1 / i[2]));
-        if (i[1] < 0)
-        {
-            j[2] = -1;
-            i[5] = (vars->posX - j[0]) * i[3];
-        }
-        else
-        {
-            j[2] = 1;
-            i[5] = (j[0] + 1.0 - vars->posX) * i[3];
-        }
-        if (i[2] < 0)
-        {
-            j[3] = -1;
-            i[6] = (vars->posY - j[1]) * i[4];
-        }
-        else
-        {
-            j[3] = 1;
-            i[6] = (j[1] + 1.0 - vars->posY) * i[4];
-        }
-        while (!hit)
-        {
-            if (i[5] < i[6])
-            {
-                i[5] += i[3];
-                j[0] += j[2];
-                j[4] = 0;
-            }
-            else
-            {
-                i[6] += i[4];
-                j[1] += j[3];
-                j[4] = 1;
-            }
-            if (j[0] >= 0 && j[1] >= 0 && vars->cub->map[j[1]][j[0]] && vars->cub->map[j[1]][j[0]] == '1')
-                hit = 1;
-            if (j[0] < 0 || j[1] < 0 || !vars->cub->map[j[1]][j[0]])
-                break ;
-        }
-        if (!hit)
-            continue ;
-        i[7] = j[4] == 0 ? ((j[0] - vars->posX + (1 - j[2]) / 2) / i[1]) : ((j[1] - vars->posY + (1 - j[3]) / 2) / i[2]);
-        ft_draw_wall_line(vars, x, j, i);
-        hit = 0;
-    }
+    ft_draw_wall(vars);
     mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img_ptr, 0, 0);
     return (1);
 }

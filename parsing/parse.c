@@ -94,11 +94,8 @@ t_cub   *ft_parse_cub_file(char *file)
             return (ft_parse_exit(cub));
         }
     }
-    if (!ft_is_full(cub) || !ft_parse_map(fd, cub))
-    {
-        close(fd);
-        return (ft_parse_exit(cub));
-    }
     close(fd);
+    if (!ft_is_full(cub) || !ft_parse_map(fd, cub))
+        return (ft_parse_exit(cub));
     return (cub);
 }
