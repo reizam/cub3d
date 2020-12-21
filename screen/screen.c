@@ -42,21 +42,10 @@ void    ft_draw_roof(t_vars *vars)
 
 int     ft_render_screen(t_vars *vars)
 {
-    double cameraX;
-    double rayDirX;
-    double rayDirY;
-    int mapX;
-    int mapY;
-    double sideDistX;
-    double sideDistY;
-    double deltaDistX;
-    double deltaDistY;
-    double perpWallDist;
+    double  i[8];
+    int     j[5];
     int line_height;
-    int stepX;
-    int stepY;
     int hit;
-    int side;
     int x;
 
     x = 0;
@@ -65,62 +54,56 @@ int     ft_render_screen(t_vars *vars)
     ft_draw_roof(vars);
     while (x < vars->cub->width)
     {
-        cameraX = 2 * x / (double)vars->cub->width - 1;
-        rayDirX = vars->dirX + vars->planeX * cameraX;
-        rayDirY = vars->dirY + vars->planeY * cameraX;
-
-        mapX = (int)vars->posX;
-        mapY = (int)vars->posY;
-
-        deltaDistX = (rayDirY == 0) ? 0 : ((rayDirX == 0) ? 1 : fabs(1 / rayDirX));
-        deltaDistY = (rayDirX == 0) ? 0 : ((rayDirY == 0) ? 1 : fabs(1 / rayDirY));
-
-        if (rayDirX < 0)
+        i[0] = 2 * x / (double)vars->cub->width - 1;
+        i[1] = vars->dirX + vars->planeX * i[0];
+        i[2] = vars->dirY + vars->planeY * i[0];
+        j[0] = (int)vars->posX;
+        j[1] = (int)vars->posY;
+        i[3] = (i[2] == 0) ? 0 : ((i[1] == 0) ? 1 : fabs(1 / i[1]));
+        i[4] = (i[1] == 0) ? 0 : ((i[2] == 0) ? 1 : fabs(1 / i[2]));
+        if (i[1] < 0)
         {
-            stepX = -1;
-            sideDistX = (vars->posX - mapX) * deltaDistX;
+            j[2] = -1;
+            i[5] = (vars->posX - j[0]) * i[3];
         }
         else
         {
-            stepX = 1;
-            sideDistX = (mapX + 1.0 - vars->posX) * deltaDistX;
+            j[2] = 1;
+            i[5] = (j[0] + 1.0 - vars->posX) * i[3];
         }
-        if (rayDirY < 0)
+        if (i[2] < 0)
         {
-            stepY = -1;
-            sideDistY = (vars->posY - mapY) * deltaDistY;
+            j[3] = -1;
+            i[6] = (vars->posY - j[1]) * i[4];
         }
         else
         {
-            stepY = 1;
-            sideDistY = (mapY + 1.0 - vars->posY) * deltaDistY;
+            j[3] = 1;
+            i[6] = (j[1] + 1.0 - vars->posY) * i[4];
         }
         while (!hit)
         {
-            if (sideDistX < sideDistY)
+            if (i[5] < i[6])
             {
-                sideDistX += deltaDistX;
-                mapX += stepX;
-                side = 0;
+                i[5] += i[3];
+                j[0] += j[2];
+                j[4] = 0;
             }
             else
             {
-                sideDistY += deltaDistY;
-                mapY += stepY;
-                side = 1;
+                i[6] += i[4];
+                j[1] += j[3];
+                j[4] = 1;
             }
-            if (mapX >= 0 && mapY >= 0 && vars->cub->map[mapY][mapX] && vars->cub->map[mapY][mapX] == '1')
+            if (j[0] >= 0 && j[1] >= 0 && vars->cub->map[j[1]][j[0]] && vars->cub->map[j[1]][j[0]] == '1')
                 hit = 1;
-            if (mapX < 0 || mapY < 0 || !vars->cub->map[mapY][mapX])
+            if (j[0] < 0 || j[1] < 0 || !vars->cub->map[j[1]][j[0]])
                 break ;
         }
         if (!hit)
             continue ;
-        if (side == 0)
-            perpWallDist = (mapX - vars->posX + (1 - stepX) / 2) / rayDirX;
-        else
-            perpWallDist = (mapY - vars->posY + (1 - stepY) / 2) / rayDirY;
-        line_height = (int)(vars->cub->height / perpWallDist);
+        i[7] = j[4] == 0 ? ((j[0] - vars->posX + (1 - j[2]) / 2) / i[1]) : ((j[1] - vars->posY + (1 - j[3]) / 2) / i[2]);
+        line_height = (int)(vars->cub->height / i[7]);
         int drawStart = -line_height / 2 + vars->cub->height / 2;
         if(drawStart < 0)
             drawStart = 0;
@@ -128,13 +111,15 @@ int     ft_render_screen(t_vars *vars)
         if(drawEnd >= vars->cub->height)
             drawEnd = vars->cub->height - 1;
         double wallX;
-        if (side == 0) wallX = vars->posY + perpWallDist * rayDirY;
-        else           wallX = vars->posX + perpWallDist * rayDirX;
+        wallX = j[4] == 0 ? (vars->posY + i[7] * i[2]) : (wallX = vars->posX + i[7] * i[1]);
         wallX -= floor((wallX));
-        t_img img = vars->textures[side];
+        t_img img = vars->textures[j[4]];
         int texX = (int)(wallX * (double)img.width);
-        if(side == 0 && rayDirX > 0) texX = img.width - texX - 1;
-        if(side == 1 && rayDirY < 0) texX = img.width - texX - 1;
+        texX = img.width - texX - 1;
+        if (j[4] == 0)
+            j[4] = j[2] > 0 ? 0 : 1;
+        else
+            j[4] = j[3] > 0 ? 2 : 3;
         ft_draw_ver_line_tex(vars, img, x, drawStart, drawEnd, line_height, texX);
         hit = 0;
         x++;
@@ -155,8 +140,6 @@ void    ft_init_vars(t_vars *vars, t_cub *cub)
     vars->dirY = 0;
     vars->planeX = 0;
     vars->planeY = 0.66;
-    vars->time = 0;
-    vars->old_time = 0;
     vars->move_speed = 0.3;
     vars->rot_speed = 0.15;
     vars->bits_per_pixel = 0;
@@ -196,12 +179,12 @@ void    ft_open_screen(t_cub *cub)
     mlx_get_screen_size(vars->mlx_ptr, &width, &height);
     cub->width = cub->width > width ? width : cub->width;
     cub->height = cub->height > height ? height : cub->height;
-    vars->win_ptr = mlx_new_window(vars->mlx_ptr, cub->width, cub->height, "Cub3d");
     vars->img_ptr = mlx_new_image(vars->mlx_ptr, vars->cub->width, vars->cub->height);
+    vars->win_ptr = mlx_new_window(vars->mlx_ptr, cub->width, cub->height, "Cub3d");
     vars->addr = mlx_get_data_addr(vars->img_ptr, &vars->bits_per_pixel, &vars->line_length, &vars->endian);
     mlx_hook(vars->win_ptr, 2, 1L<<0, ft_key_hook, vars);
-    mlx_hook(vars->win_ptr, 25, 1L<<18, ft_resize_hook, vars);
-    mlx_hook(vars->win_ptr, 17, 1L<<17, ft_leave_hook, vars);
+    mlx_hook(vars->win_ptr, 25, 1L<<0, ft_resize_hook, vars);
+    mlx_hook(vars->win_ptr, 17, 1L<<0, ft_leave_hook, vars);
     mlx_do_key_autorepeaton(vars->mlx_ptr);
     mlx_loop_hook(vars->mlx_ptr, ft_render_screen, vars);
     mlx_loop(vars->mlx_ptr);

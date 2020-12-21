@@ -20,13 +20,13 @@ void    ft_draw_pixel(t_vars *vars, int x, int y, int color)
     *(unsigned int*)dst = color;
 }
 
-void    ft_draw_ver_line_tex(t_vars *vars, t_img img, int x, int start_y, int end_y, int line_height, int tex_x)
+void    ft_draw_texture_line(t_vars *vars, t_img img, int x, int start_y, int end_y, int line_height, int tex_x)
 {
     double  step;
     double  tex_pos;
     int     tex_y;
 
-    step = 1.0 * img.height / line_height; 
+    step = 1.0 * img.height / line_height;
     tex_pos = (start_y - vars->cub->height / 2 + line_height / 2) * step;
     while (start_y < end_y)
     {
@@ -34,26 +34,5 @@ void    ft_draw_ver_line_tex(t_vars *vars, t_img img, int x, int start_y, int en
        tex_pos  += step;
        ft_draw_pixel(vars, x, start_y, img.addr[img.width * tex_y + tex_x]);
        start_y++;
-    }
-}
-
-void    ft_draw_ver_line(t_vars *vars, int x, int start_y, int end_y, int color)
-{
-    int dx;
-    int dy;
-    int e;
-
-    e = end_y - start_y;
-    dx = 0;
-    dy = e * 2;
-    while (start_y <= end_y)
-    {
-        ft_draw_pixel(vars, x, start_y, color);
-        start_y++;
-        if ((e = e - dx) <= 0)
-        {
-            x++;
-            e += dy;
-        }
     }
 }

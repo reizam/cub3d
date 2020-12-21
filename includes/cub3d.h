@@ -67,8 +67,6 @@ typedef struct  s_vars
     double      dirY;
     double      planeX;
     double      planeY;
-    double      time;
-    double      old_time;
     double      move_speed;
     double      rot_speed;
     char        *addr;
