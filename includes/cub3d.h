@@ -104,7 +104,7 @@ void    ft_screen_exit(t_vars *vars);
 int     ft_parse_texture(char *line, int id, t_cub *cub);
 void    ft_print_error(char *error);
 int     ft_load_all_texture(t_vars *vars);
-void    ft_draw_texture_line(t_vars *vars, t_img img, int x, int j[5]);
+void    ft_draw_texture_line(t_vars *vars, t_img img, int x, int k[4]);
 void    ft_draw_wall_line(t_vars *vars, int x, int j[5], double i[8]);
 void    ft_screen_init_exit(t_vars *vars, int do_exit);
 

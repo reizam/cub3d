@@ -20,7 +20,7 @@ void    ft_draw_pixel(t_vars *vars, int x, int y, int color)
     *(unsigned int*)dst = color;
 }
 
-void    ft_draw_texture_line(t_vars *vars, t_img img, int x, int j[5])
+void    ft_draw_texture_line(t_vars *vars, t_img img, int x, int k[4])
 {
     double  step;
     double  tex_pos;

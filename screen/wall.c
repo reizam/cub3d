@@ -18,7 +18,6 @@ void    ft_draw_wall_line(t_vars *vars, int x, int j[5], double i[8])
     double  wall_x;
     t_img   img;
     
-    img = vars->textures[j[4]];
     k[2] = (int)(vars->cub->height / i[7]);
     k[0] = -k[2] / 2 + vars->cub->height / 2;
     k[0] = k[0] < 0 ? 0 : k[0];
@@ -30,6 +29,7 @@ void    ft_draw_wall_line(t_vars *vars, int x, int j[5], double i[8])
         j[4] = j[2] > 0 ? 0 : 1;
     else
         j[4] = j[3] > 0 ? 2 : 3;
+    img = vars->textures[j[4]];
     k[3] = (int)(wall_x * (double)img.width);
     k[3] = img.width - k[3] - 1;
     ft_draw_texture_line(vars, img, x, k);
