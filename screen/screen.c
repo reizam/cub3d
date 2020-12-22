@@ -52,15 +52,15 @@ int     ft_render_screen(t_vars *vars)
 void    ft_init_vars(t_vars *vars, t_cub *cub)
 {
     vars->pos_x = cub->spawn_x;
-    vars->pos_x = cub->spawn_x;
+    vars->pos_y = cub->spawn_y;
     vars->addr = NULL;
     vars->mlx_ptr = NULL;
     vars->win_ptr = NULL;
     vars->img_ptr = NULL;
     vars->dir_x = cub->dir_x;
-    vars->dir_x = cub->dir_x;
+    vars->dir_y = cub->dir_y;
     vars->plane_x = cub->plane_x;
-    vars->plane_x = cub->plane_x;
+    vars->plane_y = cub->plane_y;
     vars->move_speed = 0.3;
     vars->rot_speed = 0.15;
     vars->bits_per_pixel = 0;
