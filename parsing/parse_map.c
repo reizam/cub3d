@@ -36,8 +36,8 @@ int     ft_check_circle_map(t_cub *cub, int x, int y, int i, int j)
     {
         if (cub->map[i][j] == ' ')
             return (0);
-        i += x;
-        j += y;
+        j += x;
+        i += y;
     }
     return (cub->map[i][j] && cub->map[i][j] == '1');
 }
