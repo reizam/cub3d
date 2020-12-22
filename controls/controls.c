@@ -34,29 +34,26 @@ void    ft_rot(t_vars *vars, int dir)
 
 void    ft_do_controls(t_vars *vars)
 {
-    int keys[4]
-
-    keys = vars->keys;
-    if (keys[0])
+    if (vars->keys[0])
         ft_move(vars, 1);
-    else if (keys[1])
+    else if (vars->keys[1])
         ft_move(vars, -1);
-    else if (keys[2])
+    else if (vars->keys[2])
         ft_rot(vars, 1);
-    else if (keys[3])
+    else if (vars->keys[3])
         ft_rot(vars, -1);
 }
 
 int     ft_key_press(int keycode, t_vars *vars)
 {
     if (keycode == W_KEY)
-        keys[0] = 1;
+        vars->keys[0] = 1;
     else if (keycode == S_KEY)
-        keys[1] = 1;
+        vars->keys[1] = 1;
     else if (keycode == A_KEY)
-        keys[2] = 1;
+        vars->keys[2] = 1;
     else if (keycode == D_KEY)
-        keys[3] = 1;
+        vars->keys[3] = 1;
     else if (keycode == ESC_KEY)
         ft_screen_exit(vars);
     return (1);
@@ -65,12 +62,12 @@ int     ft_key_press(int keycode, t_vars *vars)
 int     ft_key_release(int keycode, t_vars *vars)
 {
     if (keycode == W_KEY)
-        keys[0] = 0;
+        vars->keys[0] = 0;
     else if (keycode == S_KEY)
-        keys[1] = 0;
+       vars-> keys[1] = 0;
     else if (keycode == A_KEY)
-        keys[2] = 0;
+        vars->keys[2] = 0;
     else if (keycode == D_KEY)
-        keys[3] = 0;
+        vars->keys[3] = 0;
     return (1);
 }
