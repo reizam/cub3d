@@ -82,6 +82,7 @@ typedef struct  s_vars
     t_cub       *cub;
 }               t_vars;
 
+void    ft_save_image(t_vars *vars, char *file_name);
 void    ft_do_controls(t_vars *vars);
 int     ft_key_release(int keycode, t_vars *vars);
 int     ft_key_press(int keycode, t_vars *vars);

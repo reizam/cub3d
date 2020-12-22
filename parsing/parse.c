@@ -29,7 +29,7 @@ int     ft_parse_res(char *line, t_cub *cub)
 
 char    *ft_get_values(char *line, int i)
 {
-    while (line[i] == ' ' || (line >= 9 && line <= 13))
+    while (line[i] == ' ' || (line[i] >= 9 && line[i] <= 13))
         i++;
     return (line + i);
 }
