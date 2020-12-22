@@ -77,10 +77,14 @@ typedef struct  s_vars
     int         bits_per_pixel;
     int         line_length;
     int         endian;
+    int         keys[4];
     t_img       textures[5];
     t_cub       *cub;
 }               t_vars;
 
+void    ft_do_controls(t_vars *vars);
+int     ft_key_release(int keycode, t_vars *vars);
+int     ft_key_press(int keycode, t_vars *vars);
 int     ft_check_map_line(char *line);
 int     ft_check_map(t_cub *cub);
 int     ft_is_map_char(char c, int just_spawn);
@@ -103,7 +107,6 @@ int     ft_check_rgb(int r, int g, int b);
 char    **ft_split(char const *s, char c);
 char	*ft_strdup(char *src);
 void    ft_open_screen(t_cub *cub);
-int     ft_key_hook(int keycode, t_vars *vars);
 void    ft_draw_pixel(t_vars *vars, int x, int y, int color);
 void    ft_draw_ver_line(t_vars *vars, int x, int start_y, int end_y, int color);
 void    ft_screen_exit(t_vars *vars);
