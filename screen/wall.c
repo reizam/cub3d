@@ -23,7 +23,7 @@ void    ft_draw_wall_line(t_vars *vars, int x, int j[5], double i[8])
     k[0] = k[0] < 0 ? 0 : k[0];
     k[1] = k[2] / 2 + vars->cub->height / 2;
     k[1] = k[1] >= vars->cub->height ? vars->cub->height - 1 : k[1];
-    wall_x = j[4] == 0 ? (vars->posY + i[7] * i[2]) : (vars->posX + i[7] * i[1]);
+    wall_x = j[4] == 0 ? (vars->pos_x + i[7] * i[2]) : (vars->pos_x + i[7] * i[1]);
     wall_x -= floor((wall_x));
     if (j[4] == 0)
         k[4] = j[2] > 0 ? 0 : 1;
@@ -94,16 +94,16 @@ void    ft_draw_wall(t_vars *vars)
     while (++x < vars->cub->width)
     {
         i[0] = 2 * x / (double)vars->cub->width - 1;
-        i[1] = vars->dirX + vars->planeX * i[0];
-        i[2] = vars->dirY + vars->planeY * i[0];
-        j[0] = (int)vars->posX;
-        j[1] = (int)vars->posY;
+        i[1] = vars->dir_x + vars->plane_x * i[0];
+        i[2] = vars->dir_y + vars->plane_y * i[0];
+        j[0] = (int)vars->pos_x;
+        j[1] = (int)vars->pos_x;
         i[3] = (i[2] == 0) ? 0 : ((i[1] == 0) ? 1 : fabs(1 / i[1]));
         i[4] = (i[1] == 0) ? 0 : ((i[2] == 0) ? 1 : fabs(1 / i[2]));
         ft_calc_side_dist(vars, &i, &j);
         if (!ft_raycast(vars, &i, &j))
             continue ;
-        i[7] = j[4] == 0 ? ((j[0] - vars->posX + (1 - j[2]) / 2) / i[1]) : ((j[1] - vars->posY + (1 - j[3]) / 2) / i[2]);
+        i[7] = j[4] == 0 ? ((j[0] - vars->pos_x + (1 - j[2]) / 2) / i[1]) : ((j[1] - vars->pos_y + (1 - j[3]) / 2) / i[2]);
         ft_draw_wall_line(vars, x, j, i);
     }
 }

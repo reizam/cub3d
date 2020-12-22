@@ -51,16 +51,16 @@ int     ft_render_screen(t_vars *vars)
 
 void    ft_init_vars(t_vars *vars, t_cub *cub)
 {
-    vars->posX = cub->spawnX;
-    vars->posY = cub->spawnY;
+    vars->pos_x = cub->spawn_x;
+    vars->pos_x = cub->spawn_x;
     vars->addr = NULL;
     vars->mlx_ptr = NULL;
     vars->win_ptr = NULL;
     vars->img_ptr = NULL;
-    vars->dirX = cub->dirX;
-    vars->dirY = cub->dirY;
-    vars->planeX = cub->planeX;
-    vars->planeY = cub->planeY;
+    vars->dir_x = cub->dir_x;
+    vars->dir_x = cub->dir_x;
+    vars->plane_x = cub->plane_x;
+    vars->plane_x = cub->plane_x;
     vars->move_speed = 0.3;
     vars->rot_speed = 0.15;
     vars->bits_per_pixel = 0;
@@ -73,15 +73,19 @@ void    ft_init_vars(t_vars *vars, t_cub *cub)
     vars->cub = cub;
 }
 
+#include <stdio.h>
+
 int   ft_resize_hook(t_vars *vars)
 {
     (void)vars;
+    printf("yes les gens\n");
     return (1);
 }
 
 int   ft_leave_hook(t_vars *vars)
 {
     ft_screen_exit(vars);
+    printf("yes les gens2\n");
     return (1);
 }
 

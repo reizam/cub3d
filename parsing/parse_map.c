@@ -23,23 +23,23 @@ void    ft_set_spawn(t_cub *cub, char c)
 {
     if (c == 'E')
     {
-        cub->dirX = 1;
-        cub->planeY = -0.66;
+        cub->dir_x = 1;
+        cub->plane_y = -0.66;
     }
     if (c == 'W')
     {
-        cub->dirX = -1;
-        cub->planeY = 0.66;
+        cub->dir_x = -1;
+        cub->plane_y = 0.66;
     }
     if (c == 'S')
     {
-        cub->dirY = 1;
-        cub->planeX = 0.66;
+        cub->dir_y = 1;
+        cub->plane_x = 0.66;
     }
     if (c == 'N')
     {
-        cub->dirY = -1;
-        cub->planeX = -0.66;
+        cub->dir_y = -1;
+        cub->plane_y = -0.66;
     }
 }
 
@@ -55,10 +55,10 @@ int ft_parse_map_param(t_cub *cub)
         while (cub->map[i][++j])
             if (ft_is_map_char(cub->map[i][j], 1))
             {
-                if (cub->spawnX > 0 || cub->spawnX > 0)
+                if (cub->spawn_x > 0 || cub->spawn_x > 0)
                     return (0);
-                cub->spawnX = j;
-                cub->spawnY = i;
+                cub->spawn_x = j;
+                cub->spawn_y = i;
                 ft_set_spawn(cub, cub->map[i][j]);
             }
     }

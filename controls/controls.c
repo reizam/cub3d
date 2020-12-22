@@ -14,22 +14,22 @@
 
 void    ft_move(t_vars *vars, int dir)
 {
-    if (vars->cub->map[(int)vars->posY][(int)(vars->posX + (dir * (vars->dirX * vars->move_speed)))] != '1')
-        vars->posX += dir * (vars->dirX * vars->move_speed);
-    if (vars->cub->map[(int)(vars->posY + (dir * (vars->dirY * vars->move_speed)))][(int)vars->posX] != '1')
-        vars->posY += dir * (vars->dirY * vars->move_speed);
+    if (vars->cub->map[(int)vars->pos_y][(int)(vars->pos_x + (dir * (vars->dir_x * vars->move_speed)))] != '1')
+        vars->pos_y += dir * (vars->dirX * vars->move_speed);
+    if (vars->cub->map[(int)(vars->pos_y + (dir * (vars->dir_y * vars->move_speed)))][(int)vars->pos_x] != '1')
+        vars->pos_y += dir * (vars->dir_y * vars->move_speed);
 }
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 void    ft_rot(t_vars *vars, int dir)
 {
     double temp;
 
-    temp = vars->dirX;
-    vars->dirX = vars->dirX * cos(vars->rot_speed * dir) - vars->dirY * sin(vars->rot_speed * dir);
-    vars->dirY = temp * sin(vars->rot_speed * dir) + vars->dirY * cos(vars->rot_speed * dir);
+    temp = vars->dir_x;
+    vars->dir_x = vars->dir_x * cos(vars->rot_speed * dir) - vars->dir_y * sin(vars->rot_speed * dir);
+    vars->dir_y = temp * sin(vars->rot_speed * dir) + vars->dir_y * cos(vars->rot_speed * dir);
     temp = vars->planeX;
-    vars->planeX = vars->planeX * cos(vars->rot_speed * dir) - vars->planeY * sin(vars->rot_speed * dir);
-    vars->planeY = temp * sin(vars->rot_speed * dir) + vars->planeY * cos(vars->rot_speed * dir);
+    vars->plane_x = vars->plane_x * cos(vars->rot_speed * dir) - vars->plane_y * sin(vars->rot_speed * dir);
+    vars->plane_x = temp * sin(vars->rot_speed * dir) + vars->plane_y * cos(vars->rot_speed * dir);
 }
 
 int     ft_key_hook(int keycode, t_vars *vars)
