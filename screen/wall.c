@@ -97,7 +97,7 @@ void    ft_draw_wall(t_vars *vars)
         i[1] = vars->dir_x + vars->plane_x * i[0];
         i[2] = vars->dir_y + vars->plane_y * i[0];
         j[0] = (int)vars->pos_x;
-        j[1] = (int)vars->pos_x;
+        j[1] = (int)vars->pos_y;
         i[3] = (i[2] == 0) ? 0 : ((i[1] == 0) ? 1 : fabs(1 / i[1]));
         i[4] = (i[1] == 0) ? 0 : ((i[2] == 0) ? 1 : fabs(1 / i[2]));
         ft_calc_side_dist(vars, &i, &j);
