@@ -46,6 +46,7 @@ int     ft_render_screen(t_vars *vars)
     ft_draw_roof(vars);
     ft_draw_wall(vars);
     ft_do_controls(vars);
+    mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img_ptr, 0, 0);
     return (1);
 }
 
@@ -70,6 +71,10 @@ void    ft_init_vars(t_vars *vars, t_cub *cub)
     vars->textures[1].img_ptr = NULL;
     vars->textures[2].img_ptr = NULL;
     vars->textures[3].img_ptr = NULL;
+    keys[0] = 0;
+    keys[1] = 0;
+    keys[2] = 0;
+    keys[3] = 0;
     vars->cub = cub;
 }
 
@@ -95,7 +100,6 @@ void    ft_open_screen(t_cub *cub)
     cub->width = cub->width > width ? width : cub->width;
     cub->height = cub->height > height ? height : cub->height;
     vars->img_ptr = mlx_new_image(vars->mlx_ptr, vars->cub->width, vars->cub->height);
-    mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img_ptr, 0, 0);
     vars->win_ptr = mlx_new_window(vars->mlx_ptr, cub->width, cub->height, "Cub3d");
     vars->addr = mlx_get_data_addr(vars->img_ptr, &vars->bits_per_pixel, &vars->line_length, &vars->endian);
     mlx_hook(vars->win_ptr, 2, 1L<<0, ft_key_press, vars);
