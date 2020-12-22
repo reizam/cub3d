@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-unsigned char *ft_create_bmp_file_header(t_vars *vars, int pitch)
+unsigned char [14]ft_create_bmp_file_header(t_vars *vars, int pitch)
 {
     unsigned char   file_header[14];
     int             file_size;
@@ -28,7 +28,7 @@ unsigned char *ft_create_bmp_file_header(t_vars *vars, int pitch)
     return (file_header);
 }
 
-unsigned char *ft_create_bmp_info_header(t_vars *vars)
+unsigned char [40]ft_create_bmp_info_header(t_vars *vars)
 {
     unsigned char info_header[40];
 
