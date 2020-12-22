@@ -32,14 +32,14 @@ int ft_check_map_line(char *line)
 
 int     ft_check_circle_map(t_cub *cub, int x, int y, int i, int j)
 {
-    while (cub->map[i][j] && cub->map[i][j] != '1')
+    while (cub->map[i] && cub->map[i][j] && cub->map[i][j] != '1')
     {
         if (cub->map[i][j] == ' ')
             return (0);
         j += x;
         i += y;
     }
-    return (cub->map[i][j] && cub->map[i][j] == '1');
+    return (cub->map[i] && cub->map[i][j] && cub->map[i][j] == '1');
 }
 
 int     ft_check_map(t_cub *cub)
