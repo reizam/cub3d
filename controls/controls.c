@@ -29,7 +29,7 @@ void    ft_rot(t_vars *vars, int dir)
     vars->dir_y = temp * sin(vars->rot_speed * dir) + vars->dir_y * cos(vars->rot_speed * dir);
     temp = vars->plane_x;
     vars->plane_x = vars->plane_x * cos(vars->rot_speed * dir) - vars->plane_y * sin(vars->rot_speed * dir);
-    vars->plane_x = temp * sin(vars->rot_speed * dir) + vars->plane_y * cos(vars->rot_speed * dir);
+    vars->plane_y = temp * sin(vars->rot_speed * dir) + vars->plane_y * cos(vars->rot_speed * dir);
 }
 
 int     ft_key_hook(int keycode, t_vars *vars)
