@@ -71,10 +71,10 @@ void    ft_init_vars(t_vars *vars, t_cub *cub)
     vars->textures[1].img_ptr = NULL;
     vars->textures[2].img_ptr = NULL;
     vars->textures[3].img_ptr = NULL;
-    keys[0] = 0;
-    keys[1] = 0;
-    keys[2] = 0;
-    keys[3] = 0;
+    vars->keys[0] = 0;
+    vars->keys[1] = 0;
+    vars->keys[2] = 0;
+    vars->keys[3] = 0;
     vars->cub = cub;
 }
 
