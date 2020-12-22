@@ -33,7 +33,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 
 	if (!(result = (void*)malloc(nmemb * size)))
 		return (NULL);
-	// ft_memset(result, 0, nmemb * size);
+	ft_memset(result, 0, nmemb * size);
 	return (result);
 }
 
@@ -41,8 +41,12 @@ unsigned char *ft_create_bmp_file_header(t_vars *vars, int pitch)
 {
     unsigned char   *file_header;
     int             file_size;
-  
+    int             i;
+
+    i = -1;
     file_header = (unsigned char*)ft_calloc(sizeof(unsigned char), 14);
+    while (++i < 14)
+        info_header[i] = 0;
     file_size = 54 + (pitch + ((4 - pitch % 4) % 4)) * vars->cub->height;
     file_header[0] = (unsigned char)('B');
     file_header[1] = (unsigned char)('M');
@@ -54,11 +58,16 @@ unsigned char *ft_create_bmp_file_header(t_vars *vars, int pitch)
     return (file_header);
 }
 
+
 unsigned char *ft_create_bmp_info_header(t_vars *vars)
 {
     unsigned char *info_header;
+    int             i;
 
+    i = -1;
     info_header = (unsigned char*)ft_calloc(sizeof(unsigned char), 40);
+    while (++i < 40)
+        info_header[i] = 0;
     info_header[0] = (unsigned char)(40);
     info_header[4] = (unsigned char)(vars->cub->width);
     info_header[5] = (unsigned char)(vars->cub->width >> 8);

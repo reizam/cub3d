@@ -48,8 +48,6 @@ int     ft_render_screen(t_vars *vars)
     ft_do_controls(vars);
     if (!vars->cub->save_first_image)
         mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img_ptr, 0, 0);
-    else
-
     return (1);
 }
 
