@@ -73,9 +73,9 @@ void    ft_init_vars(t_vars *vars, t_cub *cub)
     vars->cub = cub;
 }
 
-int   ft_leave_hook(t_vars *vars)
+int   ft_leave_hook(void *param)
 {
-    ft_screen_exit(vars);
+    ft_screen_exit((t_vars*)param);
     return (1);
 }
 
