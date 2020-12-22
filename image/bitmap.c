@@ -33,7 +33,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 
 	if (!(result = (void*)malloc(nmemb * size)))
 		return (NULL);
-	ft_memset(result, 0, nmemb * size);
+	// ft_memset(result, 0, nmemb * size);
 	return (result);
 }
 
@@ -84,6 +84,9 @@ void    ft_save_image(t_vars *vars, char *file_name)
     int             i;
 
     i = -1;
+    padding[0] = 0;
+    padding[1] = 0;
+    padding[2] = 0;
     cpy = (unsigned char*)vars->addr;
     pitch = vars->bits_per_pixel * vars->cub->width;
     info_header = ft_create_bmp_file_header(vars, pitch);
@@ -96,5 +99,7 @@ void    ft_save_image(t_vars *vars, char *file_name)
         write(fd, cpy + (i * pitch), vars->bits_per_pixel * vars->cub->width);
         write(fd, padding, (4 - pitch % 4) % 4);
     }
+    free(info_header);
+    free(file_header);
     close(fd);
 }
