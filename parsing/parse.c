@@ -29,22 +29,27 @@ int     ft_parse_res(char *line, t_cub *cub)
 
 int     ft_parse_line(char *line, t_cub *cub)
 {
-    if (ft_strncmp(line, "R ", 2) == 0)
-        return (ft_parse_res(line + 2, cub));
-    else if (ft_strncmp(line, "NO ", 3) == 0)
-        return (ft_parse_texture(line + 3, 0, cub));
-    else if (ft_strncmp(line, "SO ", 3) == 0)
-        return (ft_parse_texture(line + 3, 1, cub));
-    else if (ft_strncmp(line, "WE ", 3) == 0)
-        return (ft_parse_texture(line + 3, 2, cub));
-    else if (ft_strncmp(line, "EA ", 3) == 0)
-        return (ft_parse_texture(line + 3, 3, cub));
-    else if (ft_strncmp(line, "S ", 2) == 0)
-        return (ft_parse_texture(line + 2, 4, cub));
-    else if (ft_strncmp(line, "F ", 2) == 0) 
-        return (ft_parse_rgb(line + 2, 0, cub));
-    else if (ft_strncmp(line, "C ", 2) == 0)
-        return (ft_parse_rgb(line + 2, 1, cub));
+    int i;
+
+    i = 0;
+    while (line[i] == ' ' || (line >= 9 && line <= 13))
+        i++;
+    if (ft_strncmp(line + i, "R ", 2) == 0)
+        return (ft_parse_res(line + i + 2, cub));
+    else if (ft_strncmp(line + i, "NO ", 3) == 0)
+        return (ft_parse_texture(line + i + 3, 0, cub));
+    else if (ft_strncmp(line + i, "SO ", 3) == 0)
+        return (ft_parse_texture(line + i + 3, 1, cub));
+    else if (ft_strncmp(line + i, "WE ", 3) == 0)
+        return (ft_parse_texture(line + i + 3, 2, cub));
+    else if (ft_strncmp(line + i, "EA ", 3) == 0)
+        return (ft_parse_texture(line + i + 3, 3, cub));
+    else if (ft_strncmp(line + i, "S ", 2) == 0)
+        return (ft_parse_texture(line + i + 2, 4, cub));
+    else if (ft_strncmp(line + i, "F ", 2) == 0) 
+        return (ft_parse_rgb(line + i + 2, 0, cub));
+    else if (ft_strncmp(line + i, "C ", 2) == 0)
+        return (ft_parse_rgb(line + i + 2, 1, cub));
     return (0);
 }
 
