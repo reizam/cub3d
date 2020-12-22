@@ -39,7 +39,7 @@ int     ft_parse_line(char *line, t_cub *cub)
     int i;
 
     i = 0;
-    while (line[i] == ' ' || (line >= 9 && line <= 13))
+    while (line[i] == ' ' || (line[i] >= 9 && line[i] <= 13))
         i++;
     if (ft_strncmp(line + i, "R ", 2) == 0)
         return (ft_parse_res(ft_get_values(line, i + 1), cub));
