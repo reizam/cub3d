@@ -15,7 +15,7 @@
 int ft_is_map_char(char c, int just_spawn)
 {
     if (just_spawn)
-        return (c == 'N' || c == 'W' || c == 'E' || c == 'S')
+        return (c == 'N' || c == 'W' || c == 'E' || c == 'S');
     return (c == '1' || c == '2' || c == '0' || c == 'N' || c =='S' || c == 'E' || c == 'W' || c == ' ');
 }
 
@@ -46,7 +46,6 @@ int     ft_check_map(t_cub *cub)
 {
     int i;
     int j;
-    int k;
 
     i = -1;
     while (cub->map[++i])
