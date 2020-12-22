@@ -66,7 +66,7 @@ int ft_check_map(t_cub *cub)
                 }
                 if (cub->map[i][j] == 'N')
                 {
-                    cub->dirY = 1;
+                    cub->dirY = -1;
                     cub->planeX = -0.66;
                 }
             }
