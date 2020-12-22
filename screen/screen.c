@@ -73,19 +73,9 @@ void    ft_init_vars(t_vars *vars, t_cub *cub)
     vars->cub = cub;
 }
 
-#include <stdio.h>
-
-int   ft_resize_hook(t_vars *vars)
-{
-    (void)vars;
-    printf("yes les gens\n");
-    return (1);
-}
-
 int   ft_leave_hook(t_vars *vars)
 {
     ft_screen_exit(vars);
-    printf("yes les gens2\n");
     return (1);
 }
 
@@ -107,7 +97,6 @@ void    ft_open_screen(t_cub *cub)
     vars->img_ptr = mlx_new_image(vars->mlx_ptr, vars->cub->width, vars->cub->height);
     vars->win_ptr = mlx_new_window(vars->mlx_ptr, cub->width, cub->height, "Cub3d");
     vars->addr = mlx_get_data_addr(vars->img_ptr, &vars->bits_per_pixel, &vars->line_length, &vars->endian);
-    mlx_hook(vars->win_ptr, 25, 1L<<0, ft_resize_hook, vars);
     mlx_hook(vars->win_ptr, 17, 1L<<0, ft_leave_hook, vars);
     mlx_hook(vars->win_ptr, 2, 1L<<0, ft_key_hook, vars);
     mlx_do_key_autorepeaton(vars->mlx_ptr);
