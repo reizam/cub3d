@@ -23,7 +23,7 @@ int ft_check_map_line(char *line)
     return (i > 0);
 }
 
-int     ft_check_circle_map(t_cub *cub, int x, int y, int i, int j)
+int ft_check_circle_map(t_cub *cub, int x, int y, int i, int j)
 {
     while (j >= 0 && i >= 0 && cub->map[i] && cub->map[i][j] && cub->map[i][j] != '1')
     {
@@ -35,7 +35,7 @@ int     ft_check_circle_map(t_cub *cub, int x, int y, int i, int j)
     return (j >= 0 && i >= 0 && cub->map[i] && cub->map[i][j] && cub->map[i][j] == '1');
 }
 
-int     ft_check_map(t_cub *cub)
+int ft_check_map(t_cub *cub)
 {
     int i;
     int j;
