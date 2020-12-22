@@ -81,6 +81,7 @@ typedef struct  s_vars
     t_cub       *cub;
 }               t_vars;
 
+int     ft_check_map(t_cub *cub);
 int     ft_is_map_char(char c, int just_spawn);
 size_t	ft_strlen(const char *s);
 void	ft_putstr_fd(char *s, int fd);

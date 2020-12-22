@@ -19,55 +19,6 @@ int ft_is_map_char(char c, int just_spawn)
     return (c == '1' || c == '2' || c == '0' || c == 'N' || c =='S' || c == 'E' || c == 'W' || c == ' ');
 }
 
-int ft_check_map_line(char *line)
-{
-    int i;
-
-    i = -1;
-    while (line && line[++i])
-        if (!ft_is_map_char(line[i], 0))
-            return (0);
-    return (i > 0);
-}
-
-int     ft_check_circle_map(t_cub *cub, int x, int y, int i, int j)
-{
-    while (j >= 0 && i >= 0 && cub->map[i] && cub->map[i][j] && cub->map[i][j] != '1')
-    {
-        if (cub->map[i][j] == ' ')
-            return (0);
-        j += x;
-        i += y;
-    }
-    return (j >= 0 && i >= 0 && cub->map[i] && cub->map[i][j] && cub->map[i][j] == '1');
-}
-
-int     ft_check_map(t_cub *cub)
-{
-    int i;
-    int j;
-
-    i = -1;
-    while (cub->map[++i])
-    {
-        j = -1;
-        while (cub->map[i][++j])
-        {
-            if (cub->map[i][j] != '0' && cub->map[i][j] != '2')
-                continue ;
-            if (!ft_check_circle_map(cub, 0, -1, i, j))
-                return (0);
-            if (!ft_check_circle_map(cub, 0, 1, i, j))
-                return (0);
-            if (!ft_check_circle_map(cub, -1, 0, i, j))
-                return (0);
-            if (!ft_check_circle_map(cub, 1, 0, i, j))
-                return (0);
-        }
-    }
-    return (1);
-}
-
 void    ft_set_spawn(t_cub *cub, char c)
 {
     if (c == 'E')
@@ -128,20 +79,17 @@ int ft_parse_map(int fd, t_cub *cub)
     while ((j = get_next_line(fd, &line)) >= 0)
     {
         k = ft_strlen(line) > 0 && !k ? 1 : k;
-        if (j == 0 && ft_strlen(line) == 0)
-            k = 2;
+        k = j == 0 && ft_strlen(line) == 0 ? 2 : k;
         i = ft_check_map_line(line);
         if (i && k == 1)
             map = ft_strjoin(map, line, j);
         free(line);
-        if (k == 2)
-            break ;
-        if (!i && k)
+        if (!i && k == 1)
         {
             free(map);
             return (0);
         }
-        if (j <= 0)
+        if (j <= 0 || k == 2)
             break ;
     }
     cub->map = ft_split(map, '\n');
