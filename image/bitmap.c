@@ -46,7 +46,7 @@ unsigned char *ft_create_bmp_file_header(t_vars *vars, int pitch)
     i = -1;
     file_header = (unsigned char*)ft_calloc(sizeof(unsigned char), 14);
     while (++i < 14)
-        info_header[i] = 0;
+        file_header[i] = 0;
     file_size = 54 + (pitch + ((4 - pitch % 4) % 4)) * vars->cub->height;
     file_header[0] = (unsigned char)('B');
     file_header[1] = (unsigned char)('M');
