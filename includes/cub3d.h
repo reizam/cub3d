@@ -82,6 +82,8 @@ typedef struct  s_vars
 }               t_vars;
 
 
+int     ft_resize_hook(t_vars *vars);
+int     ft_leave_hook(t_vars *vars);
 int     ft_check_map_line(char *line);
 int     ft_check_map(t_cub *cub);
 int     ft_is_map_char(char c, int just_spawn);
