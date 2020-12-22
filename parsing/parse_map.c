@@ -53,7 +53,7 @@ int     ft_check_map(t_cub *cub)
         j = -1;
         while (cub->map[i][++j])
         {
-            if (cub->map[i][j] != '0')
+            if (cub->map[i][j] != '0' && cub->map[i][j] != '2')
                 continue ;
             if (!ft_check_circle_map(cub, 0, -1, i, j))
                 return (0);
