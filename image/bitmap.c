@@ -12,11 +12,37 @@
 
 #include "cub3d.h"
 
-unsigned char [14]ft_create_bmp_file_header(t_vars *vars, int pitch)
+void	*ft_memset(void *s, int c, size_t n)
 {
-    unsigned char   file_header[14];
+	size_t			i;
+	unsigned char	*str;
+
+	i = 0;
+	str = (unsigned char*)s;
+	while (i < n)
+	{
+		str[i] = (char)c;
+		i++;
+	}
+	return ((void*)str);
+}
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*result;
+
+	if (!(result = (void*)malloc(nmemb * size)))
+		return (NULL);
+	ft_memset(result, 0, nmemb * size);
+	return (result);
+}
+
+unsigned char *ft_create_bmp_file_header(t_vars *vars, int pitch)
+{
+    unsigned char   *file_header;
     int             file_size;
   
+    file_header = (unsigned char*)ft_calloc(sizeof(unsigned char), 14);
     file_size = 54 + (pitch + ((4 - pitch % 4) % 4)) * vars->cub->height;
     file_header[0] = (unsigned char)('B');
     file_header[1] = (unsigned char)('M');
@@ -28,10 +54,11 @@ unsigned char [14]ft_create_bmp_file_header(t_vars *vars, int pitch)
     return (file_header);
 }
 
-unsigned char [40]ft_create_bmp_info_header(t_vars *vars)
+unsigned char *ft_create_bmp_info_header(t_vars *vars)
 {
-    unsigned char info_header[40];
+    unsigned char *info_header;
 
+    info_header = (unsigned char*)ft_calloc(sizeof(unsigned char), 40);
     info_header[0] = (unsigned char)(40);
     info_header[4] = (unsigned char)(vars->cub->width);
     info_header[5] = (unsigned char)(vars->cub->width >> 8);
