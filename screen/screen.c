@@ -62,8 +62,8 @@ void    ft_init_vars(t_vars *vars, t_cub *cub)
     vars->dir_y = cub->dir_y;
     vars->plane_x = cub->plane_x;
     vars->plane_y = cub->plane_y;
-    vars->move_speed = 0.3;
-    vars->rot_speed = 0.15;
+    vars->move_speed = 0.15;
+    vars->rot_speed = 0.07;
     vars->bits_per_pixel = 0;
     vars->line_length = 0;
     vars->endian = 0;

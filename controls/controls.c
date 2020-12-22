@@ -38,7 +38,7 @@ void    ft_do_controls(t_vars *vars)
         ft_move(vars, 1);
     else if (vars->keys[1])
         ft_move(vars, -1);
-    else if (vars->keys[2])
+    if (vars->keys[2])
         ft_rot(vars, 1);
     else if (vars->keys[3])
         ft_rot(vars, -1);
