@@ -49,6 +49,14 @@ int ft_check_map(t_cub *cub)
                     return (0);
                 cub->spawnX = j;
                 cub->spawnY = i;
+                if (cub->map[i][j] == 'E')
+                    cub->dirX = 1;
+                if (cub->map[i][j] == 'W' )
+                    cub->dirX = -1;
+                if (cub->map[i][j] == 'S')
+                    cub->dirY = 1;
+                if (cub->map[i][j] == 'N')
+                    cub->dirY = 1;
             }
     }
     return (1);

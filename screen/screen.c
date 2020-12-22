@@ -57,8 +57,8 @@ void    ft_init_vars(t_vars *vars, t_cub *cub)
     vars->mlx_ptr = NULL;
     vars->win_ptr = NULL;
     vars->img_ptr = NULL;
-    vars->dirX = -1;
-    vars->dirY = 0;
+    vars->dirX = cub->dirX;
+    vars->dirY = cub->dirY;
     vars->planeX = 0;
     vars->planeY = 0.66;
     vars->move_speed = 0.3;

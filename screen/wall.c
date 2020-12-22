@@ -28,7 +28,7 @@ void    ft_draw_wall_line(t_vars *vars, int x, int j[5], double i[8])
     if (j[4] == 0)
         k[4] = j[2] > 0 ? 0 : 1;
     else
-        k[4] = j[3] > 0 ? 2 : 3;
+        k[4] = j[3] > 0 ? 3 : 2;
     img = vars->textures[k[4]];
     k[3] = (int)(wall_x * (double)img.width);
     if ((j[4] == 0 && i[1] > 0) || (j[4] == 1 && i[2] < 0))
@@ -41,7 +41,7 @@ void    ft_calc_side_dist(t_vars *vars, double (*i)[8], int (*j)[5])
     if ((*i)[1] < 0)
     {
         (*j)[2] = -1;
-        (*i)[5] = (vars->posX - (*j)[0]) * (*j)[3];
+        (*i)[5] = (vars->posX - (*j)[0]) * (*i)[3];
     }
     else
     {

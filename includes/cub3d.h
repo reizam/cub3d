@@ -52,6 +52,8 @@ typedef struct	s_cub
     int         rgb_roof;
     int         spawnX;
     int         spawnY;
+    int         dirX;
+    int         dirY;
     char        *error;
     char        **map;
 }	            t_cub;
