@@ -50,13 +50,25 @@ int ft_check_map(t_cub *cub)
                 cub->spawnX = j;
                 cub->spawnY = i;
                 if (cub->map[i][j] == 'E')
+                {
                     cub->dirX = 1;
+                    cub->planeY = -0.66;
+                }
                 if (cub->map[i][j] == 'W' )
+                {
                     cub->dirX = -1;
+                    cub->planeY = 0.66;
+                }
                 if (cub->map[i][j] == 'S')
+                {
                     cub->dirY = 1;
+                    cub->planeX = 0.66;
+                }
                 if (cub->map[i][j] == 'N')
+                {
                     cub->dirY = 1;
+                    cub->planeX = -0.66;
+                }
             }
     }
     return (1);

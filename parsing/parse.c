@@ -61,6 +61,8 @@ t_cub   *ft_create_cub()
     cub->width = 0;
     cub->dirX = 0;
     cub->dirY = 0;
+    cub->planeX = 0;
+    cub->planeY = 0;
     cub->south_texture = NULL;
     cub->west_texture = NULL;
     cub->east_texture = NULL;
