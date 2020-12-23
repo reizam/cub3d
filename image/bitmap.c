@@ -56,7 +56,7 @@ void    ft_save_image(t_vars *vars, char *file_name)
     int             pitch;
     int             i;
     int             j;
-
+    static  unsigned char rgb[3] = {0, 0, 0};
     i = -1;
     cpy = (unsigned char*)vars->addr;
     pitch = 3 * vars->cub->width;
@@ -70,9 +70,12 @@ void    ft_save_image(t_vars *vars, char *file_name)
         j = -1;
         while (++j < vars->cub->width)
         {
-            write(fd, &(cpy[(vars->cub->height - i) * (vars->cub->width) + j]) >> 16, 1);
-            write(fd, &(cpy[(vars->cub->height - i) * (vars->cub->width) + j]) >> 8, 1);
-            write(fd, &(cpy[(vars->cub->height - i) * (vars->cub->width) + j]), 1);
+            rgb[0] = ((cpy[(vars->cub->height - i) * (vars->cub->width) + j]) >> 16);
+            rgb[1] = ((cpy[(vars->cub->height - i) * (vars->cub->width) + j]) >> 8);
+            rgb[2] = (cpy[(vars->cub->height - i) * (vars->cub->width) + j]);
+            write(fd, rgb + 2, 1);
+            write(fd, rgb + 1, 1);
+            write(fd, rgb, 1);
         }
     }
     close(fd);
