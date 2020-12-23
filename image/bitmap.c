@@ -14,29 +14,27 @@
 
 void    ft_write_bmp_file_header(t_vars *vars, int fd)
 {
-    int file_size;
-    int offset;
+    int i;
 
-    file_size = 58 + (vars->cub->width * vars->cub->height) * 4;
-    offset = 58;
+    i = 58 + (vars->cub->width * vars->cub->height) * 4;
     write(fd, "BM", 2);
-    write(fd, &file_size, 4);
+    write(fd, &i, 4);
     write(fd, "\0\0\0\0", 4);
-    write(fd, &offset, 4);
+    i = 58;
+    write(fd, &i, 4);
 }
 
-void    ft_create_bmp_info_header(t_vars *vars, int fd)
+void    ft_write_bmp_info_header(t_vars *vars, int fd)
 {
     int i;
 
     i = 40;
     write(fd, &i, 4);
-    write(fd, &i, 4);
     write(fd, &vars->cub->width, 4);
     write(fd, &vars->cub->height, 4);
     i = 1;
     write(fd, &i, 2);
-    write(fd, &vars->bits_per_pixel, 4);
+    write(fd, &vars->bits_per_pixel, 2);
     i = -1;
     while (++i < 28)
         write(fd, "\0", 1);
@@ -66,7 +64,7 @@ void    ft_update_pixel(t_vars *vars, int i, int *j, int k)
         vars->addr[*j + (i * vars->line_length)] = vars->addr[k - l + (i * vars->line_length - 1)];
         vars->addr[k - l + (i * vars->line_length - 1)] = t;
         l--;
-        *j = *j + 1;
+        (*j)++;
     }
     
 }
@@ -94,7 +92,7 @@ void    ft_save_image(t_vars *vars, char *file_name)
 {
     int fd;
 
-    fd = open(file_name, O_CREAT | O_RDWR);
+    fd = open(file_name, O_CREAT | O_RDWR, 0777);
     ft_write_bmp_file_header(vars, fd);
     ft_write_bmp_info_header(vars, fd);
     ft_update_img(vars);
