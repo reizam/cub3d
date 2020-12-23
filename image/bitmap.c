@@ -22,7 +22,7 @@ unsigned char *ft_create_bmp_file_header(t_vars *vars, int pitch)
     file_header = (unsigned char*)malloc(sizeof(unsigned char) * 14);
     while (++i <= 14)
         file_header[i] = 0;
-    file_size = 54 + ((pitch) + ((4 - pitch % 4) % 4)) * vars->cub->height;
+    file_size = 54 + ((pitch) + (4 - (pitch) % 4) % 4)) * vars->cub->height;
     file_header[0] = (unsigned char)('B');
     file_header[1] = (unsigned char)('M');
     file_header[2] = (unsigned char)(file_size);
@@ -80,7 +80,7 @@ void    ft_save_image(t_vars *vars, char *file_name)
     write(fd, info_header, 40);
     while (++i < vars->cub->height)
     {
-        write(fd, cpy + (i * pitch), 3 * vars->cub->width);
+        write(fd, cpy + (i * pitch), (vars->bits_per_pixel / 8) * vars->cub->width);
         write(fd, padding, (4 - (pitch) % 4) % 4);
     }
     free(info_header);
