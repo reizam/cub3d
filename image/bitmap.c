@@ -14,15 +14,10 @@
 
 unsigned char *ft_create_bmp_file_header(t_vars *vars, int pitch)
 {
-    unsigned char   *file_header;
+    unsigned char   file_header[14] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     int             file_size;
-    int             i;
 
-    i = -1;
-    file_header = (unsigned char*)malloc(sizeof(unsigned char) * 14);
-    while (++i <= 14)
-        file_header[i] = 0;
-    file_size = 54 + ((pitch) + (4 - (pitch) % 4) % 4)) * vars->cub->height;
+    file_size = 54 + ((pitch) + (4 - (pitch) % 4) % 4) * vars->cub->height;
     file_header[0] = (unsigned char)('B');
     file_header[1] = (unsigned char)('M');
     file_header[2] = (unsigned char)(file_size);
@@ -36,14 +31,8 @@ unsigned char *ft_create_bmp_file_header(t_vars *vars, int pitch)
 
 unsigned char *ft_create_bmp_info_header(t_vars *vars)
 {
-    unsigned char *info_header;
-    int             i;
+    unsigned char info_header[40] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-    i = -1;
-    if (!info_header = (unsigned char*)malloc(sizeof(unsigned char) * 40))
-        return (NULL);
-    while (++i <= 40)
-        info_header[i] = 0;
     info_header[0] = (unsigned char)(40);
     info_header[4] = (unsigned char)(vars->cub->width);
     info_header[5] = (unsigned char)(vars->cub->width >> 8);
@@ -68,6 +57,7 @@ void    ft_save_image(t_vars *vars, char *file_name)
     int             i;
     int             j;
     static unsigned char rgb[3] = {0, 0, 0};
+
     i = -1;
     cpy = (unsigned char*)vars->addr;
     pitch = (vars->bits_per_pixel / 8) * vars->cub->width;
@@ -81,15 +71,13 @@ void    ft_save_image(t_vars *vars, char *file_name)
         j = -1;
         while (++j < vars->cub->width)
         {
-            rgb[0] = cpy[(vars->cub->height - i) * (vars->cub->width) + j] >> 16;
-            rgb[1] = cpy[(vars->cub->height - i) * (vars->cub->width) + j] >> 8;
-            rgb[2] = cpy[(vars->cub->height - i) * (vars->cub->width) + j] >> 16;
+            rgb[0] = (cpy[(vars->cub->height - i) * (vars->cub->width) + j]) >> 16;
+            rgb[1] = (cpy[(vars->cub->height - i) * (vars->cub->width) + j]) >> 8;
+            rgb[2] = (cpy[(vars->cub->height - i) * (vars->cub->width) + j]);
             write(fd, rgb + 2, 1);
             write(fd, rgb + 1, 1);
             write(fd, rgb, 1);
         }
     }
-    free(info_header);
-    free(file_header);
     close(fd);
 }
