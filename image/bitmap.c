@@ -40,7 +40,8 @@ unsigned char *ft_create_bmp_info_header(t_vars *vars)
     int             i;
 
     i = -1;
-    info_header = (unsigned char*)malloc(sizeof(unsigned char) * 40);
+    if (!info_header = (unsigned char*)malloc(sizeof(unsigned char) * 40))
+        return (NULL);
     while (++i <= 40)
         info_header[i] = 0;
     info_header[0] = (unsigned char)(40);
@@ -61,27 +62,32 @@ void    ft_save_image(t_vars *vars, char *file_name)
 {
     unsigned char   *info_header;
     unsigned char   *file_header;
-    unsigned char   padding[3];
     unsigned char   *cpy;
     int             fd;
     int             pitch;
     int             i;
-
+    int             j;
+    static unsigned char rgb[3] = {0, 0, 0};
     i = -1;
-    padding[0] = 0;
-    padding[1] = 0;
-    padding[2] = 0;
     cpy = (unsigned char*)vars->addr;
     pitch = (vars->bits_per_pixel / 8) * vars->cub->width;
     info_header = ft_create_bmp_file_header(vars, pitch);
     file_header = ft_create_bmp_info_header(vars);
-    fd = open(file_name, O_WRONLY | O_APPEND | O_CREAT, 0644);
+    fd = open(file_name, O_WRONLY | O_CREAT, 0777);
     write(fd, file_header, 14);
     write(fd, info_header, 40);
     while (++i < vars->cub->height)
     {
-        write(fd, cpy + (i * pitch), (vars->bits_per_pixel / 8) * vars->cub->width);
-        write(fd, padding, (4 - (pitch) % 4) % 4);
+        j = -1;
+        while (++j < vars->cub->width)
+        {
+            rgb[0] = cpy[(vars->cub->height - i) * (vars->cub->width) + j] >> 16;
+            rgb[1] = cpy[(vars->cub->height - i) * (vars->cub->width) + j] >> 8;
+            rgb[2] = cpy[(vars->cub->height - i) * (vars->cub->width) + j] >> 16;
+            write(fd, rgb + 2, 1);
+            write(fd, rgb + 1, 1);
+            write(fd, rgb, 1);
+        }
     }
     free(info_header);
     free(file_header);
