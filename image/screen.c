@@ -48,7 +48,7 @@ int     ft_render_screen(t_vars *vars)
     ft_do_controls(vars);
     if (!vars->cub->save_first_image)
         mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img_ptr, 0, 0);
-    return (1);
+    return (0);
 }
 
 void    ft_init_vars(t_vars *vars, t_cub *cub)
@@ -111,7 +111,7 @@ void    ft_open_screen(t_cub *cub)
     vars->win_ptr = mlx_new_window(vars->mlx_ptr, cub->width, cub->height, "Cub3d");
     mlx_hook(vars->win_ptr, 2, 1L<<0, ft_key_press, vars);
     mlx_hook(vars->win_ptr, 3, 1L<<1, ft_key_release, vars);
-    mlx_hook(vars->win_ptr, 17, 1L<<17, ft_leave_hook, vars);
+    mlx_hook(vars->win_ptr, 17, 131072, ft_leave_hook, vars);
     mlx_loop_hook(vars->mlx_ptr, ft_render_screen, vars);
     mlx_loop(vars->mlx_ptr);
 }
