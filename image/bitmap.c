@@ -12,31 +12,6 @@
 
 #include "cub3d.h"
 
-void	*ft_memset(void *s, int c, size_t n)
-{
-	size_t			i;
-	unsigned char	*str;
-
-	i = 0;
-	str = (unsigned char*)s;
-	while (i < n)
-	{
-		str[i] = (char)c;
-		i++;
-	}
-	return ((void*)str);
-}
-
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	void	*result;
-
-	if (!(result = (void*)malloc(nmemb * size)))
-		return (NULL);
-	ft_memset(result, 0, nmemb * size);
-	return (result);
-}
-
 unsigned char *ft_create_bmp_file_header(t_vars *vars, int pitch)
 {
     unsigned char   *file_header;
@@ -44,7 +19,7 @@ unsigned char *ft_create_bmp_file_header(t_vars *vars, int pitch)
     int             i;
 
     i = -1;
-    file_header = (unsigned char*)ft_calloc(sizeof(unsigned char), 14);
+    file_header = (unsigned char*)malloc(sizeof(unsigned char) * 14);
     while (++i <= 14)
         file_header[i] = 0;
     file_size = 54 + ((pitch) + ((4 - pitch % 4) % 4)) * vars->cub->height;
@@ -65,7 +40,7 @@ unsigned char *ft_create_bmp_info_header(t_vars *vars)
     int             i;
 
     i = -1;
-    info_header = (unsigned char*)ft_calloc(sizeof(unsigned char), 40);
+    info_header = (unsigned char*)malloc(sizeof(unsigned char) * 40);
     while (++i <= 40)
         info_header[i] = 0;
     info_header[0] = (unsigned char)(40);
@@ -105,7 +80,7 @@ void    ft_save_image(t_vars *vars, char *file_name)
     write(fd, info_header, 40);
     while (++i < vars->cub->height)
     {
-        write(fd, vars->addr + (i * pitch), vars->bits_per_pixel * vars->cub->width);
+        write(fd, cpy + (i * pitch), vars->bits_per_pixel * vars->cub->width);
         write(fd, padding, (4 - (pitch) % 4) % 4);
     }
     free(info_header);
