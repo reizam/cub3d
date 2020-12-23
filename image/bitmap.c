@@ -53,7 +53,7 @@ unsigned char *ft_create_bmp_info_header(t_vars *vars)
     info_header[10] = (unsigned char)(vars->cub->height >> 16);
     info_header[11] = (unsigned char)(vars->cub->height >> 24);
     info_header[12] = (unsigned char)(1);
-    info_header[14] = (unsigned char)(vars->bits_per_pixel * 8);
+    info_header[14] = (unsigned char)(3 * 8);
     return (info_header);
 }
 
@@ -72,7 +72,7 @@ void    ft_save_image(t_vars *vars, char *file_name)
     padding[1] = 0;
     padding[2] = 0;
     cpy = (unsigned char*)vars->addr;
-    pitch = vars->bits_per_pixel * vars->cub->width;
+    pitch = 3 * vars->cub->width;
     info_header = ft_create_bmp_file_header(vars, pitch);
     file_header = ft_create_bmp_info_header(vars);
     fd = open(file_name, O_WRONLY | O_APPEND | O_CREAT, 0644);
@@ -80,7 +80,7 @@ void    ft_save_image(t_vars *vars, char *file_name)
     write(fd, info_header, 40);
     while (++i < vars->cub->height)
     {
-        write(fd, cpy + (i * pitch), vars->bits_per_pixel * vars->cub->width);
+        write(fd, cpy + (i * pitch), 3 * vars->cub->width);
         write(fd, padding, (4 - (pitch) % 4) % 4);
     }
     free(info_header);
