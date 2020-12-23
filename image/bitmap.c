@@ -70,9 +70,9 @@ void    ft_save_image(t_vars *vars, char *file_name)
         j = -1;
         while (++j < vars->cub->width)
         {
-            rgb[0] = ((cpy[(vars->cub->height - i) * (vars->cub->width) + j]) >> 16);
-            rgb[1] = ((cpy[(vars->cub->height - i) * (vars->cub->width) + j]) >> 8);
-            rgb[2] = (cpy[(vars->cub->height - i) * (vars->cub->width) + j]);
+            rgb[0] = ((vars->addr[(vars->cub->height - i) * (vars->cub->width) + j]) >> 16);
+            rgb[1] = ((vars->addr[(vars->cub->height - i) * (vars->cub->width) + j]) >> 8);
+            rgb[2] = (vars->addr[(vars->cub->height - i) * (vars->cub->width) + j]);
             write(fd, rgb + 2, 1);
             write(fd, rgb + 1, 1);
             write(fd, rgb, 1);
