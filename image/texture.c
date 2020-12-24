@@ -31,5 +31,7 @@ int ft_load_all_texture(t_vars *vars)
         return (0);
     if (!ft_load_texture(vars, vars->textures, vars->cub->south_texture, 3))
         return (0);
+    if (!ft_load_texture(vars, vars->textures, vars->cub->sprite_texture, 4))
+        return (0);
     return (1);
 }

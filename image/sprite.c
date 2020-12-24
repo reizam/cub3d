@@ -18,7 +18,7 @@ void    ft_draw_sprite(t_vars *vars, double *h_buffer)
     t_img   sprite_img;
 
     sprite = vars->cub->sprite;
-    sprite_img = vars->textures[3];
+    sprite_img = vars->textures[4];
     ft_sort_sprites(&sprite, vars->pos_x, vars->pos_y);
     while (sprite)
     {
@@ -28,7 +28,7 @@ void    ft_draw_sprite(t_vars *vars, double *h_buffer)
         double inv_vet = 1.0 / (vars->plane_x * vars->dir_y - vars->dir_x * vars->plane_y);
 
         double transform_x = inv_vet * (vars->dir_y * sprite_x - vars->dir_x * sprite_y);
-        double transform_y = inv_vet * (-vars->plane_x * sprite_x + vars->plane_x * sprite_x);
+        double transform_y = inv_vet * (-vars->plane_y * sprite_x + vars->plane_x * sprite_y);
 
         int sprite_screen_x = (int)((vars->cub->width / 2) * (1 + transform_x / transform_y));
 
@@ -53,7 +53,7 @@ void    ft_draw_sprite(t_vars *vars, double *h_buffer)
             
             int y = drawStartY - 1;
             if(transform_y > 0 && stripe > 0 && stripe < vars->cub->width && transform_y < h_buffer[stripe])
-                while (++y < drawStartY)
+                while (++y < drawEndY)
                 {
                     int d = (y) * 256 - vars->cub->height * 128 + sprite_height * 128;
                     int tex_y = ((d * sprite_img.height) / sprite_height) / 256;
