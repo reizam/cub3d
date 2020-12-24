@@ -49,7 +49,7 @@ void    ft_sort_sprites(t_sprite **begin, int pos_x, int pos_y)
     cpy = *begin;
     while (cpy)
     {
-        if (cpy->next && ft_distance(pos_x, pos_y, cpy->x, cpy->y) > ft_distance(pos_x, pos_y, cpy->next->x, cpy->next->y))
+        if (cpy->next && ft_distance(pos_x, pos_y, cpy->x, cpy->y) < ft_distance(pos_x, pos_y, cpy->next->x, cpy->next->y))
         {
             temp = cpy->x;
             cpy->x = cpy->next->x;

@@ -71,6 +71,8 @@ void    ft_screen_exit(t_vars *vars)
         mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
     free(vars->mlx_ptr);
     ft_parse_exit(vars->cub);
+    if (vars->h_buffer)
+        free(vars->h_buffer);
     vars->cub = NULL;
     free(vars);
     vars = NULL;

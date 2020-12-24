@@ -49,7 +49,7 @@ void    ft_draw_sprite(t_vars *vars, double *h_buffer)
         int stripe = drawStartX - 1;
         while (++stripe < drawEndX)
         {
-            int tex_x = (int)((256 * (stripe - (-sprite_width / 2 + sprite_screen_x)) * sprite_img.width / sprite_img.width) / 256);
+            int tex_x = (int)((256 * (stripe - (-sprite_width / 2 + sprite_screen_x)) * sprite_img.width / sprite_width) / 256);
             
             int y = drawStartY - 1;
             if(transform_y > 0 && stripe > 0 && stripe < vars->cub->width && transform_y < h_buffer[stripe])

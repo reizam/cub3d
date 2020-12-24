@@ -87,6 +87,7 @@ typedef struct  s_vars
     int     endian;
     int     keys[4];
     t_img   textures[5];
+    double  *h_buffer;
     t_cub   *cub;
 }               t_vars;
 
