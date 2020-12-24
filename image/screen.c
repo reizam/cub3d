@@ -44,8 +44,11 @@ int     ft_render_screen(t_vars *vars)
 {
     double *h_buffer;
 
+    int i = -1;
     if (!(h_buffer = (double*)malloc(sizeof(double) * (vars->cub->height + 1))))
         return (0);
+    while (++i < vars->cub->height)
+        h_buffer[i] = 0;
     ft_draw_ground(vars);
     ft_draw_roof(vars);
     ft_draw_wall(vars, &h_buffer);
