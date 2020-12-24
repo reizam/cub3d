@@ -42,8 +42,10 @@ void    ft_draw_roof(t_vars *vars)
 
 int     ft_render_screen(t_vars *vars)
 {
-    static double h_buffer[vars->cub->width];
+    double *h_buffer;
 
+    if (!(h_buffer = (double*)malloc(sizeof(double) * (vars->cub->height + 1))))
+        return (0);
     ft_draw_ground(vars);
     ft_draw_roof(vars);
     ft_draw_wall(vars, &h_buffer);
@@ -51,6 +53,7 @@ int     ft_render_screen(t_vars *vars)
     ft_do_controls(vars);
     if (!vars->cub->save_first_image)
         mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img_ptr, 0, 0);
+    free(h_buffer);
     return (0);
 }
 

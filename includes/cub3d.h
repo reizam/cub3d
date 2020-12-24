@@ -31,7 +31,7 @@ typedef struct  s_sprite
 {
     int     x;
     int     y;
-    t_sprite *next;
+    struct s_sprite *next;
 }               t_sprite;
 
 typedef struct  s_img

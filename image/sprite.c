@@ -59,7 +59,7 @@ void    ft_draw_sprite(t_vars *vars, double *h_buffer)
                 {
                     int d = (y) * 256 - vars->cub->height * 128 + sprite_height * 128;
                     int tex_y = ((d * sprite_img.height) / sprite_height) / 256;
-                    ft_draw_pixel_if_not_black(vars, stripe, y, sprite_img.addr[img.width * tex_y + tex_x]);
+                    ft_draw_pixel_if_not_black(vars, stripe, y, sprite_img.addr[sprite_img.width * tex_y + tex_x]);
                 }
         }
         sprite = sprite->next;
