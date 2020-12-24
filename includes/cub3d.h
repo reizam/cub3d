@@ -91,7 +91,7 @@ typedef struct  s_vars
 }               t_vars;
 
 void        ft_draw_pixel_if_not_black(t_vars *vars, int x, int y, int color);
-void        ft_sort_sprites(t_sprite *begin, int pos_x, int pos_y);
+void        ft_sort_sprites(t_sprite **begin, int pos_x, int pos_y);
 void	    ft_lstclear(t_sprite **lst);
 void	    ft_lstadd_front(t_sprite **alst, int x, int y);
 t_sprite    *ft_create_elem();

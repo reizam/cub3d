@@ -19,6 +19,7 @@ t_sprite    *ft_create_elem()
 
     if (!(elem = (t_sprite*)malloc(sizeof(t_sprite))))
         return (NULL);
+    elem->next = NULL;
     return (elem);
 }
 
