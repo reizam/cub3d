@@ -49,15 +49,24 @@ int ft_parse_sprite(t_cub *cub)
     int         i;
     int         j;
 
-    if (!(sprite = ft_create_elem()))
-        return (0);
     i = -1;
+    sprite = NULL;
     while (cub->map[++i])
     {
         j = -1;
         while (cub->map[i][++j])
             if (cub->map[i][j] == '2')
-                ft_lstadd_front(sprite, j, i);
+            {
+                if (!sprite)
+                {
+                    if (!(sprite = ft_create_elem()))
+                        return (0);
+                    sprite->x = j;
+                    sprite->y = i;
+                }
+                else
+                    ft_lstadd_front(&sprite, j, i);
+            }
     }
     cub->sprite = sprite;
     return (1);
