@@ -19,8 +19,7 @@ void    ft_draw_sprite(t_vars *vars, double *h_buffer)
 
     sprite = vars->cub->sprite;
     sprite_img = vars->textures[3];
-    
-    ft_sort_sprites(sprite, vars->pos_x, vars->pos_y);
+    ft_sort_sprites(&sprite, vars->pos_x, vars->pos_y);
     while (sprite)
     {
         double sprite_x = sprite->x - vars->pos_x;

@@ -40,25 +40,26 @@ double  ft_distance(int pos_x, int pos_y, int sprite_x, int sprite_y)
     return (((pos_x - sprite_x) * (pos_x - sprite_x) + (pos_y - sprite_y) * (pos_y - sprite_y)));
 }
 
-void    ft_sort_sprites(t_sprite *begin, int pos_x, int pos_y)
+void    ft_sort_sprites(t_sprite **begin, int pos_x, int pos_y)
 {
     int         temp;
     t_sprite    *cpy;
 
-    cpy = begin;
-    while (begin)
+    cpy = *begin;
+    while (cpy)
     {
-        if (begin->next && ft_distance(pos_x, pos_y, begin->x, begin->y) > ft_distance(pos_x, pos_y, begin->next->x, begin->next->y))
+        if (cpy->next && ft_distance(pos_x, pos_y, cpy->x, cpy->y) > ft_distance(pos_x, pos_y, cpy->next->x, cpy->next->y))
         {
-            temp = begin->x;
-            begin->x = begin->next->x;
-            begin->next->x = temp;
-            temp = begin->y;
-            begin->y = begin->next->y;
-            begin->next->y = temp;
-            begin = cpy;
+            temp = cpy->x;
+            cpy->x = cpy->next->x;
+            cpy->next->x = temp;
+            temp = cpy->y;
+            cpy->y = cpy->next->y;
+            cpy->next->y = temp;
+            cpy = *begin;
+            continue ;
         }
-        begin = begin->next;
+        cpy = cpy->next;
     }
 }
 
