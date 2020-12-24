@@ -73,6 +73,7 @@ t_cub   *ft_create_cub()
     cub->width = 0;
     cub->dir_x = 0;
     cub->dir_y = 0;
+    cub->sprite = NULL;
     cub->plane_x = 0;
     cub->plane_y = 0;
     cub->south_texture = NULL;

@@ -42,9 +42,12 @@ void    ft_draw_roof(t_vars *vars)
 
 int     ft_render_screen(t_vars *vars)
 {
+    static double h_buffer[vars->cub->width];
+
     ft_draw_ground(vars);
     ft_draw_roof(vars);
-    ft_draw_wall(vars);
+    ft_draw_wall(vars, &h_buffer);
+    ft_draw_sprite(vars, h_buffer);
     ft_do_controls(vars);
     if (!vars->cub->save_first_image)
         mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img_ptr, 0, 0);

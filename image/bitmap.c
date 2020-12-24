@@ -53,8 +53,7 @@ void    ft_update_pixel(t_vars *vars, int i, int *j, int k)
         vars->addr[k - l + (i * vars->line_length - 1)] = t;
         l--;
         (*j)++;
-    }
-    
+    }    
 }
 
 void    ft_update_img(t_vars *vars)

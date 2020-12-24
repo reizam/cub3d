@@ -20,6 +20,15 @@ void    ft_draw_pixel(t_vars *vars, int x, int y, int color)
     *(unsigned int*)dst = color;
 }
 
+void    ft_draw_pixel_if_not_black(t_vars *vars, int x, int y, int color)
+{
+    char    *dst;
+
+    dst = vars->addr + (y * vars->line_length + x * (vars->bits_per_pixel / 8));
+    if ((color & 0x00FFFFFF) != 0)
+        *(unsigned int*)dst = color;
+}
+
 void    ft_draw_texture_line(t_vars *vars, t_img img, int x, int k[4])
 {
     double  step;

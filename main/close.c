@@ -18,10 +18,7 @@ t_cub *ft_parse_exit(t_cub *cub)
 
     i = 0;
     if (!cub)
-    {
-        ft_print_error("A malloc failed");
         return (NULL);
-    }
     if (cub->east_texture)
         free(cub->east_texture);
     if (cub->west_texture)
@@ -38,8 +35,10 @@ t_cub *ft_parse_exit(t_cub *cub)
             free(cub->map[i++]);
         free(cub->map);
     }
+    if (cub->sprite)
+        ft_lstclear(&cub->sprite);
     if (ft_strlen(cub->error) > 0)
-        ft_print_error(cub->error);
+        ft_print_error(cub->error);   
     free(cub);
     return (NULL);
 }

@@ -43,6 +43,26 @@ void    ft_set_spawn(t_cub *cub, char c)
     }
 }
 
+int ft_parse_sprite(t_cub *cub)
+{
+    t_sprite    *sprite;
+    int         i;
+    int         j;
+
+    if (!(sprite = ft_create_elem()))
+        return (0);
+    i = -1;
+    while (cub->map[++i])
+    {
+        j = -1;
+        while (cub->map[i][++j])
+            if (cub->map[i][j] == '2')
+                ft_lstadd_front(sprite, j, i);
+    }
+    cub->sprite = sprite;
+    return (1);
+}
+
 int ft_parse_map_param(t_cub *cub)
 {
     int i;
@@ -62,7 +82,7 @@ int ft_parse_map_param(t_cub *cub)
                 ft_set_spawn(cub, cub->map[i][j]);
             }
     }
-    return (cub->dir_x != 0 || cub->dir_y != 0);
+    return ((cub->dir_x != 0 || cub->dir_y != 0) && ft_parse_sprite(cub));
 }
 
 int ft_parse_map(int fd, t_cub *cub)
