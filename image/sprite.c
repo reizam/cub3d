@@ -25,7 +25,7 @@ void    ft_draw_sprite(t_vars *vars, double *h_buffer)
         double sprite_x = sprite->x - vars->pos_x;
         double sprite_y = sprite->y - vars->pos_y;
 
-        double inv_vet = 1.0 / (vars->plane_x * vars->dir_x - vars->dir_x * vars->plane_x);
+        double inv_vet = 1.0 / (vars->plane_x * vars->dir_y - vars->dir_x * vars->plane_y);
 
         double transform_x = inv_vet * (vars->dir_y * sprite_x - vars->dir_x * sprite_y);
         double transform_y = inv_vet * (-vars->plane_x * sprite_x + vars->plane_x * sprite_x);
@@ -46,7 +46,6 @@ void    ft_draw_sprite(t_vars *vars, double *h_buffer)
         int drawEndX = sprite_width / 2 + sprite_screen_x;
         if(drawEndX >= vars->cub->width) drawEndX = vars->cub->width - 1;
     
-
         int stripe = drawStartX - 1;
         while (++stripe < drawEndX)
         {
