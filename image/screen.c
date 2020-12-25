@@ -69,6 +69,16 @@ int		ft_leave_hook(t_vars *vars)
 	return (1);
 }
 
+void	ft_save_first_image(t_cub *cub, t_vars *vars)
+{
+	if (cub->save_first_image)
+	{
+		ft_render_screen(vars);
+		ft_save_image(vars, "first_image.bmp");
+		ft_screen_exit(vars);
+	}
+}
+
 void	ft_open_screen(t_cub *cub)
 {
 	t_vars	*vars;
@@ -84,14 +94,11 @@ void	ft_open_screen(t_cub *cub)
 	mlx_get_screen_size(vars->mlx_ptr, &width, &height);
 	cub->width = cub->width > width ? width : cub->width;
 	cub->height = cub->height > height ? height : cub->height;
-	vars->img_ptr = mlx_new_image(vars->mlx_ptr, vars->cub->width, vars->cub->height);
-	vars->addr = mlx_get_data_addr(vars->img_ptr, &vars->bits_per_pixel, &vars->line_length, &vars->endian);
-	if (cub->save_first_image)
-	{
-		ft_render_screen(vars);
-		ft_save_image(vars, "first_image.bmp");
-		ft_screen_exit(vars);
-	}
+	vars->img_ptr = mlx_new_image(vars->mlx_ptr,
+	vars->cub->width, vars->cub->height);
+	vars->addr = mlx_get_data_addr(vars->img_ptr,
+	&vars->bits_per_pixel, &vars->line_length, &vars->endian);
+	ft_save_first_image();
 	vars->win_ptr = mlx_new_window(vars->mlx_ptr, cub->width, cub->height, "Cub3d");
 	mlx_hook(vars->win_ptr, 2, 1L << 0, ft_key_press, vars);
 	mlx_hook(vars->win_ptr, 3, 1L << 1, ft_key_release, vars);
