@@ -106,7 +106,7 @@ void	ft_draw_wall(t_vars *vars, double **h_buffer)
 		if (!ft_raycast(vars, &i, &j))
 			continue ;
 		i[7] = j[4] == 0 ? ((j[0] - vars->pos_x + (1 - j[2])
-		 / 2) / i[1]) : ((j[1] - vars->pos_y + (1 - j[3]) / 2) / i[2]);
+		/ 2) / i[1]) : ((j[1] - vars->pos_y + (1 - j[3]) / 2) / i[2]);
 		ft_draw_wall_line(vars, x, j, i);
 		(*h_buffer)[x] = i[7];
 	}

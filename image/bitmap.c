@@ -49,8 +49,8 @@ void	ft_update_pixel(t_vars *vars, int i, int *j, int k)
 	while (l >= 0)
 	{
 		t = vars->addr[*j + (i * vars->line_length)];
-		vars->addr[*j + (i * vars->line_length)]
-		= vars->addr[k - l + (i * vars->line_length - 1)];
+		vars->addr[*j + (i * vars->line_length)] = vars->addr
+		[k - l + (i * vars->line_length - 1)];
 		vars->addr[k - l + (i * vars->line_length - 1)] = t;
 		l--;
 		(*j)++;

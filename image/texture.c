@@ -14,8 +14,7 @@
 
 int	ft_load_texture(t_vars *vars, t_img textures[5], char *path, int index)
 {
-	textures[index].img_ptr = mlx_xpm_file_to_image(
-		vars->mlx_ptr,path,
+	textures[index].img_ptr = mlx_xpm_file_to_image(vars->mlx_ptr, path,
 		&textures[index].width,
 		&textures[index].height);
 	if (textures[index].img_ptr == NULL)
