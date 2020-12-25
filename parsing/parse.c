@@ -98,6 +98,7 @@ t_cub	*ft_parse_cub_file(char *file)
 	if (!(cub = (t_cub*)ft_create_cub()))
 		return (ft_parse_exit(cub));
 	fd = open(file, O_RDONLY);
+	cub->error = "This map file doesn't exist.";
 	if (fd < 0)
 		return (ft_parse_exit(cub));
 	while (!ft_is_full(cub) && get_next_line(fd, &line) > 0)
