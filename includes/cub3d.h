@@ -133,6 +133,6 @@ void		ft_screen_init_exit(t_vars *vars, int do_exit);
 void		ft_draw_wall(t_vars *vars, double **h_buffer);
 void		ft_draw_sprite(t_vars *vars, double *h_buffer);
 void		ft_draw_roof(t_vars *vars);
-void		ft_draw_ground(t_vars *vars)
+void		ft_draw_ground(t_vars *vars);
 
 #endif

@@ -100,8 +100,8 @@ void	ft_draw_wall(t_vars *vars, double **h_buffer)
 		i[2] = vars->dir_y + vars->plane_y * i[0];
 		j[0] = (int)vars->pos_x;
 		j[1] = (int)vars->pos_y;
-		i[3] = fabs(1 / i[1]));
-		i[4] = fabs(1 / i[2]));
+		i[3] = fabs(1 / i[1]);
+		i[4] = fabs(1 / i[2]);
 		ft_calc_side_dist(vars, &i, &j);
 		if (!ft_raycast(vars, &i, &j))
 			continue ;
