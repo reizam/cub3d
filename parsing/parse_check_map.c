@@ -80,5 +80,5 @@ int		ft_leave_parse_map(char *map)
 {
 	if (map)
 		free(map);
-	return (1);
+	return (0);
 }
