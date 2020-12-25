@@ -40,7 +40,7 @@ void	ft_draw_texture_line(t_vars *vars, t_img img, int x, int k[4])
 	while (k[0] < k[1])
 	{
 		tex_y = (int)tex_pos & (img.height - 1);
-		tex_pos  += step;
+		tex_pos += step;
 		ft_draw_pixel(vars, x, k[0], img.addr[img.width * tex_y + k[3]]);
 		k[0]++;
 	}

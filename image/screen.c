@@ -18,7 +18,8 @@ int		ft_render_screen(t_vars *vars)
 
 	i = -1;
 	if (!vars->h_buffer)
-		if (!(vars->h_buffer = (double*)malloc(sizeof(double) * (vars->cub->width + 1))))
+		if (!(vars->h_buffer = (double*)malloc(sizeof(double)
+		* (vars->cub->width + 1))))
 			return (0);
 	while (++i < vars->cub->width)
 		vars->h_buffer[i] = 0;
@@ -28,7 +29,8 @@ int		ft_render_screen(t_vars *vars)
 	ft_draw_sprite(vars, vars->h_buffer);
 	ft_do_controls(vars);
 	if (!vars->cub->save_first_image)
-		mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img_ptr, 0, 0);
+		mlx_put_image_to_window(vars->mlx_ptr,
+		vars->win_ptr, vars->img_ptr, 0, 0);
 	return (0);
 }
 
@@ -37,7 +39,6 @@ void	ft_init_vars(t_vars *vars, t_cub *cub)
 	vars->pos_x = cub->spawn_x;
 	vars->pos_y = cub->spawn_y;
 	vars->addr = NULL;
-	vars->mlx_ptr = NULL;
 	vars->win_ptr = NULL;
 	vars->img_ptr = NULL;
 	vars->dir_x = cub->dir_x;
