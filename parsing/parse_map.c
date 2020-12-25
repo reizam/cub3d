@@ -118,6 +118,7 @@ int		ft_parse_map(int fd, t_cub *cub)
 			break ;
 	}
 	cub->map = ft_split(map, '\n');
-	free(map);
-	return (ft_check_map(cub) && ft_parse_map_param(cub, map));
+	if (map)
+		free(map);
+	return (ft_check_map(cub) && ft_parse_map_param(cub));
 }
