@@ -62,7 +62,7 @@ int	 ft_parse_line(char *line, t_cub *cub)
 
 t_cub   *ft_create_cub()
 {
-	t_cub   *cub;
+	t_cub	*cub;
 
 	if (!(cub = (t_cub*)malloc(sizeof(t_cub))))
 		return (NULL);
@@ -91,9 +91,9 @@ t_cub   *ft_create_cub()
 t_cub   *ft_parse_cub_file(char *file)
 {
 	char	*line;
-	int	 fd;
-	int	 i;
-	t_cub   *cub;
+	int		fd;
+	int		i;
+	t_cub	*cub;
 
 	if (!(cub = (t_cub*)ft_create_cub()))
 		return (ft_parse_exit(cub));

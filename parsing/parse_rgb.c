@@ -32,10 +32,10 @@ int	 ft_free_splitted_str(char **s)
 int	 ft_parse_rgb(char *line, int id, t_cub *cub)
 {
 	char	**s;
-	int	 i;
-	int	 r;
-	int	 g;
-	int	 b;
+	int		i;
+	int		r;
+	int		g;
+	int		b;
 
 	s = ft_split(line, ',');
 	i = 0;
