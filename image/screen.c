@@ -28,7 +28,7 @@ int		ft_render_screen(t_vars *vars)
 	ft_draw_wall(vars, &vars->h_buffer);
 	ft_draw_sprite(vars, vars->h_buffer);
 	ft_do_controls(vars);
-	if (!vars->cub->save_first_image)
+	if (!vars->cub->save_first_image[0])
 		mlx_put_image_to_window(vars->mlx_ptr,
 		vars->win_ptr, vars->img_ptr, 0, 0);
 	return (0);
@@ -71,10 +71,10 @@ int		ft_leave_hook(t_vars *vars)
 
 void	ft_save_first_image(t_cub *cub, t_vars *vars)
 {
-	if (cub->save_first_image)
+	if (ft_strlen(cub->save_first_image) > 0)
 	{
 		ft_render_screen(vars);
-		ft_save_image(vars, "first_image.bmp");
+		ft_save_image(vars, cub->save_first_image);
 		ft_screen_exit(vars);
 	}
 }

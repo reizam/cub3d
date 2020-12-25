@@ -47,7 +47,7 @@ typedef struct  s_img
 
 typedef struct	s_cub
 {
-	int		 	save_first_image;
+	char		*save_first_image;
 	int		 	height;
 	int		 	width;
 	char		*south_texture;

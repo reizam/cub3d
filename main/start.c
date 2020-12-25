@@ -30,19 +30,23 @@ int		start_cub3d(int ac, char **av)
 		ft_print_error("Wrong file type.");
 		return (0);
 	}
-	if (!(cub = ft_parse_cub_file(av[1])))
-		return (0);
 	if (ac == 3)
 	{
-		if (ft_strcmp(av[2], "--save") != 0)
+		ft_print_error("Too many arguments.");
+		return (0);
+	}
+	if (!(cub = ft_parse_cub_file(av[1])))
+		return (0);
+	if (ac == 4)
+	{
+		if (ft_strcmp(av[2], "--save") != 0 && ft_check_file_ext(av[3], ".bmp"))
 		{
 			cub->error = "Wrong arguments.";
 			ft_parse_exit(cub);
 			return (0);
 		}
-		cub->save_first_image = 1;
+		cub->save_first_image = av[3];
 	}
-	cub->error = "";
 	ft_open_screen(cub);
 	return (1);
 }

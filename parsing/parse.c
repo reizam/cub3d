@@ -68,7 +68,7 @@ t_cub	*ft_create_cub(void)
 		return (NULL);
 	cub->spawn_x = 0;
 	cub->spawn_y = 0;
-	cub->save_first_image = 0;
+	cub->save_first_image = "";
 	cub->height = 0;
 	cub->width = 0;
 	cub->dir_x = 0;
