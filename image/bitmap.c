@@ -15,7 +15,7 @@
 void    ft_write_bmp_file_header(t_vars *vars, int fd)
 {
     int i;
-
+    
     i = 58 + (vars->cub->width * vars->cub->height) * 4;
     write(fd, "BM", 2);
     write(fd, &i, 4);
