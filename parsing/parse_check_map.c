@@ -76,7 +76,7 @@ int	ft_check_map(t_cub *cub)
 	return (1);
 }
 
-int		ft_leave_parse_map(char *map)
+int	ft_leave_parse_map(char *map)
 {
 	if (map)
 		free(map);
