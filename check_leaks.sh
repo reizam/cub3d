@@ -1,1 +1,1 @@
-EXEC=./Cub3D;ARGS=test.cub;valgrind --tool=memcheck --leak-check=full --leak-resolution=high --show-reachable=yes --log-file=valgrind_log ./$EXEC $ARGS;grep -A1 "valgrind" valgrind_log|grep $EXEC
+EXEC=./cub3D;ARGS=test.cub;valgrind --tool=memcheck --leak-check=full --leak-resolution=high --show-reachable=yes --log-file=valgrind_log ./$EXEC $ARGS;grep -A1 "valgrind" valgrind_log|grep $EXEC
