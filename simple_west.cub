@@ -1,0 +1,17 @@
+R	1000	500
+NO	./textures/wall1.xpm
+SO	./textures/wall2.xpm
+WE	./textures/wall3.xpm
+EA	./textures/wall4.xpm
+
+S	./textures/sprite.xpm
+F	220,100,0
+C	225,30,0
+
+11111111
+10000001
+10000001
+10000001
+1000W001
+10000001
+11111111
