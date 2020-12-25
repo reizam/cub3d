@@ -36,8 +36,8 @@ int		ft_render_screen(t_vars *vars)
 
 void	ft_init_vars(t_vars *vars, t_cub *cub)
 {
-	vars->pos_x = cub->spawn_x;
-	vars->pos_y = cub->spawn_y;
+	vars->pos_x = cub->spawn_x + 0.5;
+	vars->pos_y = cub->spawn_y + 0.5;
 	vars->addr = NULL;
 	vars->win_ptr = NULL;
 	vars->img_ptr = NULL;
