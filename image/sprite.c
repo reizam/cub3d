@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-void    ft_draw_sprite_texture(t_vars *vars, int i[12], double d[5])
+void    ft_draw_sprite_texture(t_vars *vars, int i[12], double d[5], double *h_buffer)
 {
     t_img   sprite_img;
 
@@ -20,7 +20,7 @@ void    ft_draw_sprite_texture(t_vars *vars, int i[12], double d[5])
     i[2] = -i[1] / 2 + vars->cub->height / 2;
     i[2] = i[2] < 0 ? 0 :i[2];
     i[3] = i[1] / 2 + vars->cub->height / 2;
-    i[3] = i[3] >= cub->cub->height ? vars->cub->height - 1 : i[3];
+    i[3] = i[3] >= vars->cub->height ? vars->cub->height - 1 : i[3];
     i[4] = abs((int)(vars->cub->height / d[4]));
     i[5] = -i[4] / 2 + i[0];
     i[5] = i[5] < 0 ? 0 : i[5];
@@ -58,7 +58,7 @@ void    ft_draw_sprite(t_vars *vars, double *h_buffer)
         d[4] = d[2] * (-vars->plane_y * d[0] + vars->plane_x * d[1]);
         i[0] = (int)((vars->cub->width / 2) * (1 + d[3] / d[4]));
         i[1] = abs((int)(vars->cub->height / (d[4])));
-        ft_draw_sprite_texture(vars, i, d);
+        ft_draw_sprite_texture(vars, i, d, h_buffer);
         sprite = sprite->next;
     }
 }
