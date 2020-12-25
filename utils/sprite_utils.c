@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-t_sprite	*ft_create_elem()
+t_sprite	*ft_create_elem(void)
 {
 	t_sprite *elem;
 

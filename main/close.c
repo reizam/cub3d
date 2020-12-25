@@ -1,18 +1,18 @@
 /* ************************************************************************** */
-/*																			  */
-/*														:::	  ::::::::        */
-/*   close.c											:+:	  :+:	:+:       */
-/*													+:+ +:+		 +:+	      */
-/*   By: marvin <marvin@student.42.fr>			  +#+  +:+	   +#+		      */
-/*												+#+#+#+#+#+   +#+		      */
-/*   Created: 2020/12/16 08:00:13 by marvin			#+#	#+#			          */
-/*   Updated: 2020/12/16 08:00:13 by marvin		   ###   ########.fr	      */
-/*																			  */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   close.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kmazier <kmazier@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/25 17:53:07 by kmazier           #+#    #+#             */
+/*   Updated: 2020/12/25 17:53:07 by kmazier          ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_cub *ft_parse_exit(t_cub *cub)
+t_cub	*ft_parse_exit(t_cub *cub)
 {
 	int		 i;
 
@@ -29,16 +29,13 @@ t_cub *ft_parse_exit(t_cub *cub)
 		free(cub->north_texture);
 	if (cub->sprite_texture)
 		free(cub->sprite_texture);
+	while (cub->map && cub->map[i])
+		free(cub->map[i++]);
 	if (cub->map)
-	{
-		while (cub->map[i])
-			free(cub->map[i++]);
 		free(cub->map);
-	}
 	if (cub->sprite)
 		ft_lstclear(&cub->sprite);
-	if (ft_strlen(cub->error) > 0)
-		ft_print_error(cub->error);   
+	ft_print_error(cub->error);   
 	free(cub);
 	return (NULL);
 }

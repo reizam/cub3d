@@ -95,7 +95,7 @@ void		ft_draw_pixel_if_not_black(t_vars *vars, int x, int y, int color);
 void		ft_sort_sprites(t_sprite **begin, int pos_x, int pos_y);
 void		ft_lstclear(t_sprite **lst);
 void		ft_lstadd_front(t_sprite **alst, int x, int y);
-t_sprite	*ft_create_elem();
+t_sprite	*ft_create_elem(void);
 void		ft_save_image(t_vars *vars, char *file_name);
 void		ft_do_controls(t_vars *vars);
 int		 	ft_key_release(int keycode, t_vars *vars);
@@ -132,5 +132,7 @@ void		ft_draw_texture_line(t_vars *vars, t_img img, int x, int k[4]);
 void		ft_screen_init_exit(t_vars *vars, int do_exit);
 void		ft_draw_wall(t_vars *vars, double **h_buffer);
 void		ft_draw_sprite(t_vars *vars, double *h_buffer);
+void		ft_draw_roof(t_vars *vars);
+void		ft_draw_ground(t_vars *vars)
 
 #endif

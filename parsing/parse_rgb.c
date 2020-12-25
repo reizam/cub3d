@@ -49,13 +49,10 @@ int	ft_parse_rgb(char *line, int id, t_cub *cub)
 	r = ft_atoi(s[0]);
 	g = ft_atoi(s[1]);
 	b = ft_atoi(s[2]);
-	i = 0;
 	ft_free_splitted_str(s);
-	if (!ft_check_rgb(r, g, b))
-		return (0);
 	if (id == 0)
 		cub->rgb_ground = (0 << 24 | r << 16 | g << 8 | b);
 	else if (id == 1)
 		cub->rgb_roof = (0 << 24 | r << 16 | g << 8 | b);
-	return (1);
+	return (ft_check_rgb(r, g, b));
 }

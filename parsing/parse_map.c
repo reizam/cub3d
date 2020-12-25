@@ -17,7 +17,7 @@ int		ft_is_map_char(char c, int just_spawn)
 	if (just_spawn)
 		return (c == 'N' || c == 'W' || c == 'E' || c == 'S');
 	return (c == '1' || c == '2' || c == '0' || c == 'N'
-	|| c =='S' || c == 'E' || c == 'W' || c == ' ');
+	|| c == 'S' || c == 'E' || c == 'W' || c == ' ');
 }
 
 void	ft_set_spawn(t_cub *cub, char c)
@@ -46,9 +46,9 @@ void	ft_set_spawn(t_cub *cub, char c)
 
 int		ft_parse_sprite(t_cub *cub)
 {
-	t_sprite*sprite;
-	int         i;
-	int         j;
+	t_sprite	*sprite;
+	int			i;
+	int			j;
 
 	i = -1;
 	sprite = NULL;
@@ -109,8 +109,7 @@ int		ft_parse_map(int fd, t_cub *cub)
 	while ((j = get_next_line(fd, &line)) >= 0)
 	{
 		k = ft_strlen(line) > 0 && !k ? 1 : k;
-		if (j == 0 && ft_strlen(line) == 0)
-			k = 2;
+		k = j == 0 && ft_strlen(line) == 0 ? 2 : k;
 		i = ft_check_map_line(line);
 		if (i && k == 1)
 			map = ft_strjoin(map, line, j);

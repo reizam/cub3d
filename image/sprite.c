@@ -1,18 +1,19 @@
 /* ************************************************************************** */
-/*																			  */
-/*														:::	  ::::::::        */
-/*   sprite.c										   :+:	  :+:	:+:       */
-/*													+:+ +:+		 +:+	      */
-/*   By: kmazier <kmazier@student.42.fr>			+#+  +:+	   +#+		  */
-/*												+#+#+#+#+#+   +#+		      */
-/*   Created: 2020/12/22 21:29:42 by kmazier		   #+#	#+#			      */
-/*   Updated: 2020/12/22 21:29:42 by kmazier		  ###   ########.fr	      */
-/*																			  */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sprite.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kmazier <kmazier@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/25 17:59:21 by kmazier           #+#    #+#             */
+/*   Updated: 2020/12/25 17:59:21 by kmazier          ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ft_draw_sprite_texture(t_vars *vars, int i[12], double d[5], double *h_buffer)
+void	ft_draw_sprite_texture(t_vars *vars, int i[12],
+double d[5], double *h_buffer)
 {
 	t_img   sprite_img;
 
@@ -44,8 +45,8 @@ void	ft_draw_sprite_texture(t_vars *vars, int i[12], double d[5], double *h_buff
 void	ft_draw_sprite(t_vars *vars, double *h_buffer)
 {
 	t_sprite	*sprite;
-	double	  d[5];
-	int		 i[12];
+	double		d[5];
+	int			i[12];
 
 	sprite = vars->cub->sprite;
 	ft_sort_sprites(&sprite, vars->pos_x, vars->pos_y);
@@ -53,7 +54,8 @@ void	ft_draw_sprite(t_vars *vars, double *h_buffer)
 	{
 		d[0] = sprite->x - vars->pos_x;
 		d[1] = sprite->y - vars->pos_y;
-		d[2] = 1.0 / (vars->plane_x * vars->dir_y - vars->dir_x * vars->plane_y);
+		d[2] = 1.0 / (vars->plane_x * vars->dir_y
+		- vars->dir_x * vars->plane_y);
 		d[3] = d[2] * (vars->dir_y * d[0] - vars->dir_x * d[1]);
 		d[4] = d[2] * (-vars->plane_y * d[0] + vars->plane_x * d[1]);
 		i[0] = (int)((vars->cub->width / 2) * (1 + d[3] / d[4]));

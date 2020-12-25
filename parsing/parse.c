@@ -1,18 +1,18 @@
 /* ************************************************************************** */
-/*																			  */
-/*														:::	  ::::::::        */
-/*   parse.c											:+:	  :+:	:+:       */
-/*													+:+ +:+		 +:+	      */
-/*   By: kmazier <kmazier@student.42.fr>			+#+  +:+	   +#+		  */
-/*												+#+#+#+#+#+   +#+		      */
-/*   Created: 2020/12/15 13:05:58 by kmazier		   #+#	#+#			      */
-/*   Updated: 2020/12/15 18:23:22 by kmazier		  ###   ########.fr	      */
-/*																			  */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kmazier <kmazier@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/25 17:50:54 by kmazier           #+#    #+#             */
+/*   Updated: 2020/12/25 17:50:54 by kmazier          ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	 ft_parse_res(char *line, t_cub *cub)
+int		ft_parse_res(char *line, t_cub *cub)
 {
 	int height;
 	int width;
@@ -34,7 +34,7 @@ char	*ft_get_values(char *line, int i)
 	return (line + i);
 }
 
-int	 ft_parse_line(char *line, t_cub *cub)
+int		ft_parse_line(char *line, t_cub *cub)
 {
 	int i;
 
@@ -60,7 +60,7 @@ int	 ft_parse_line(char *line, t_cub *cub)
 	return (0);
 }
 
-t_cub   *ft_create_cub()
+t_cub	*ft_create_cub(void)
 {
 	t_cub	*cub;
 
@@ -88,7 +88,7 @@ t_cub   *ft_create_cub()
 	return (cub);
 }
 
-t_cub   *ft_parse_cub_file(char *file)
+t_cub	*ft_parse_cub_file(char *file)
 {
 	char	*line;
 	int		fd;

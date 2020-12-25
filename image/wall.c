@@ -14,16 +14,17 @@
 
 void	ft_draw_wall_line(t_vars *vars, int x, int j[5], double i[8])
 {
-	int	 k[5];
-	double  wall_x;
-	t_img   img;
-	
+	int		k[5];
+	double	wall_x;
+	t_img	img;
+
 	k[2] = (int)(vars->cub->height / i[7]);
 	k[0] = -k[2] / 2 + vars->cub->height / 2;
 	k[0] = k[0] < 0 ? 0 : k[0];
 	k[1] = k[2] / 2 + vars->cub->height / 2;
 	k[1] = k[1] >= vars->cub->height ? vars->cub->height - 1 : k[1];
-	wall_x = j[4] == 0 ? (vars->pos_y + i[7] * i[2]) : (vars->pos_x + i[7] * i[1]);
+	wall_x = j[4] == 0 ? (vars->pos_y + i[7] * i[2])
+	: (vars->pos_x + i[7] * i[1]);
 	wall_x -= floor((wall_x));
 	if (j[4] == 0)
 		k[4] = j[2] > 0 ? 0 : 1;
@@ -78,7 +79,8 @@ int	 	ft_raycast(t_vars *vars, double (*i)[8], int (*j)[5])
 		}
 		if ((*j)[0] < 0 || (*j)[1] < 0 || !vars->cub->map[(*j)[1]][(*j)[0]])
 			break ;
-		if ((*j)[0] >= 0 && (*j)[1] >= 0 && vars->cub->map[(*j)[1]][(*j)[0]] == '1')
+		if ((*j)[0] >= 0 && (*j)[1] >= 0
+		&& vars->cub->map[(*j)[1]][(*j)[0]] == '1')
 			return (1);
 	}
 	return (0);
@@ -86,9 +88,9 @@ int	 	ft_raycast(t_vars *vars, double (*i)[8], int (*j)[5])
 
 void	ft_draw_wall(t_vars *vars, double **h_buffer)
 {
-	double  i[8];
-	int	 j[5];
-	int	 x;
+	double	i[8];
+	int		j[5];
+	int		x;
 
 	x = -1;
 	while (++x < vars->cub->width)
@@ -98,8 +100,8 @@ void	ft_draw_wall(t_vars *vars, double **h_buffer)
 		i[2] = vars->dir_y + vars->plane_y * i[0];
 		j[0] = (int)vars->pos_x;
 		j[1] = (int)vars->pos_y;
-		i[3] = (i[2] == 0) ? 0 : ((i[1] == 0) ? 1 : fabs(1 / i[1]));
-		i[4] = (i[1] == 0) ? 0 : ((i[2] == 0) ? 1 : fabs(1 / i[2]));
+		i[3] = fabs(1 / i[1]));
+		i[4] = fabs(1 / i[2]));
 		ft_calc_side_dist(vars, &i, &j);
 		if (!ft_raycast(vars, &i, &j))
 			continue ;

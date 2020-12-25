@@ -1,25 +1,27 @@
 /* ************************************************************************** */
-/*																			  */
-/*														:::	  ::::::::        */
-/*   start.c											:+:	  :+:	:+:       */
-/*													+:+ +:+		 +:+	      */
-/*   By: kmazier <kmazier@student.42.fr>			+#+  +:+	   +#+		  */
-/*												+#+#+#+#+#+   +#+		      */
-/*   Created: 2020/12/15 13:03:49 by kmazier		   #+#	#+#			      */
-/*   Updated: 2020/12/15 18:20:18 by kmazier		  ###   ########.fr	      */
-/*																			  */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   start.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kmazier <kmazier@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/25 17:52:32 by kmazier           #+#    #+#             */
+/*   Updated: 2020/12/25 17:52:32 by kmazier          ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 void	ft_print_error(char *error)
 {
+	if (ft_strlen(error) == 0)
+		return ;
 	ft_putstr_fd("Error\n", 0);
 	ft_putstr_fd(error, 0);
 	ft_putstr_fd("\n", 0);
 }
 
-int	 start_cub3d(int ac, char **av)
+int		start_cub3d(int ac, char **av)
 {
 	t_cub *cub;
 
@@ -45,7 +47,7 @@ int	 start_cub3d(int ac, char **av)
 	return (1);
 }
 
-int main(int ac, char **av)
+int		main(int ac, char **av)
 {
 	if (ac == 3 || ac == 2)
 	{
