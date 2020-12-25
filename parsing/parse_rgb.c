@@ -1,23 +1,23 @@
 /* ************************************************************************** */
-/*																			  */
-/*														:::	  ::::::::        */
-/*   parse_rgb.c										:+:	  :+:	:+:       */
-/*													+:+ +:+		 +:+	      */
-/*   By: marvin <marvin@student.42.fr>			  +#+  +:+	   +#+		      */
-/*												+#+#+#+#+#+   +#+		      */
-/*   Created: 2020/12/16 08:26:30 by marvin			#+#	#+#			          */
-/*   Updated: 2020/12/16 08:26:30 by marvin		   ###   ########.fr	      */
-/*																			  */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_rgb.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kmazier <kmazier@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/25 14:16:35 by kmazier           #+#    #+#             */
+/*   Updated: 2020/12/25 14:16:35 by kmazier          ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	 ft_check_rgb(int r, int g, int b)
+int	ft_check_rgb(int r, int g, int b)
 {
 	return (r >= 0 && r <= 255 && g >= 0 && g <= 255 && b >= 0 && b <= 255);
 }
 
-int	 ft_free_splitted_str(char **s)
+int	ft_free_splitted_str(char **s)
 {
 	int i;
 
@@ -29,7 +29,7 @@ int	 ft_free_splitted_str(char **s)
 	return (0);
 }
 
-int	 ft_parse_rgb(char *line, int id, t_cub *cub)
+int	ft_parse_rgb(char *line, int id, t_cub *cub)
 {
 	char	**s;
 	int		i;

@@ -1,17 +1,16 @@
 /* ************************************************************************** */
-/*																			  */
-/*														:::	  ::::::::        */
-/*   sprite_utils.c									 :+:	  :+:	:+:       */
-/*													+:+ +:+		 +:+	      */
-/*   By: kmazier <kmazier@student.42.fr>			+#+  +:+	   +#+		  */
-/*												+#+#+#+#+#+   +#+		      */
-/*   Created: 2020/12/24 14:47:47 by kmazier		   #+#	#+#			      */
-/*   Updated: 2020/12/24 14:47:47 by kmazier		  ###   ########.fr	      */
-/*																			  */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sprite_utils.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kmazier <kmazier@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/25 14:12:49 by kmazier           #+#    #+#             */
+/*   Updated: 2020/12/25 14:12:49 by kmazier          ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 
 t_sprite	*ft_create_elem()
 {
@@ -23,7 +22,7 @@ t_sprite	*ft_create_elem()
 	return (elem);
 }
 
-void	ft_lstadd_front(t_sprite **alst, int x, int y)
+void		ft_lstadd_front(t_sprite **alst, int x, int y)
 {
 	t_sprite *new_elem;
 
@@ -36,12 +35,13 @@ void	ft_lstadd_front(t_sprite **alst, int x, int y)
 	(*alst) = new_elem;
 }
 
-double  ft_distance(int pos_x, int pos_y, int sprite_x, int sprite_y)
+double		ft_distance(int pos_x, int pos_y, int sprite_x, int sprite_y)
 {
-	return (((pos_x - sprite_x) * (pos_x - sprite_x) + (pos_y - sprite_y) * (pos_y - sprite_y)));
+	return (((pos_x - sprite_x) * (pos_x - sprite_x)
+	+ (pos_y - sprite_y) * (pos_y - sprite_y)));
 }
 
-void	ft_sort_sprites(t_sprite **begin, int pos_x, int pos_y)
+void		ft_sort_sprites(t_sprite **begin, int pos_x, int pos_y)
 {
 	int			temp;
 	t_sprite	*cpy;
@@ -49,7 +49,8 @@ void	ft_sort_sprites(t_sprite **begin, int pos_x, int pos_y)
 	cpy = *begin;
 	while (cpy)
 	{
-		if (cpy->next && ft_distance(pos_x, pos_y, cpy->x, cpy->y) < ft_distance(pos_x, pos_y, cpy->next->x, cpy->next->y))
+		if (cpy->next && ft_distance(pos_x, pos_y, cpy->x, cpy->y)
+		< ft_distance(pos_x, pos_y, cpy->next->x, cpy->next->y))
 		{
 			temp = cpy->x;
 			cpy->x = cpy->next->x;
@@ -64,7 +65,7 @@ void	ft_sort_sprites(t_sprite **begin, int pos_x, int pos_y)
 	}
 }
 
-void	ft_lstclear(t_sprite **lst)
+void		ft_lstclear(t_sprite **lst)
 {
 	t_sprite *next;
 

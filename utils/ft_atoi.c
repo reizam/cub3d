@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_atoi(char *str)
+int	ft_atoi(char *str)
 {
 	long long int	result;
 	long int		i;
@@ -23,8 +23,8 @@ int		ft_atoi(char *str)
 			result = result * 10 + (long long int)(str[i] - 48);
 		else if (str[i] == ' ')
 			break ;
-        else
-            return (-1);
+		else
+			return (-1);
 		i++;
 	}
 	return (result);

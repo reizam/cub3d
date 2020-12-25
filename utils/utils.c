@@ -1,22 +1,22 @@
 /* ************************************************************************** */
-/*																			  */
-/*														:::	  ::::::::        */
-/*   utils.c											:+:	  :+:	:+:       */
-/*													+:+ +:+		 +:+	      */
-/*   By: kmazier <kmazier@student.42.fr>			+#+  +:+	   +#+		  */
-/*												+#+#+#+#+#+   +#+		      */
-/*   Created: 2020/12/15 17:20:06 by kmazier		   #+#	#+#			      */
-/*   Updated: 2020/12/15 18:01:06 by kmazier		  ###   ########.fr	      */
-/*																			  */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kmazier <kmazier@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/25 14:11:13 by kmazier           #+#    #+#             */
+/*   Updated: 2020/12/25 14:11:13 by kmazier          ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 int	ft_check_file_ext(char *file, char *extension)
 {
-	int	 i;
-	int	 len;
-	int	 ext_len;
+	int	i;
+	int	len;
+	int	ext_len;
 
 	len = ft_strlen(file);
 	ext_len = ft_strlen(extension);
@@ -32,7 +32,7 @@ int	ft_check_file_ext(char *file, char *extension)
 	return (1);
 }
 
-int		ft_nb_len(int nb)
+int	ft_nb_len(int nb)
 {
 	int i;
 
@@ -45,7 +45,7 @@ int		ft_nb_len(int nb)
 	return (i);
 }
 
-int		ft_is_full(t_cub *cub)
+int	ft_is_full(t_cub *cub)
 {
 	return (cub->height != 0 && cub->width != 0 && cub->sprite_texture != NULL
 	&& cub->north_texture != NULL && cub->east_texture != NULL
@@ -54,10 +54,10 @@ int		ft_is_full(t_cub *cub)
 	&& cub->rgb_roof != -1);
 }
 
-int	 ft_isnum(char *str)
+int	ft_isnum(char *str)
 {
 	int i;
-	
+
 	i = -1;
 	while (str[++i])
 		if (str[i] < '0' || str[i] > '9')

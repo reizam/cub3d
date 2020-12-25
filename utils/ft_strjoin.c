@@ -29,8 +29,8 @@ char	*ft_strjoin(char *s1, char *s2, int n)
 	j = 0;
 	while (s2 && s2[j])
 		result[i++] = s2[j++];
-    if (n == 1)
-        result[i++] = '\n';
+	if (n == 1)
+		result[i++] = '\n';
 	result[i] = 0;
 	if (s1)
 		free(s1);

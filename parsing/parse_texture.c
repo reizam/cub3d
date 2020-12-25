@@ -1,18 +1,18 @@
 /* ************************************************************************** */
-/*																			  */
-/*														:::	  ::::::::        */
-/*   parse_file.c									   :+:	  :+:	:+:       */
-/*													+:+ +:+		 +:+	      */
-/*   By: kmazier <kmazier@student.42.fr>			+#+  +:+	   +#+		  */
-/*												+#+#+#+#+#+   +#+		      */
-/*   Created: 2020/12/18 14:01:48 by kmazier		   #+#	#+#			      */
-/*   Updated: 2020/12/18 14:01:48 by kmazier		  ###   ########.fr	      */
-/*																			  */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_texture.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kmazier <kmazier@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/25 14:16:01 by kmazier           #+#    #+#             */
+/*   Updated: 2020/12/25 14:16:01 by kmazier          ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int ft_check_file(char *file)
+int	ft_check_file(char *file)
 {
 	int fd;
 
@@ -23,7 +23,7 @@ int ft_check_file(char *file)
 	return (ft_check_file_ext(file, ".xpm") || ft_check_file_ext(file, ".png"));
 }
 
-int ft_parse_texture(char *line, int id, t_cub *cub)
+int	ft_parse_texture(char *line, int id, t_cub *cub)
 {
 	cub->error = "Wrong texture path.";
 	if (!ft_check_file(line))

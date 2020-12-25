@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*														:::	  ::::::::        */
-/*   parse_map.c										:+:	  :+:	:+:       */
-/*													+:+ +:+		 +:+	      */
-/*   By: kmazier <kmazier@student.42.fr>			+#+  +:+	   +#+		  */
-/*												+#+#+#+#+#+   +#+		      */
-/*   Created: 2020/12/15 14:19:28 by kmazier		   #+#	#+#			      */
-/*   Updated: 2020/12/15 18:09:43 by kmazier		  ###   ########.fr	      */
-/*																			  */
+/*                                                        :::      ::::::::   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kmazier <kmazier@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/25 14:17:37 by kmazier           #+#    #+#             */
+/*   Updated: 2020/12/25 14:17:37 by kmazier          ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	 ft_is_map_char(char c, int just_spawn)
+int		ft_is_map_char(char c, int just_spawn)
 {
 	if (just_spawn)
 		return (c == 'N' || c == 'W' || c == 'E' || c == 'S');
-	return (c == '1' || c == '2' || c == '0' || c == 'N' || c =='S' || c == 'E' || c == 'W' || c == ' ');
+	return (c == '1' || c == '2' || c == '0' || c == 'N'
+	|| c =='S' || c == 'E' || c == 'W' || c == ' ');
 }
 
 void	ft_set_spawn(t_cub *cub, char c)
@@ -43,11 +44,11 @@ void	ft_set_spawn(t_cub *cub, char c)
 	}
 }
 
-int ft_parse_sprite(t_cub *cub)
+int		ft_parse_sprite(t_cub *cub)
 {
-	t_sprite	*sprite;
-	int		 i;
-	int		 j;
+	t_sprite*sprite;
+	int         i;
+	int         j;
 
 	i = -1;
 	sprite = NULL;
@@ -72,7 +73,7 @@ int ft_parse_sprite(t_cub *cub)
 	return (1);
 }
 
-int ft_parse_map_param(t_cub *cub)
+int		ft_parse_map_param(t_cub *cub)
 {
 	int i;
 	int j;
@@ -94,13 +95,13 @@ int ft_parse_map_param(t_cub *cub)
 	return ((cub->dir_x != 0 || cub->dir_y != 0) && ft_parse_sprite(cub));
 }
 
-int ft_parse_map(int fd, t_cub *cub)
+int		ft_parse_map(int fd, t_cub *cub)
 {
 	char	*map;
 	char	*line;
-	int	 i;
-	int	 j;
-	int	 k;
+	int		i;
+	int		j;
+	int		k;
 
 	k = 0;
 	map = NULL;
