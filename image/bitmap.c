@@ -14,8 +14,8 @@
 
 void	ft_write_bmp_file_header(t_vars *vars, int fd)
 {
-	int i;
-	
+	int	i;
+
 	i = 58 + (vars->cub->width * vars->cub->height) * 4;
 	write(fd, "BM", 2);
 	write(fd, &i, 4);
@@ -49,11 +49,12 @@ void	ft_update_pixel(t_vars *vars, int i, int *j, int k)
 	while (l >= 0)
 	{
 		t = vars->addr[*j + (i * vars->line_length)];
-		vars->addr[*j + (i * vars->line_length)] = vars->addr[k - l + (i * vars->line_length - 1)];
+		vars->addr[*j + (i * vars->line_length)]
+		= vars->addr[k - l + (i * vars->line_length - 1)];
 		vars->addr[k - l + (i * vars->line_length - 1)] = t;
 		l--;
 		(*j)++;
-	}	
+	}
 }
 
 void	ft_update_img(t_vars *vars)
