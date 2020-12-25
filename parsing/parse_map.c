@@ -110,13 +110,12 @@ int		ft_parse_map(int fd, t_cub *cub)
 	while ((j = get_next_line(fd, &line)) >= 0)
 	{
 		k = ft_strlen(line) > 0 && !k ? 1 : k;
-		k = j == 0 && ft_strlen(line) == 0 ? 2 : k;
 		if ((i = ft_check_map_line(line)) && k == 1)
 			map = ft_strjoin(map, line, j);
 		free(line);
 		if (!i && k == 1)
 			return (ft_leave_parse_map(map));
-		if (j <= 0 || k == 2)
+		if (j <= 0)
 			break ;
 	}
 	cub->map = ft_split(map, '\n');

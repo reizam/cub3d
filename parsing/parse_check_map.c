@@ -20,7 +20,7 @@ int	ft_check_map_line(char *line)
 	while (line && line[++i])
 		if (!ft_is_map_char(line[i], 0))
 			return (0);
-	return (i > 0);
+	return (1);
 }
 
 int	ft_check_circle_map(t_cub *cub, int type, int i, int j)
