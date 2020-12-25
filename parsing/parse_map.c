@@ -92,7 +92,8 @@ int		ft_parse_map_param(t_cub *cub)
 				ft_set_spawn(cub, cub->map[i][j]);
 			}
 	}
-	return ((cub->dir_x != 0 || cub->dir_y != 0) && ft_parse_sprite(cub));
+	return (i >= 3 && (cub->dir_x != 0 || cub->dir_y != 0)
+	&& ft_parse_sprite(cub));
 }
 
 int		ft_parse_map(int fd, t_cub *cub)

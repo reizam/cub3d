@@ -52,8 +52,8 @@ void	ft_draw_sprite(t_vars *vars, double *h_buffer)
 	ft_sort_sprites(&sprite, vars->pos_x, vars->pos_y);
 	while (sprite)
 	{
-		d[0] = sprite->x - vars->pos_x;
-		d[1] = sprite->y - vars->pos_y;
+		d[0] = sprite->x - vars->pos_x + 0.5;
+		d[1] = sprite->y - vars->pos_y + 0.5;
 		d[2] = 1.0 / (vars->plane_x * vars->dir_y
 		- vars->dir_x * vars->plane_y);
 		d[3] = d[2] * (vars->dir_y * d[0] - vars->dir_x * d[1]);
