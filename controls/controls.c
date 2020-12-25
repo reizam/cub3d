@@ -1,22 +1,24 @@
 /* ************************************************************************** */
-/*																			  */
-/*														:::	  ::::::::        */
-/*   controls.c										 :+:	  :+:	:+:       */
-/*													+:+ +:+		 +:+	      */
-/*   By: kmazier <kmazier@student.42.fr>			+#+  +:+	   +#+		  */
-/*												+#+#+#+#+#+   +#+		      */
-/*   Created: 2020/12/17 15:31:32 by kmazier		   #+#	#+#			      */
-/*   Updated: 2020/12/17 15:31:32 by kmazier		  ###   ########.fr	      */
-/*																			  */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   controls.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kmazier <kmazier@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/25 18:37:01 by kmazier           #+#    #+#             */
+/*   Updated: 2020/12/25 18:37:01 by kmazier          ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 void	ft_move(t_vars *vars, int dir)
 {
-	if (vars->cub->map[(int)vars->pos_y][(int)(vars->pos_x + (dir * (vars->dir_x * vars->move_speed)))] != '1')
+	if (vars->cub->map[(int)vars->pos_y][(int)(vars->pos_x
+	+ (dir * (vars->dir_x * vars->move_speed)))] != '1')
 		vars->pos_x += dir * (vars->dir_x * vars->move_speed);
-	if (vars->cub->map[(int)(vars->pos_y + (dir * (vars->dir_y * vars->move_speed)))][(int)vars->pos_x] != '1')
+	if (vars->cub->map[(int)(vars->pos_y +(dir *
+	(vars->dir_y * vars->move_speed)))][(int)vars->pos_x] != '1')
 		vars->pos_y += dir * (vars->dir_y * vars->move_speed);
 }
 																																																																																																																																																																																																																																																																																																																																																																												
@@ -25,11 +27,15 @@ void	ft_rot(t_vars *vars, int dir)
 	double temp;
 
 	temp = vars->dir_x;
-	vars->dir_x = vars->dir_x * cos(vars->rot_speed * dir) - vars->dir_y * sin(vars->rot_speed * dir);
-	vars->dir_y = temp * sin(vars->rot_speed * dir) + vars->dir_y * cos(vars->rot_speed * dir);
+	vars->dir_x = vars->dir_x * cos(vars->rot_speed * dir)
+	- vars->dir_y * sin(vars->rot_speed * dir);
+	vars->dir_y = temp * sin(vars->rot_speed * dir)
+	+ vars->dir_y * cos(vars->rot_speed * dir);
 	temp = vars->plane_x;
-	vars->plane_x = vars->plane_x * cos(vars->rot_speed * dir) - vars->plane_y * sin(vars->rot_speed * dir);
-	vars->plane_y = temp * sin(vars->rot_speed * dir) + vars->plane_y * cos(vars->rot_speed * dir);
+	vars->plane_x = vars->plane_x * cos(vars->rot_speed * dir)
+	- vars->plane_y * sin(vars->rot_speed * dir);
+	vars->plane_y = temp * sin(vars->rot_speed * dir)
+	+ vars->plane_y * cos(vars->rot_speed * dir);
 }
 
 void	ft_do_controls(t_vars *vars)
