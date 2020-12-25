@@ -15,7 +15,7 @@
 void	ft_draw_sprite_texture(t_vars *vars, int i[12],
 double d[5], double *h_buffer)
 {
-	t_img   sprite_img;
+	t_img	sprite_img;
 	int		y;
 
 	sprite_img = vars->textures[4];

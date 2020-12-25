@@ -61,7 +61,7 @@ void	ft_calc_side_dist(t_vars *vars, double (*i)[8], int (*j)[5])
 	}
 }
 
-int	 	ft_raycast(t_vars *vars, double (*i)[8], int (*j)[5])
+int		ft_raycast(t_vars *vars, double (*i)[8], int (*j)[5])
 {
 	while (1)
 	{
@@ -105,7 +105,8 @@ void	ft_draw_wall(t_vars *vars, double **h_buffer)
 		ft_calc_side_dist(vars, &i, &j);
 		if (!ft_raycast(vars, &i, &j))
 			continue ;
-		i[7] = j[4] == 0 ? ((j[0] - vars->pos_x + (1 - j[2]) / 2) / i[1]) : ((j[1] - vars->pos_y + (1 - j[3]) / 2) / i[2]);
+		i[7] = j[4] == 0 ? ((j[0] - vars->pos_x + (1 - j[2])
+		 / 2) / i[1]) : ((j[1] - vars->pos_y + (1 - j[3]) / 2) / i[2]);
 		ft_draw_wall_line(vars, x, j, i);
 		(*h_buffer)[x] = i[7];
 	}

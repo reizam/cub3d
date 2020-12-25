@@ -14,7 +14,7 @@
 
 t_cub	*ft_parse_exit(t_cub *cub)
 {
-	int		 i;
+	int i;
 
 	i = 0;
 	if (!cub)
@@ -35,7 +35,7 @@ t_cub	*ft_parse_exit(t_cub *cub)
 		free(cub->map);
 	if (cub->sprite)
 		ft_lstclear(&cub->sprite);
-	ft_print_error(cub->error);   
+	ft_print_error(cub->error);
 	free(cub);
 	return (NULL);
 }
