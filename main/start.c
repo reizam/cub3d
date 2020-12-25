@@ -32,7 +32,7 @@ int		start_cub3d(int ac, char **av)
 	}
 	if (!(cub = ft_parse_cub_file(av[1])))
 		return (0);
-	if (ac == 4)
+	if (ac == 3)
 	{
 		if (ft_strcmp(av[2], "--save") != 0)
 		{
