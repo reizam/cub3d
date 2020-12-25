@@ -70,7 +70,7 @@ int		ft_key_release(int keycode, t_vars *vars)
 	if (keycode == W_KEY)
 		vars->keys[0] = 0;
 	else if (keycode == S_KEY)
-	   vars-> keys[1] = 0;
+		vars-> keys[1] = 0;
 	else if (keycode == A_KEY)
 		vars->keys[2] = 0;
 	else if (keycode == D_KEY)
