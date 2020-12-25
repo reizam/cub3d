@@ -109,8 +109,7 @@ int		ft_parse_map(int fd, t_cub *cub)
 	{
 		k = ft_strlen(line) > 0 && !k ? 1 : k;
 		k = j == 0 && ft_strlen(line) == 0 ? 2 : k;
-		i = ft_check_map_line(line);
-		if (i && k == 1)
+		if ((i = ft_check_map_line(line)) && k)
 			map = ft_strjoin(map, line, j);
 		free(line);
 		if (!i && k == 1)
