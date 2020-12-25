@@ -16,7 +16,7 @@ int		ft_parse_res(char *line, t_cub *cub)
 {
 	int height;
 	int width;
-	
+
 	cub->error = "Wrong resolution...";
 	width = ft_atoi(line);
 	height = ft_atoi(line + ft_nb_len(width) + 1);
@@ -53,7 +53,7 @@ int		ft_parse_line(char *line, t_cub *cub)
 		return (ft_parse_texture(ft_get_values(line, i + 2), 3, cub));
 	else if (ft_strncmp(line + i, "S ", 2) == 0)
 		return (ft_parse_texture(ft_get_values(line, i + 1), 4, cub));
-	else if (ft_strncmp(line + i, "F ", 2) == 0) 
+	else if (ft_strncmp(line + i, "F ", 2) == 0)
 		return (ft_parse_rgb(ft_get_values(line, i + 1), 0, cub));
 	else if (ft_strncmp(line + i, "C ", 2) == 0)
 		return (ft_parse_rgb(ft_get_values(line, i + 1), 1, cub));
