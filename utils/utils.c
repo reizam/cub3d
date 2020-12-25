@@ -17,7 +17,7 @@ int	ft_check_file_ext(char *file, char *extension)
 	int	i;
 	int	len;
 	int	ext_len;
-
+	
 	len = ft_strlen(file);
 	ext_len = ft_strlen(extension);
 	i = ext_len;

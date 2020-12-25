@@ -39,7 +39,7 @@ int		start_cub3d(int ac, char **av)
 		return (0);
 	if (ac == 4)
 	{
-		if (ft_strcmp(av[2], "--save") != 0 && ft_check_file_ext(av[3], ".bmp"))
+		if (ft_strcmp(av[2], "--save") != 0 && !ft_check_file_ext(av[3], ".bmp"))
 		{
 			cub->error = "Wrong arguments.";
 			ft_parse_exit(cub);
