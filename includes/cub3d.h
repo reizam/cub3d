@@ -29,43 +29,43 @@
 
 typedef struct  s_sprite
 {
-    int     x;
-    int     y;
+    int             x;
+    int             y;
     struct s_sprite *next;
-}               t_sprite;
+}                   t_sprite;
 
 typedef struct  s_img
 {
-    char    *img_ptr;
-    int     *addr;
-    int     width;
-    int     height;
-    int     bits_per_pixel;
-    int     line_length;
-    int     endian;
+    char        *img_ptr;
+    int         *addr;
+    int         width;
+    int         height;
+    int         bits_per_pixel;
+    int         line_length;
+    int         endian;
 }               t_img;
 
 typedef struct	s_cub
 {
-    int     save_first_image;
-    int     height;
-    int     width;
-    char    *south_texture;
-    char    *west_texture;
-    char    *east_texture;
-    char    *north_texture;
-    char    *sprite_texture;
-    int     rgb_ground;
-    int     rgb_roof;
-    int     spawn_x;
-    int     spawn_y;
-    double  dir_x;
-    double  dir_y;
-    double  plane_x;
-    double  plane_y;
-    char    *error;
-    char    **map;
-    t_sprite *sprite;
+    int         save_first_image;
+    int         height;
+    int         width;
+    char        *south_texture;
+    char        *west_texture;
+    char        *east_texture;
+    char        *north_texture;
+    char        *sprite_texture;
+    int         rgb_ground;
+    int         rgb_roof;
+    int         spawn_x;
+    int         spawn_y;
+    double      dir_x;
+    double      dir_y;
+    double      plane_x;
+    double      plane_y;
+    char        *error;
+    char        **map;
+    t_sprite    *sprite;
 }	            t_cub;
 
 typedef struct  s_vars
@@ -131,6 +131,6 @@ int         ft_load_all_texture(t_vars *vars);
 void        ft_draw_texture_line(t_vars *vars, t_img img, int x, int k[4]);
 void        ft_screen_init_exit(t_vars *vars, int do_exit);
 void        ft_draw_wall(t_vars *vars, double **h_buffer);
-void    ft_draw_sprite(t_vars *vars, double *h_buffer);
+void        ft_draw_sprite(t_vars *vars, double *h_buffer);
 
 #endif

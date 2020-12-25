@@ -20,7 +20,7 @@ int     ft_check_file(char *file)
     if (fd <= -1)
         return (0);
     close(fd);
-    return (ft_check_file_ext(file, ".xpm"));
+    return (ft_check_file_ext(file, ".xpm") || ft_check_file_ext(file, ".png"));
 }
 
 int     ft_parse_texture(char *line, int id, t_cub *cub)
