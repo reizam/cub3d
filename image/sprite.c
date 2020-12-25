@@ -12,27 +12,29 @@
 
 #include "cub3d.h"
 
-void	ft_draw_sprite_texture(t_vars *vars, int i[12],
-double d[5], double *h_buffer)
+void	ft_draw_sprite_texture(t_vars *vars, int i[12], double d[5], double *h_buffer)
 {
 	t_img   sprite_img;
+	int		y;
 
 	sprite_img = vars->textures[4];
 	i[2] = -i[1] / 2 + vars->cub->height / 2;
-	i[2] = i[2] < 0 ? 0 :i[2];
+	i[2] = i[2] < 0 ? 0 : i[2];
 	i[3] = i[1] / 2 + vars->cub->height / 2;
 	i[3] = i[3] >= vars->cub->height ? vars->cub->height - 1 : i[3];
 	i[4] = abs((int)(vars->cub->height / d[4]));
 	i[5] = -i[4] / 2 + i[0];
 	i[5] = i[5] < 0 ? 0 : i[5];
 	i[6] = i[4] / 2 + i[0];
-	i[6] = i[6] >= vars->cub->width ? vars->cub->width - 1 : i[6];	
+	i[6] = i[6] >= vars->cub->width ? vars->cub->width - 1 : i[6];
 	i[8] = i[5] - 1;
 	while (++i[8] < i[6])
 	{
-		i[9] = (int)((256 * (i[8] - (-i[4] / 2 + i[0])) * sprite_img.width / i[4]) / 256);
-		int y = i[2] - 1;
-		if(d[4] > 0 && i[8] > 0 && i[8] < vars->cub->width && d[4] < h_buffer[i[8]])
+		i[9] = (int)((256 * (i[8] - (-i[4] / 2 + i[0]))
+		* sprite_img.width / i[4]) / 256);
+		y = i[2] - 1;
+		if (d[4] > 0 && i[8] > 0 &&
+		i[8] < vars->cub->width && d[4] < h_buffer[i[8]])
 			while (++y < i[3])
 			{
 				i[10] = (y) * 256 - vars->cub->height * 128 + i[1] * 128;
