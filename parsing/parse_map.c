@@ -103,6 +103,7 @@ int		ft_parse_map(int fd, t_cub *cub)
 	int		j;
 	int		k;
 
+	k = 0;
 	map = NULL;
 	cub->error = "Wrong map.";
 	while ((j = get_next_line(fd, &line)) >= 0)
@@ -113,7 +114,7 @@ int		ft_parse_map(int fd, t_cub *cub)
 			map = ft_strjoin(map, line, j);
 		free(line);
 		if (!i && k == 1)
-			break ;
+			return (ft_leave_parse_map(map));
 		if (j <= 0 || k == 2)
 			break ;
 	}
