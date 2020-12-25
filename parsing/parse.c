@@ -84,7 +84,7 @@ t_cub	*ft_create_cub(void)
 	cub->rgb_ground = -1;
 	cub->rgb_roof = -1;
 	cub->map = NULL;
-	cub->error = "This map file doesn't exist.";
+	cub->error = "This map doesn't exit or cannot be loaded.";
 	return (cub);
 }
 
