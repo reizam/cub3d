@@ -73,12 +73,13 @@ int		ft_parse_sprite(t_cub *cub)
 	return (1);
 }
 
-int		ft_parse_map_param(t_cub *cub)
+int		ft_parse_map_param(t_cub *cub, char *map)
 {
 	int i;
 	int j;
-
 	i = -1;
+	
+	free(map);
 	while (cub->map[++i])
 	{
 		j = -1;
@@ -121,6 +122,5 @@ int		ft_parse_map(int fd, t_cub *cub)
 			break ;
 	}
 	cub->map = ft_split(map, '\n');
-	free(map);
-	return (ft_check_map(cub) && ft_parse_map_param(cub));
+	return (ft_check_map(cub) && ft_parse_map_param(cub, map));
 }
