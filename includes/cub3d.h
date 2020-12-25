@@ -68,7 +68,7 @@ typedef struct		s_cub
 	t_sprite		*sprite;
 }					t_cub;
 
-typedef struct  	s_vars
+typedef struct		s_vars
 {
 	void			*mlx_ptr;
 	void			*win_ptr;
@@ -106,7 +106,7 @@ int					ft_check_map(t_cub *cub);
 int					ft_is_map_char(char c, int just_spawn);
 size_t				ft_strlen(const char *s);
 void				ft_putstr_fd(char *s, int fd);
-int		 			ft_strcmp(char *s1, char *s2);
+int					ft_strcmp(char *s1, char *s2);
 int					ft_strncmp(char *s1, char *s2, size_t n);
 int					ft_check_file_ext(char *file, char *extension);
 int					get_next_line(int fd, char **line);
