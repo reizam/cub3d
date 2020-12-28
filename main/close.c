@@ -58,7 +58,7 @@ void	ft_screen_init_exit(t_vars *vars, int do_exit)
 		vars->cub->error = "Error while loading textures.";
 		ft_parse_exit(vars->cub);
 		free(vars);
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 }
 
@@ -76,5 +76,5 @@ void	ft_screen_exit(t_vars *vars)
 	vars->cub = NULL;
 	free(vars);
 	vars = NULL;
-	exit(0);
+	exit(EXIT_SUCCESS);
 }
