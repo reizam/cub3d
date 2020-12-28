@@ -64,10 +64,14 @@ int	ft_check_map(t_cub *cub)
 			if (cub->map[i][j] != '0' && cub->map[i][j] != '2'
 			&& !ft_is_map_char(cub->map[i][j], 1))
 				continue ;
-			if (!ft_check_circle_map(cub, 0, i, j) || !ft_check_circle_map(cub, 1, i, j)
-			|| !ft_check_circle_map(cub, 2, i, j) || !ft_check_circle_map(cub, 3, i, j)
-			|| !ft_check_circle_map(cub, 4, i, j) || !ft_check_circle_map(cub, 5, i, j)
-			|| !ft_check_circle_map(cub, 6, i, j) || !ft_check_circle_map(cub, 7, i, j))
+			if (!ft_check_circle_map(cub, 0, i, j)
+			|| !ft_check_circle_map(cub, 1, i, j)
+			|| !ft_check_circle_map(cub, 2, i, j)
+			|| !ft_check_circle_map(cub, 3, i, j)
+			|| !ft_check_circle_map(cub, 4, i, j)
+			|| !ft_check_circle_map(cub, 5, i, j)
+			|| !ft_check_circle_map(cub, 6, i, j)
+			|| !ft_check_circle_map(cub, 7, i, j))
 				return (0);
 		}
 	}

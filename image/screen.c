@@ -21,7 +21,7 @@ int		ft_render_screen(t_vars *vars)
 		if (!(vars->h_buffer = (double*)malloc(sizeof(double)
 		* (vars->cub->width + 1))))
 			return (0);
-	while (++i < vars->cub->width)
+	while (++i < vars->cub->width + 1)
 		vars->h_buffer[i] = 0;
 	ft_draw_ground(vars);
 	ft_draw_roof(vars);
