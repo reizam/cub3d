@@ -54,6 +54,7 @@ void	ft_screen_init_exit(t_vars *vars, int do_exit)
 		mlx_destroy_image(vars->mlx_ptr, vars->textures[4].img_ptr);
 	if (do_exit)
 	{
+		mlx_destroy_display(vars->mlx_ptr);
 		free(vars->mlx_ptr);
 		vars->cub->error = "Error while loading textures.";
 		ft_parse_exit(vars->cub);
@@ -69,6 +70,7 @@ void	ft_screen_exit(t_vars *vars)
 	ft_screen_init_exit(vars, 0);
 	if (vars->win_ptr != NULL)
 		mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
+	mlx_destroy_display(vars->mlx_ptr);
 	free(vars->mlx_ptr);
 	ft_parse_exit(vars->cub);
 	if (vars->h_buffer)
